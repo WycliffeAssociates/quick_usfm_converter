@@ -26,7 +26,7 @@ namespace Hackathon_Converter
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.Description = "Select the directory conatining the files you want to convert.";
+            folderBrowserDialog.Description = "Select the directory containing the files you want to convert.";
             // Default to the My Documents folder.
             folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
             folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
