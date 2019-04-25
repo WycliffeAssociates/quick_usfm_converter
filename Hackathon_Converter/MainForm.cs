@@ -69,6 +69,10 @@ namespace Hackathon_Converter
                 return;
             }
 
+            BtnConvert.Enabled = false;
+            btn_AddFiles.Enabled = false;
+            fileDataGrid.Enabled = false;
+
             var parser = new USFMToolsSharp.USFMParser();
             var renderer = new USFMToolsSharp.HtmlRenderer();
 
@@ -88,7 +92,9 @@ namespace Hackathon_Converter
             var bytes = Encoding.Default.GetBytes(html);
             myStream.Write(bytes, 0, bytes.Length);
             myStream.Close();
-
+            BtnConvert.Enabled = true;
+            btn_AddFiles.Enabled = true;
+            fileDataGrid.Enabled = true;
         }
     }
 }
