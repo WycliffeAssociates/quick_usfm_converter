@@ -13,22 +13,15 @@ namespace Hackathon_Converter
 {
     public partial class MainForm : Form
     {
-        //private List<String> selectedFiles = new List<string>();
-
         public MainForm()
         {
             InitializeComponent();
-
-            //var bindingList = new BindingList<String>(selectedFiles);
-            //var source = new BindingSource(bindingList, null);
-            //fileDataGrid.DataSource = source;
 
             fileDataGrid.ColumnCount = 1;
             fileDataGrid.Columns[0].Name = "File";
             fileDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
-
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
@@ -56,9 +49,6 @@ namespace Hackathon_Converter
                     fileDataGrid.Rows.Add(new String[] { fileInfo.FullName });
                 }
             }
-            //var bindingList = new BindingList<String>(selectedFiles);
-            //var source = new BindingSource(bindingList, null);
-            //fileDataGrid.DataSource = source;
         }
 
         private void OnConvertButtonClick(object sender, EventArgs e)
@@ -100,7 +90,5 @@ namespace Hackathon_Converter
             myStream.Close();
 
         }
-
-
     }
 }
