@@ -53,18 +53,18 @@ namespace Hackathon_Converter
 
         private void OnConvertButtonClick(object sender, EventArgs e)
         {
-            Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.FileName = "out.html";
-            saveFileDialog1.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
+            Stream htmlStream;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "out.html";
+            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
-            if ((myStream = saveFileDialog1.OpenFile()) == null)
+            if ((htmlStream = saveFileDialog.OpenFile()) == null)
             {
                 return;
             }
@@ -90,8 +90,17 @@ namespace Hackathon_Converter
             }
             var html = renderer.Render(usfm);
             var bytes = Encoding.Default.GetBytes(html);
-            myStream.Write(bytes, 0, bytes.Length);
-            myStream.Close();
+            htmlStream.Write(bytes, 0, bytes.Length);
+            htmlStream.Close();
+
+            var htmlFilename = saveFileDialog.FileName;
+            var dirname = Path.GetDirectoryName(htmlFilename);
+            var cssFilename = Path.Combine(dirname, "style.css");
+            if (File.Exists(cssFilename) == false)
+            {
+                File.Copy("style.css", cssFilename);
+            }
+
             BtnConvert.Enabled = true;
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;

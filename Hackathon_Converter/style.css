@@ -1,0 +1,10 @@
+.chapter{
+    font-size: 32px;
+    font-weight: bold;
+    display: block;
+    float:left;
+}
+.versemarker{
+    font-size: 10px;
+    vertical-align: top;
+}
