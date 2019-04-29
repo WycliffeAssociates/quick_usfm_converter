@@ -25,11 +25,13 @@ namespace Hackathon_Converter
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.Description = "Select the directory containing the files you want to convert.";
-            // Default to the My Documents folder.
-            folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
-            folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
+            {
+                Description = "Select the directory containing the files you want to convert.",
+                // Default to the My Documents folder.
+                RootFolder = Environment.SpecialFolder.MyComputer,
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+            };
 
             //Show the FolderBrowserDialog.
             DialogResult result = folderBrowserDialog.ShowDialog();
@@ -54,11 +56,13 @@ namespace Hackathon_Converter
         private void OnConvertButtonClick(object sender, EventArgs e)
         {
             Stream htmlStream;
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "out.html";
-            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
-            saveFileDialog.FilterIndex = 1;
-            saveFileDialog.RestoreDirectory = true;
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "out.html",
+                Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
