@@ -86,10 +86,10 @@ namespace Hackathon_Converter
                 }
                 var filename = cell.Value.ToString();
                 var text = File.ReadAllText(filename);
-                usfm.Contents.AddRange(parser.ParseFromString(text).Contents);
+                usfm.Insert(parser.ParseFromString(text));
             }
             var html = renderer.Render(usfm);
-            var bytes = Encoding.Default.GetBytes(html);
+            var bytes = Encoding.UTF8.GetBytes(html);
             htmlStream.Write(bytes, 0, bytes.Length);
             htmlStream.Close();
 
