@@ -77,7 +77,7 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = false;
             fileDataGrid.Enabled = false;
 
-            var parser = new USFMToolsSharp.USFMParser();
+            var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5" });
             var renderer = new USFMToolsSharp.HtmlRenderer();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
