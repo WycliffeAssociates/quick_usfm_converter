@@ -31,6 +31,8 @@
             this.BtnConvert = new System.Windows.Forms.Button();
             this.btn_AddFiles = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_AddOnlyFile = new System.Windows.Forms.Button();
+            this.btn_ClearList = new System.Windows.Forms.Button();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
@@ -39,9 +41,9 @@
             // BtnConvert
             // 
             this.BtnConvert.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnConvert.Location = new System.Drawing.Point(0, 87);
+            this.BtnConvert.Location = new System.Drawing.Point(0, 225);
             this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(800, 70);
+            this.BtnConvert.Size = new System.Drawing.Size(1603, 75);
             this.BtnConvert.TabIndex = 0;
             this.BtnConvert.Text = "Convert";
             this.BtnConvert.UseVisualStyleBackColor = true;
@@ -52,7 +54,7 @@
             this.btn_AddFiles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_AddFiles.Location = new System.Drawing.Point(0, 0);
             this.btn_AddFiles.Name = "btn_AddFiles";
-            this.btn_AddFiles.Size = new System.Drawing.Size(800, 70);
+            this.btn_AddFiles.Size = new System.Drawing.Size(1603, 75);
             this.btn_AddFiles.TabIndex = 1;
             this.btn_AddFiles.Text = "Add Directory";
             this.btn_AddFiles.UseVisualStyleBackColor = true;
@@ -60,13 +62,38 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_AddOnlyFile);
+            this.panel1.Controls.Add(this.btn_ClearList);
             this.panel1.Controls.Add(this.btn_AddFiles);
             this.panel1.Controls.Add(this.BtnConvert);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 293);
+            this.panel1.Location = new System.Drawing.Point(0, 559);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 157);
+            this.panel1.Size = new System.Drawing.Size(1603, 300);
             this.panel1.TabIndex = 3;
+            // 
+            // btn_AddOnlyFile
+            // 
+            this.btn_AddOnlyFile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_AddOnlyFile.Location = new System.Drawing.Point(0, 150);
+            this.btn_AddOnlyFile.Name = "btn_AddOnlyFile";
+            this.btn_AddOnlyFile.Size = new System.Drawing.Size(1603, 75);
+            this.btn_AddOnlyFile.TabIndex = 3;
+            this.btn_AddOnlyFile.Text = "Add File";
+            this.btn_AddOnlyFile.UseVisualStyleBackColor = true;
+            this.btn_AddOnlyFile.Click += new System.EventHandler(this.onAddOnlyFileClick);
+            // 
+            // btn_ClearList
+            // 
+            this.btn_ClearList.AutoSize = true;
+            this.btn_ClearList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_ClearList.Location = new System.Drawing.Point(0, 75);
+            this.btn_ClearList.Name = "btn_ClearList";
+            this.btn_ClearList.Size = new System.Drawing.Size(1603, 75);
+            this.btn_ClearList.TabIndex = 2;
+            this.btn_ClearList.Text = "Clear List";
+            this.btn_ClearList.UseVisualStyleBackColor = true;
+            this.btn_ClearList.Click += new System.EventHandler(this.onClearListButtonClick);
             // 
             // fileDataGrid
             // 
@@ -75,19 +102,20 @@
             this.fileDataGrid.Location = new System.Drawing.Point(0, 0);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(800, 293);
+            this.fileDataGrid.Size = new System.Drawing.Size(1603, 559);
             this.fileDataGrid.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1603, 859);
             this.Controls.Add(this.fileDataGrid);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "Hackathon Converter";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -99,6 +127,7 @@
         private System.Windows.Forms.Button btn_AddFiles;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView fileDataGrid;
+        private System.Windows.Forms.Button btn_ClearList;
+        private System.Windows.Forms.Button btn_AddOnlyFile;
     }
 }
-

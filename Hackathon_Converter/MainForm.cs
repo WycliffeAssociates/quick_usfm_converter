@@ -109,5 +109,20 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
         }
+        private void onRemoveFile(object sender,EventArgs e)
+        {
+            //Receives _______
+            //fileDataGrid.Rows.Remove();
+        }
+        private void onClearListButtonClick(object sender, EventArgs e)
+        {
+            //Empties/Resets entire list
+            fileDataGrid.Rows.Clear();
+        }
+
+        private void onAddOnlyFileClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

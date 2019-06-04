@@ -21,6 +21,11 @@
     margin-right: 0.25em;
 }
 
+.verse{
+    font-size:20px;
+    font-weight:normal;
+}
+
 .versemarker {
     font-size: 10px;
     vertical-align: top;
