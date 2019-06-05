@@ -30,12 +30,26 @@
         {
             this.BtnConvert = new System.Windows.Forms.Button();
             this.btn_AddFiles = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Control_Panel = new System.Windows.Forms.Panel();
             this.btn_AddOnlyFile = new System.Windows.Forms.Button();
             this.btn_ClearList = new System.Windows.Forms.Button();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.Format_Options = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Single_Space = new System.Windows.Forms.RadioButton();
+            this.Double_Space = new System.Windows.Forms.RadioButton();
+            this.Num_Columns = new System.Windows.Forms.GroupBox();
+            this.Single_col = new System.Windows.Forms.RadioButton();
+            this.Double_Col = new System.Windows.Forms.RadioButton();
+            this.Read_Direction = new System.Windows.Forms.GroupBox();
+            this.directL2R = new System.Windows.Forms.RadioButton();
+            this.directR2L = new System.Windows.Forms.RadioButton();
+            this.Btn_Control_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
+            this.Format_Options.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.Num_Columns.SuspendLayout();
+            this.Read_Direction.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConvert
@@ -43,7 +57,7 @@
             this.BtnConvert.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnConvert.Location = new System.Drawing.Point(0, 225);
             this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(1603, 75);
+            this.BtnConvert.Size = new System.Drawing.Size(1567, 75);
             this.BtnConvert.TabIndex = 0;
             this.BtnConvert.Text = "Convert";
             this.BtnConvert.UseVisualStyleBackColor = true;
@@ -54,30 +68,30 @@
             this.btn_AddFiles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_AddFiles.Location = new System.Drawing.Point(0, 0);
             this.btn_AddFiles.Name = "btn_AddFiles";
-            this.btn_AddFiles.Size = new System.Drawing.Size(1603, 75);
+            this.btn_AddFiles.Size = new System.Drawing.Size(1567, 75);
             this.btn_AddFiles.TabIndex = 1;
             this.btn_AddFiles.Text = "Add Directory";
             this.btn_AddFiles.UseVisualStyleBackColor = true;
             this.btn_AddFiles.Click += new System.EventHandler(this.OnAddFilesButtonClick);
             // 
-            // panel1
+            // Btn_Control_Panel
             // 
-            this.panel1.Controls.Add(this.btn_AddOnlyFile);
-            this.panel1.Controls.Add(this.btn_ClearList);
-            this.panel1.Controls.Add(this.btn_AddFiles);
-            this.panel1.Controls.Add(this.BtnConvert);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 559);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1603, 300);
-            this.panel1.TabIndex = 3;
+            this.Btn_Control_Panel.Controls.Add(this.btn_AddOnlyFile);
+            this.Btn_Control_Panel.Controls.Add(this.btn_ClearList);
+            this.Btn_Control_Panel.Controls.Add(this.btn_AddFiles);
+            this.Btn_Control_Panel.Controls.Add(this.BtnConvert);
+            this.Btn_Control_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 701);
+            this.Btn_Control_Panel.Name = "Btn_Control_Panel";
+            this.Btn_Control_Panel.Size = new System.Drawing.Size(1567, 300);
+            this.Btn_Control_Panel.TabIndex = 3;
             // 
             // btn_AddOnlyFile
             // 
             this.btn_AddOnlyFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_AddOnlyFile.Location = new System.Drawing.Point(0, 150);
             this.btn_AddOnlyFile.Name = "btn_AddOnlyFile";
-            this.btn_AddOnlyFile.Size = new System.Drawing.Size(1603, 75);
+            this.btn_AddOnlyFile.Size = new System.Drawing.Size(1567, 75);
             this.btn_AddOnlyFile.TabIndex = 3;
             this.btn_AddOnlyFile.Text = "Add File";
             this.btn_AddOnlyFile.UseVisualStyleBackColor = true;
@@ -89,7 +103,7 @@
             this.btn_ClearList.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_ClearList.Location = new System.Drawing.Point(0, 75);
             this.btn_ClearList.Name = "btn_ClearList";
-            this.btn_ClearList.Size = new System.Drawing.Size(1603, 75);
+            this.btn_ClearList.Size = new System.Drawing.Size(1567, 75);
             this.btn_ClearList.TabIndex = 2;
             this.btn_ClearList.Text = "Clear List";
             this.btn_ClearList.UseVisualStyleBackColor = true;
@@ -102,22 +116,158 @@
             this.fileDataGrid.Location = new System.Drawing.Point(0, 0);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(1603, 559);
+            this.fileDataGrid.Size = new System.Drawing.Size(1567, 701);
             this.fileDataGrid.TabIndex = 4;
             this.fileDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onRemoveFile);
+            // 
+            // Format_Options
+            // 
+            this.Format_Options.Controls.Add(this.Read_Direction);
+            this.Format_Options.Controls.Add(this.Num_Columns);
+            this.Format_Options.Controls.Add(this.groupBox1);
+            this.Format_Options.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Format_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Format_Options.Location = new System.Drawing.Point(1152, 0);
+            this.Format_Options.Name = "Format_Options";
+            this.Format_Options.Size = new System.Drawing.Size(415, 701);
+            this.Format_Options.TabIndex = 5;
+            this.Format_Options.TabStop = false;
+            this.Format_Options.Text = "Format Options";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Single_Space);
+            this.groupBox1.Controls.Add(this.Double_Space);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(6, 88);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(403, 98);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Spacing";
+            // 
+            // Single_Space
+            // 
+            this.Single_Space.AutoSize = true;
+            this.Single_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Single_Space.Location = new System.Drawing.Point(45, 47);
+            this.Single_Space.Name = "Single_Space";
+            this.Single_Space.Size = new System.Drawing.Size(120, 35);
+            this.Single_Space.TabIndex = 0;
+            this.Single_Space.TabStop = true;
+            this.Single_Space.Text = "Single";
+            this.Single_Space.UseVisualStyleBackColor = true;
+            this.Single_Space.CheckedChanged += new System.EventHandler(this.Single_space_CheckedChanged);
+            // 
+            // Double_Space
+            // 
+            this.Double_Space.AutoSize = true;
+            this.Double_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Double_Space.Location = new System.Drawing.Point(187, 47);
+            this.Double_Space.Name = "Double_Space";
+            this.Double_Space.Size = new System.Drawing.Size(131, 35);
+            this.Double_Space.TabIndex = 1;
+            this.Double_Space.TabStop = true;
+            this.Double_Space.Text = "Double";
+            this.Double_Space.UseVisualStyleBackColor = true;
+            this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
+            // 
+            // Num_Columns
+            // 
+            this.Num_Columns.Controls.Add(this.Single_col);
+            this.Num_Columns.Controls.Add(this.Double_Col);
+            this.Num_Columns.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_Columns.Location = new System.Drawing.Point(6, 192);
+            this.Num_Columns.Name = "Num_Columns";
+            this.Num_Columns.Size = new System.Drawing.Size(403, 98);
+            this.Num_Columns.TabIndex = 3;
+            this.Num_Columns.TabStop = false;
+            this.Num_Columns.Text = "# of Columns";
+            // 
+            // Single_col
+            // 
+            this.Single_col.AutoSize = true;
+            this.Single_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Single_col.Location = new System.Drawing.Point(45, 47);
+            this.Single_col.Name = "Single_col";
+            this.Single_col.Size = new System.Drawing.Size(60, 35);
+            this.Single_col.TabIndex = 0;
+            this.Single_col.TabStop = true;
+            this.Single_col.Text = "1";
+            this.Single_col.UseVisualStyleBackColor = true;
+            this.Single_col.CheckedChanged += new System.EventHandler(this.Single_col_CheckedChanged);
+            // 
+            // Double_Col
+            // 
+            this.Double_Col.AutoSize = true;
+            this.Double_Col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Double_Col.Location = new System.Drawing.Point(187, 47);
+            this.Double_Col.Name = "Double_Col";
+            this.Double_Col.Size = new System.Drawing.Size(60, 35);
+            this.Double_Col.TabIndex = 1;
+            this.Double_Col.TabStop = true;
+            this.Double_Col.Text = "2";
+            this.Double_Col.UseVisualStyleBackColor = true;
+            this.Double_Col.CheckedChanged += new System.EventHandler(this.Double_col_CheckedChanged);
+            // 
+            // Read_Direction
+            // 
+            this.Read_Direction.Controls.Add(this.directL2R);
+            this.Read_Direction.Controls.Add(this.directR2L);
+            this.Read_Direction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Read_Direction.Location = new System.Drawing.Point(6, 296);
+            this.Read_Direction.Name = "Read_Direction";
+            this.Read_Direction.Size = new System.Drawing.Size(403, 148);
+            this.Read_Direction.TabIndex = 3;
+            this.Read_Direction.TabStop = false;
+            this.Read_Direction.Text = "Reading Direction";
+            // 
+            // directL2R
+            // 
+            this.directL2R.AutoSize = true;
+            this.directL2R.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directL2R.Location = new System.Drawing.Point(45, 47);
+            this.directL2R.Name = "directL2R";
+            this.directL2R.Size = new System.Drawing.Size(196, 35);
+            this.directL2R.TabIndex = 0;
+            this.directL2R.TabStop = true;
+            this.directL2R.Text = "Left-to-Right";
+            this.directL2R.UseVisualStyleBackColor = true;
+            this.directL2R.CheckedChanged += new System.EventHandler(this.Direct_L2R_CheckedChanged);
+            // 
+            // directR2L
+            // 
+            this.directR2L.AutoSize = true;
+            this.directR2L.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directR2L.Location = new System.Drawing.Point(45, 88);
+            this.directR2L.Name = "directR2L";
+            this.directR2L.Size = new System.Drawing.Size(196, 35);
+            this.directR2L.TabIndex = 1;
+            this.directR2L.TabStop = true;
+            this.directR2L.Text = "Right-to-Left";
+            this.directR2L.UseVisualStyleBackColor = true;
+            this.directR2L.CheckedChanged += new System.EventHandler(this.Direct_R2L_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1603, 859);
+            this.ClientSize = new System.Drawing.Size(1567, 1001);
+            this.Controls.Add(this.Format_Options);
             this.Controls.Add(this.fileDataGrid);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Btn_Control_Panel);
             this.Name = "MainForm";
             this.Text = "Hackathon Converter";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Btn_Control_Panel.ResumeLayout(false);
+            this.Btn_Control_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
+            this.Format_Options.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.Num_Columns.ResumeLayout(false);
+            this.Num_Columns.PerformLayout();
+            this.Read_Direction.ResumeLayout(false);
+            this.Read_Direction.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -126,9 +276,19 @@
 
         private System.Windows.Forms.Button BtnConvert;
         private System.Windows.Forms.Button btn_AddFiles;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Btn_Control_Panel;
         private System.Windows.Forms.DataGridView fileDataGrid;
         private System.Windows.Forms.Button btn_ClearList;
         private System.Windows.Forms.Button btn_AddOnlyFile;
+        private System.Windows.Forms.GroupBox Format_Options;
+        private System.Windows.Forms.RadioButton Double_Space;
+        private System.Windows.Forms.RadioButton Single_Space;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Read_Direction;
+        private System.Windows.Forms.RadioButton directL2R;
+        private System.Windows.Forms.RadioButton directR2L;
+        private System.Windows.Forms.GroupBox Num_Columns;
+        private System.Windows.Forms.RadioButton Single_col;
+        private System.Windows.Forms.RadioButton Double_Col;
     }
 }

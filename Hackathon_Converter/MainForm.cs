@@ -74,6 +74,9 @@ namespace Hackathon_Converter
             }
 
             BtnConvert.Enabled = false;
+            Format_Options.Enabled = false;
+            btn_ClearList.Enabled = false;
+            btn_AddOnlyFile.Enabled = false;
             btn_AddFiles.Enabled = false;
             fileDataGrid.Enabled = false;
 
@@ -106,6 +109,9 @@ namespace Hackathon_Converter
             }
 
             BtnConvert.Enabled = true;
+            Format_Options.Enabled = true;
+            btn_ClearList.Enabled = true;
+            btn_AddOnlyFile.Enabled = true;
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
         }
@@ -150,6 +156,29 @@ namespace Hackathon_Converter
             }
             
         }
+        private void Single_space_CheckedChanged(object sender,EventArgs e)
+        {
 
+        }
+        private void Double_space_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Single_col_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Double_col_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
