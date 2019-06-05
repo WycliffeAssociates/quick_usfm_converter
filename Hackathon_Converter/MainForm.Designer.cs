@@ -104,6 +104,7 @@
             this.fileDataGrid.RowTemplate.Height = 33;
             this.fileDataGrid.Size = new System.Drawing.Size(1603, 559);
             this.fileDataGrid.TabIndex = 4;
+            this.fileDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onRemoveFile);
             // 
             // MainForm
             // 

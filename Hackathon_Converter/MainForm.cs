@@ -109,10 +109,17 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
         }
-        private void onRemoveFile(object sender,EventArgs e)
+        private void onRemoveFile(object sender, EventArgs e)
         {
-            //Receives _______
-            //fileDataGrid.Rows.Remove();
+            //Receives Cell that is double clicked
+
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+            if (dgv.CurrentRow.Selected)
+            {
+                fileDataGrid.Rows.Remove(dgv.CurrentRow);
+            }
         }
         private void onClearListButtonClick(object sender, EventArgs e)
         {
@@ -122,7 +129,27 @@ namespace Hackathon_Converter
 
         private void onAddOnlyFileClick(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                
+            };
 
+            //Show the FolderBrowserDialog.
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+
+            var filePath = openFileDialog.FileName;
+
+            if (filePath.ToLower().EndsWith(".usfm") ||
+                filePath.ToLower().EndsWith(".txt"))
+            {
+                fileDataGrid.Rows.Add(new String[] { filePath });
+            }
+            
         }
+
     }
 }
