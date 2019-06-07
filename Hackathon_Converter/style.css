@@ -3,6 +3,8 @@
     font-size: 32px;
     font-weight: bold;
     display: block;
+    page-break-before:always;
+    page-break-after:auto;
 }
 
 .majortitle {
@@ -29,4 +31,18 @@
 .versemarker {
     font-size: 10px;
     vertical-align: top;
+}
+/* Format Styles */
+.single-space{
+    line-height:1;
+}
+.double-space{
+    line-height:2;
+}
+
+.one-column{
+    columns:1;
+}
+.multi-column{
+    columns:2;
 }

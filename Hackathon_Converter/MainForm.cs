@@ -158,18 +158,25 @@ namespace Hackathon_Converter
         }
         private void Single_space_CheckedChanged(object sender,EventArgs e)
         {
-
+            //line-height: 1 ;
         }
         private void Double_space_CheckedChanged(object sender, EventArgs e)
         {
+            //line-height: 2 ;
 
         }
         private void Single_col_CheckedChanged(object sender, EventArgs e)
         {
+            /* Column count */
+            //columns: auto;
+            //columns: 1;
 
         }
         private void Double_col_CheckedChanged(object sender, EventArgs e)
         {
+            /* Column count */
+            //columns: auto;
+            //columns: 2;
 
         }
         private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
