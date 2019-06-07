@@ -61,7 +61,7 @@ namespace Hackathon_Converter
                 FileName = "out.html",
                 Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*",
                 FilterIndex = 1,
-                RestoreDirectory = true
+                RestoreDirectory = false
             };
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
@@ -81,7 +81,12 @@ namespace Hackathon_Converter
             fileDataGrid.Enabled = false;
 
             var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5" });
-            var renderer = new USFMToolsSharp.HtmlRenderer();
+
+            //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
+            //
+            var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified);
+
+            //var renderer = new USFMToolsSharp.HtmlRenderer();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
             foreach (DataGridViewRow row in fileDataGrid.Rows)
@@ -159,10 +164,23 @@ namespace Hackathon_Converter
         private void Single_space_CheckedChanged(object sender,EventArgs e)
         {
             //line-height: 1 ;
+            RadioButton singleSpaceOption = sender as RadioButton;
+            if (singleSpaceOption.Checked)
+            {
+
+                isSingleSpaced = true;
+            }
+
         }
         private void Double_space_CheckedChanged(object sender, EventArgs e)
         {
             //line-height: 2 ;
+            RadioButton doubleSpaceOption = sender as RadioButton;
+            if (doubleSpaceOption.Checked)
+            {
+
+                isSingleSpaced = false;
+            }
 
         }
         private void Single_col_CheckedChanged(object sender, EventArgs e)
@@ -171,6 +189,13 @@ namespace Hackathon_Converter
             //columns: auto;
             //columns: 1;
 
+            RadioButton singleColOption = sender as RadioButton;
+            if (singleColOption.Checked)
+            {
+
+                hasOneColumn = true;
+            }
+
         }
         private void Double_col_CheckedChanged(object sender, EventArgs e)
         {
@@ -178,14 +203,57 @@ namespace Hackathon_Converter
             //columns: auto;
             //columns: 2;
 
+            RadioButton doubleColOption = sender as RadioButton;
+            // Ensure that the RadioButton.Checked property
+            // changed to true.
+            if (doubleColOption.Checked)
+            {
+                // Keep track of the selected RadioButton by saving a reference
+                // to it.
+                hasOneColumn = false;
+            }
+
         }
         private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
         {
+            RadioButton L2ROption = sender as RadioButton;
+            if (L2ROption.Checked)
+            {
 
+                isL2RDirection = true;
+            }
         }
         private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
         {
+            RadioButton R2LOption = sender as RadioButton;
 
+            if (R2LOption.Checked)
+            {
+
+                isL2RDirection = false;
+            }
+        }
+
+        private void isJustified_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox justifyText = sender as CheckBox;
+            if (justifyText.Checked)
+            {
+
+                isTextJustified = true;
+            }
+            else
+            {
+                isTextJustified = false;
+                if (isL2RDirection)
+                {
+                    isLeftJustified = true;
+                }
+                else
+                {
+                    isLeftJustified = false;
+                }
+            }
         }
     }
 }

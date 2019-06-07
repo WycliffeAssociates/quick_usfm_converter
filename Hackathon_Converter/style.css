@@ -1,10 +1,9 @@
+/* Marker Specific Styling */
 .header {
     margin-top: 1em;
     font-size: 32px;
     font-weight: bold;
     display: block;
-    page-break-before:always;
-    page-break-after:auto;
 }
 
 .majortitle {
@@ -13,6 +12,12 @@
 
 .chapter {
     margin-top: 1em;
+    /* page-break-before:always; */
+}
+
+.pagebreak {
+    page-break-after: auto;
+    page-break-after: always;
 }
 
 .chaptermarker {
@@ -23,9 +28,26 @@
     margin-right: 0.25em;
 }
 
-.verse{
-    font-size:20px;
-    font-weight:normal;
+.poetry-1 {
+    line-break: normal;
+    display: block;
+}
+
+.poetry-2 {
+    line-break: normal;
+    display: block;
+    text-indent: 5%;
+}
+
+.poetry-3 {
+    line-break: normal;
+    display: block;
+    text-indent: 10%;
+}
+
+.verse {
+    font-size: 20px;
+    font-weight: normal;
 }
 
 .versemarker {
@@ -33,16 +55,42 @@
     vertical-align: top;
 }
 /* Format Styles */
-.single-space{
-    line-height:1;
-}
-.double-space{
-    line-height:2;
+.single-space {
+    line-height: 1;
 }
 
-.one-column{
-    columns:1;
+.double-space {
+    line-height: 2;
 }
-.multi-column{
-    columns:2;
+
+.one-column {
+    column-count: 1;
 }
+
+.multi-column {
+    column-count: 2;
+}
+
+.justified {
+    text-align: justify;
+    text-justify: inter-word;
+}
+/* body.one-column{
+    page:WordSection2;
+}
+body.multi-column{
+    page:WordSection2;
+}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+@page WordSection2
+    {size:8.5in 11.0in;
+    margin:1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin:.5in;
+    mso-footer-margin:.5in;
+    mso-columns:2 even .5in;
+    mso-paper-source:0;} */

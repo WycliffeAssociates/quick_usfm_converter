@@ -35,6 +35,8 @@
             this.btn_ClearList = new System.Windows.Forms.Button();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
             this.Format_Options = new System.Windows.Forms.GroupBox();
+            this.Justified_Text = new System.Windows.Forms.GroupBox();
+            this.isJustified = new System.Windows.Forms.CheckBox();
             this.Read_Direction = new System.Windows.Forms.GroupBox();
             this.directL2R = new System.Windows.Forms.RadioButton();
             this.directR2L = new System.Windows.Forms.RadioButton();
@@ -44,15 +46,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Single_Space = new System.Windows.Forms.RadioButton();
             this.Double_Space = new System.Windows.Forms.RadioButton();
-            this.Justified_Text = new System.Windows.Forms.GroupBox();
-            this.isJustified = new System.Windows.Forms.CheckBox();
             this.Btn_Control_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.Format_Options.SuspendLayout();
+            this.Justified_Text.SuspendLayout();
             this.Read_Direction.SuspendLayout();
             this.Num_Columns.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.Justified_Text.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConvert
@@ -138,120 +138,6 @@
             this.Format_Options.TabStop = false;
             this.Format_Options.Text = "Format Options";
             // 
-            // Read_Direction
-            // 
-            this.Read_Direction.Controls.Add(this.directL2R);
-            this.Read_Direction.Controls.Add(this.directR2L);
-            this.Read_Direction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Read_Direction.Location = new System.Drawing.Point(6, 296);
-            this.Read_Direction.Name = "Read_Direction";
-            this.Read_Direction.Size = new System.Drawing.Size(403, 148);
-            this.Read_Direction.TabIndex = 3;
-            this.Read_Direction.TabStop = false;
-            this.Read_Direction.Text = "Reading Direction";
-            // 
-            // directL2R
-            // 
-            this.directL2R.AutoSize = true;
-            this.directL2R.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directL2R.Location = new System.Drawing.Point(45, 47);
-            this.directL2R.Name = "directL2R";
-            this.directL2R.Size = new System.Drawing.Size(196, 35);
-            this.directL2R.TabIndex = 0;
-            this.directL2R.TabStop = true;
-            this.directL2R.Text = "Left-to-Right";
-            this.directL2R.UseVisualStyleBackColor = true;
-            this.directL2R.CheckedChanged += new System.EventHandler(this.Direct_L2R_CheckedChanged);
-            // 
-            // directR2L
-            // 
-            this.directR2L.AutoSize = true;
-            this.directR2L.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directR2L.Location = new System.Drawing.Point(45, 88);
-            this.directR2L.Name = "directR2L";
-            this.directR2L.Size = new System.Drawing.Size(196, 35);
-            this.directR2L.TabIndex = 1;
-            this.directR2L.TabStop = true;
-            this.directR2L.Text = "Right-to-Left";
-            this.directR2L.UseVisualStyleBackColor = true;
-            this.directR2L.CheckedChanged += new System.EventHandler(this.Direct_R2L_CheckedChanged);
-            // 
-            // Num_Columns
-            // 
-            this.Num_Columns.Controls.Add(this.Single_col);
-            this.Num_Columns.Controls.Add(this.Double_Col);
-            this.Num_Columns.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_Columns.Location = new System.Drawing.Point(6, 192);
-            this.Num_Columns.Name = "Num_Columns";
-            this.Num_Columns.Size = new System.Drawing.Size(403, 98);
-            this.Num_Columns.TabIndex = 3;
-            this.Num_Columns.TabStop = false;
-            this.Num_Columns.Text = "# of Columns";
-            // 
-            // Single_col
-            // 
-            this.Single_col.AutoSize = true;
-            this.Single_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Single_col.Location = new System.Drawing.Point(45, 47);
-            this.Single_col.Name = "Single_col";
-            this.Single_col.Size = new System.Drawing.Size(60, 35);
-            this.Single_col.TabIndex = 0;
-            this.Single_col.TabStop = true;
-            this.Single_col.Text = "1";
-            this.Single_col.UseVisualStyleBackColor = true;
-            this.Single_col.CheckedChanged += new System.EventHandler(this.Single_col_CheckedChanged);
-            // 
-            // Double_Col
-            // 
-            this.Double_Col.AutoSize = true;
-            this.Double_Col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Double_Col.Location = new System.Drawing.Point(187, 47);
-            this.Double_Col.Name = "Double_Col";
-            this.Double_Col.Size = new System.Drawing.Size(60, 35);
-            this.Double_Col.TabIndex = 1;
-            this.Double_Col.TabStop = true;
-            this.Double_Col.Text = "2";
-            this.Double_Col.UseVisualStyleBackColor = true;
-            this.Double_Col.CheckedChanged += new System.EventHandler(this.Double_col_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Single_Space);
-            this.groupBox1.Controls.Add(this.Double_Space);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 88);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(403, 98);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Spacing";
-            // 
-            // Single_Space
-            // 
-            this.Single_Space.AutoSize = true;
-            this.Single_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Single_Space.Location = new System.Drawing.Point(45, 47);
-            this.Single_Space.Name = "Single_Space";
-            this.Single_Space.Size = new System.Drawing.Size(120, 35);
-            this.Single_Space.TabIndex = 0;
-            this.Single_Space.TabStop = true;
-            this.Single_Space.Text = "Single";
-            this.Single_Space.UseVisualStyleBackColor = true;
-            this.Single_Space.CheckedChanged += new System.EventHandler(this.Single_space_CheckedChanged);
-            // 
-            // Double_Space
-            // 
-            this.Double_Space.AutoSize = true;
-            this.Double_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Double_Space.Location = new System.Drawing.Point(187, 47);
-            this.Double_Space.Name = "Double_Space";
-            this.Double_Space.Size = new System.Drawing.Size(131, 35);
-            this.Double_Space.TabIndex = 1;
-            this.Double_Space.TabStop = true;
-            this.Double_Space.Text = "Double";
-            this.Double_Space.UseVisualStyleBackColor = true;
-            this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
-            // 
             // Justified_Text
             // 
             this.Justified_Text.Controls.Add(this.isJustified);
@@ -272,6 +158,121 @@
             this.isJustified.TabIndex = 0;
             this.isJustified.Text = "Justify-Text";
             this.isJustified.UseVisualStyleBackColor = true;
+            this.isJustified.CheckedChanged += new System.EventHandler(this.isJustified_CheckedChanged);
+            // 
+            // Read_Direction
+            // 
+            this.Read_Direction.Controls.Add(this.directL2R);
+            this.Read_Direction.Controls.Add(this.directR2L);
+            this.Read_Direction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Read_Direction.Location = new System.Drawing.Point(6, 296);
+            this.Read_Direction.Name = "Read_Direction";
+            this.Read_Direction.Size = new System.Drawing.Size(403, 148);
+            this.Read_Direction.TabIndex = 3;
+            this.Read_Direction.TabStop = false;
+            this.Read_Direction.Text = "Reading Direction";
+            // 
+            // directL2R
+            // 
+            this.directL2R.AutoSize = true;
+            this.directL2R.Checked = true;
+            this.directL2R.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directL2R.Location = new System.Drawing.Point(45, 47);
+            this.directL2R.Name = "directL2R";
+            this.directL2R.Size = new System.Drawing.Size(196, 35);
+            this.directL2R.TabIndex = 0;
+            this.directL2R.TabStop = true;
+            this.directL2R.Text = "Left-to-Right";
+            this.directL2R.UseVisualStyleBackColor = true;
+            this.directL2R.CheckedChanged += new System.EventHandler(this.Direct_L2R_CheckedChanged);
+            // 
+            // directR2L
+            // 
+            this.directR2L.AutoSize = true;
+            this.directR2L.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directR2L.Location = new System.Drawing.Point(45, 88);
+            this.directR2L.Name = "directR2L";
+            this.directR2L.Size = new System.Drawing.Size(196, 35);
+            this.directR2L.TabIndex = 1;
+            this.directR2L.Text = "Right-to-Left";
+            this.directR2L.UseVisualStyleBackColor = true;
+            this.directR2L.CheckedChanged += new System.EventHandler(this.Direct_R2L_CheckedChanged);
+            // 
+            // Num_Columns
+            // 
+            this.Num_Columns.Controls.Add(this.Single_col);
+            this.Num_Columns.Controls.Add(this.Double_Col);
+            this.Num_Columns.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_Columns.Location = new System.Drawing.Point(6, 192);
+            this.Num_Columns.Name = "Num_Columns";
+            this.Num_Columns.Size = new System.Drawing.Size(403, 98);
+            this.Num_Columns.TabIndex = 3;
+            this.Num_Columns.TabStop = false;
+            this.Num_Columns.Text = "# of Columns";
+            // 
+            // Single_col
+            // 
+            this.Single_col.AutoSize = true;
+            this.Single_col.Checked = true;
+            this.Single_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Single_col.Location = new System.Drawing.Point(45, 47);
+            this.Single_col.Name = "Single_col";
+            this.Single_col.Size = new System.Drawing.Size(60, 35);
+            this.Single_col.TabIndex = 0;
+            this.Single_col.TabStop = true;
+            this.Single_col.Text = "1";
+            this.Single_col.UseVisualStyleBackColor = true;
+            this.Single_col.CheckedChanged += new System.EventHandler(this.Single_col_CheckedChanged);
+            // 
+            // Double_Col
+            // 
+            this.Double_Col.AutoSize = true;
+            this.Double_Col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Double_Col.Location = new System.Drawing.Point(187, 47);
+            this.Double_Col.Name = "Double_Col";
+            this.Double_Col.Size = new System.Drawing.Size(60, 35);
+            this.Double_Col.TabIndex = 1;
+            this.Double_Col.Text = "2";
+            this.Double_Col.UseVisualStyleBackColor = true;
+            this.Double_Col.CheckedChanged += new System.EventHandler(this.Double_col_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Single_Space);
+            this.groupBox1.Controls.Add(this.Double_Space);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(6, 88);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(403, 98);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Spacing";
+            // 
+            // Single_Space
+            // 
+            this.Single_Space.AutoSize = true;
+            this.Single_Space.Checked = true;
+            this.Single_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Single_Space.Location = new System.Drawing.Point(45, 47);
+            this.Single_Space.Name = "Single_Space";
+            this.Single_Space.Size = new System.Drawing.Size(120, 35);
+            this.Single_Space.TabIndex = 0;
+            this.Single_Space.TabStop = true;
+            this.Single_Space.Text = "Single";
+            this.Single_Space.UseVisualStyleBackColor = true;
+            this.Single_Space.CheckedChanged += new System.EventHandler(this.Single_space_CheckedChanged);
+            // 
+            // Double_Space
+            // 
+            this.Double_Space.AutoSize = true;
+            this.Double_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Double_Space.Location = new System.Drawing.Point(187, 47);
+            this.Double_Space.Name = "Double_Space";
+            this.Double_Space.Size = new System.Drawing.Size(131, 35);
+            this.Double_Space.TabIndex = 1;
+            this.Double_Space.Text = "Double";
+            this.Double_Space.UseVisualStyleBackColor = true;
+            this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
             // 
             // MainForm
             // 
@@ -287,14 +288,14 @@
             this.Btn_Control_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.Format_Options.ResumeLayout(false);
+            this.Justified_Text.ResumeLayout(false);
+            this.Justified_Text.PerformLayout();
             this.Read_Direction.ResumeLayout(false);
             this.Read_Direction.PerformLayout();
             this.Num_Columns.ResumeLayout(false);
             this.Num_Columns.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.Justified_Text.ResumeLayout(false);
-            this.Justified_Text.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +320,10 @@
         private System.Windows.Forms.RadioButton Double_Col;
         private System.Windows.Forms.GroupBox Justified_Text;
         private System.Windows.Forms.CheckBox isJustified;
+        private bool isLeftJustified = true;
+        private bool isTextJustified = false;
+        private bool isSingleSpaced=true;
+        private bool hasOneColumn=true;
+        private bool isL2RDirection=true;
     }
 }
