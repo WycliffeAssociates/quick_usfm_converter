@@ -35,7 +35,8 @@
             this.btn_ClearList = new System.Windows.Forms.Button();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
             this.Format_Options = new System.Windows.Forms.GroupBox();
-            this.Justified_Text = new System.Windows.Forms.GroupBox();
+            this.Other = new System.Windows.Forms.GroupBox();
+            this.chapSeparate = new System.Windows.Forms.CheckBox();
             this.isJustified = new System.Windows.Forms.CheckBox();
             this.Read_Direction = new System.Windows.Forms.GroupBox();
             this.directL2R = new System.Windows.Forms.RadioButton();
@@ -43,17 +44,16 @@
             this.Num_Columns = new System.Windows.Forms.GroupBox();
             this.Single_col = new System.Windows.Forms.RadioButton();
             this.Double_Col = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Spacing = new System.Windows.Forms.GroupBox();
             this.Single_Space = new System.Windows.Forms.RadioButton();
             this.Double_Space = new System.Windows.Forms.RadioButton();
-            this.chapSeparate = new System.Windows.Forms.CheckBox();
             this.Btn_Control_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.Format_Options.SuspendLayout();
-            this.Justified_Text.SuspendLayout();
+            this.Other.SuspendLayout();
             this.Read_Direction.SuspendLayout();
             this.Num_Columns.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.Spacing.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConvert
@@ -85,7 +85,7 @@
             this.Btn_Control_Panel.Controls.Add(this.btn_AddFiles);
             this.Btn_Control_Panel.Controls.Add(this.BtnConvert);
             this.Btn_Control_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 701);
+            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 731);
             this.Btn_Control_Panel.Name = "Btn_Control_Panel";
             this.Btn_Control_Panel.Size = new System.Drawing.Size(1567, 300);
             this.Btn_Control_Panel.TabIndex = 3;
@@ -120,36 +120,47 @@
             this.fileDataGrid.Location = new System.Drawing.Point(0, 0);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(1567, 701);
+            this.fileDataGrid.Size = new System.Drawing.Size(1567, 731);
             this.fileDataGrid.TabIndex = 4;
             this.fileDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onRemoveFile);
             // 
             // Format_Options
             // 
-            this.Format_Options.Controls.Add(this.Justified_Text);
+            this.Format_Options.Controls.Add(this.Other);
             this.Format_Options.Controls.Add(this.Read_Direction);
             this.Format_Options.Controls.Add(this.Num_Columns);
-            this.Format_Options.Controls.Add(this.groupBox1);
+            this.Format_Options.Controls.Add(this.Spacing);
             this.Format_Options.Dock = System.Windows.Forms.DockStyle.Right;
             this.Format_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Format_Options.Location = new System.Drawing.Point(1152, 0);
+            this.Format_Options.Location = new System.Drawing.Point(1148, 0);
             this.Format_Options.Name = "Format_Options";
-            this.Format_Options.Size = new System.Drawing.Size(415, 701);
+            this.Format_Options.Size = new System.Drawing.Size(419, 731);
             this.Format_Options.TabIndex = 5;
             this.Format_Options.TabStop = false;
             this.Format_Options.Text = "Format Options";
             // 
-            // Justified_Text
+            // Other
             // 
-            this.Justified_Text.Controls.Add(this.chapSeparate);
-            this.Justified_Text.Controls.Add(this.isJustified);
-            this.Justified_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Justified_Text.Location = new System.Drawing.Point(6, 458);
-            this.Justified_Text.Name = "Justified_Text";
-            this.Justified_Text.Size = new System.Drawing.Size(402, 237);
-            this.Justified_Text.TabIndex = 4;
-            this.Justified_Text.TabStop = false;
-            this.Justified_Text.Text = "Other";
+            this.Other.Controls.Add(this.chapSeparate);
+            this.Other.Controls.Add(this.isJustified);
+            this.Other.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Other.Location = new System.Drawing.Point(6, 458);
+            this.Other.Name = "Other";
+            this.Other.Size = new System.Drawing.Size(402, 237);
+            this.Other.TabIndex = 4;
+            this.Other.TabStop = false;
+            this.Other.Text = "Other";
+            // 
+            // chapSeparate
+            // 
+            this.chapSeparate.AutoSize = true;
+            this.chapSeparate.Location = new System.Drawing.Point(45, 96);
+            this.chapSeparate.Name = "chapSeparate";
+            this.chapSeparate.Size = new System.Drawing.Size(274, 35);
+            this.chapSeparate.TabIndex = 1;
+            this.chapSeparate.Text = "Separate Chapters";
+            this.chapSeparate.UseVisualStyleBackColor = true;
+            this.chapSeparate.CheckedChanged += new System.EventHandler(this.chapSeparate_CheckedChanged);
             // 
             // isJustified
             // 
@@ -238,17 +249,17 @@
             this.Double_Col.UseVisualStyleBackColor = true;
             this.Double_Col.CheckedChanged += new System.EventHandler(this.Double_col_CheckedChanged);
             // 
-            // groupBox1
+            // Spacing
             // 
-            this.groupBox1.Controls.Add(this.Single_Space);
-            this.groupBox1.Controls.Add(this.Double_Space);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 88);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(403, 98);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Spacing";
+            this.Spacing.Controls.Add(this.Single_Space);
+            this.Spacing.Controls.Add(this.Double_Space);
+            this.Spacing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Spacing.Location = new System.Drawing.Point(6, 88);
+            this.Spacing.Name = "Spacing";
+            this.Spacing.Size = new System.Drawing.Size(403, 98);
+            this.Spacing.TabIndex = 2;
+            this.Spacing.TabStop = false;
+            this.Spacing.Text = "Spacing";
             // 
             // Single_Space
             // 
@@ -276,22 +287,11 @@
             this.Double_Space.UseVisualStyleBackColor = true;
             this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
             // 
-            // chapSeparate
-            // 
-            this.chapSeparate.AutoSize = true;
-            this.chapSeparate.Location = new System.Drawing.Point(45, 96);
-            this.chapSeparate.Name = "chapSeparate";
-            this.chapSeparate.Size = new System.Drawing.Size(274, 35);
-            this.chapSeparate.TabIndex = 1;
-            this.chapSeparate.Text = "Separate Chapters";
-            this.chapSeparate.UseVisualStyleBackColor = true;
-            this.chapSeparate.CheckedChanged += new System.EventHandler(this.chapSeparate_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1567, 1001);
+            this.ClientSize = new System.Drawing.Size(1567, 1031);
             this.Controls.Add(this.Format_Options);
             this.Controls.Add(this.fileDataGrid);
             this.Controls.Add(this.Btn_Control_Panel);
@@ -301,40 +301,46 @@
             this.Btn_Control_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.Format_Options.ResumeLayout(false);
-            this.Justified_Text.ResumeLayout(false);
-            this.Justified_Text.PerformLayout();
+            this.Other.ResumeLayout(false);
+            this.Other.PerformLayout();
             this.Read_Direction.ResumeLayout(false);
             this.Read_Direction.PerformLayout();
             this.Num_Columns.ResumeLayout(false);
             this.Num_Columns.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Spacing.ResumeLayout(false);
+            this.Spacing.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private System.Windows.Forms.DataGridView fileDataGrid;
 
+        private System.Windows.Forms.Panel Btn_Control_Panel;
         private System.Windows.Forms.Button BtnConvert;
         private System.Windows.Forms.Button btn_AddFiles;
-        private System.Windows.Forms.Panel Btn_Control_Panel;
-        private System.Windows.Forms.DataGridView fileDataGrid;
         private System.Windows.Forms.Button btn_ClearList;
         private System.Windows.Forms.Button btn_AddOnlyFile;
+        
+        
         private System.Windows.Forms.GroupBox Format_Options;
+
+        private System.Windows.Forms.GroupBox Spacing;
         private System.Windows.Forms.RadioButton Double_Space;
         private System.Windows.Forms.RadioButton Single_Space;
-        private System.Windows.Forms.GroupBox groupBox1;
+        
         private System.Windows.Forms.GroupBox Read_Direction;
         private System.Windows.Forms.RadioButton directL2R;
         private System.Windows.Forms.RadioButton directR2L;
+
         private System.Windows.Forms.GroupBox Num_Columns;
         private System.Windows.Forms.RadioButton Single_col;
         private System.Windows.Forms.RadioButton Double_Col;
-        private System.Windows.Forms.GroupBox Justified_Text;
+
+        private System.Windows.Forms.GroupBox Other;
         private System.Windows.Forms.CheckBox isJustified;
         private System.Windows.Forms.CheckBox chapSeparate;
-        private bool isLeftJustified = true;
+
         private bool isTextJustified = false;
         private bool isSingleSpaced=true;
         private bool hasOneColumn=true;

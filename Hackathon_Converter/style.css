@@ -55,9 +55,18 @@
     vertical-align: top;
 }
 /* Format Styles */
+.single-space {
+    line-height: 1;
+}
+
 .double-space {
     line-height: 2;
 }
+/* Columns Break in Docx */
+.one-column {
+    column-count: 1;
+}
+
 .multi-column {
     column-count: 2;
 }
@@ -66,11 +75,16 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
 .right-attach {
     text-align: right;
 }
-.rtl-direct{
-    direction:rtl;
+
+.rtl-direct {
+    direction: rtl;
+}
+.footnote-quote{
+    font-style:italic;
 }
 /* body.one-column{
     page:WordSection2;

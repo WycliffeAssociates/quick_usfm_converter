@@ -80,12 +80,12 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = false;
             fileDataGrid.Enabled = false;
 
-            // Does not parse through section headers
+            // Does not parse through section headers yet
             var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
             //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
             //
-            var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified);
+            var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
 
             //var renderer = new USFMToolsSharp.HtmlRenderer();
 
@@ -234,14 +234,6 @@ namespace Hackathon_Converter
             else
             {
                 isTextJustified = false;
-                if (isL2RDirection)
-                {
-                    isLeftJustified = true;
-                }
-                else
-                {
-                    isLeftJustified = false;
-                }
             }
         }
 
