@@ -46,6 +46,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Single_Space = new System.Windows.Forms.RadioButton();
             this.Double_Space = new System.Windows.Forms.RadioButton();
+            this.chapSeparate = new System.Windows.Forms.CheckBox();
             this.Btn_Control_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.Format_Options.SuspendLayout();
@@ -140,14 +141,15 @@
             // 
             // Justified_Text
             // 
+            this.Justified_Text.Controls.Add(this.chapSeparate);
             this.Justified_Text.Controls.Add(this.isJustified);
             this.Justified_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Justified_Text.Location = new System.Drawing.Point(6, 458);
             this.Justified_Text.Name = "Justified_Text";
-            this.Justified_Text.Size = new System.Drawing.Size(402, 86);
+            this.Justified_Text.Size = new System.Drawing.Size(402, 237);
             this.Justified_Text.TabIndex = 4;
             this.Justified_Text.TabStop = false;
-            this.Justified_Text.Text = "Justified Format";
+            this.Justified_Text.Text = "Other";
             // 
             // isJustified
             // 
@@ -274,6 +276,17 @@
             this.Double_Space.UseVisualStyleBackColor = true;
             this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
             // 
+            // chapSeparate
+            // 
+            this.chapSeparate.AutoSize = true;
+            this.chapSeparate.Location = new System.Drawing.Point(45, 96);
+            this.chapSeparate.Name = "chapSeparate";
+            this.chapSeparate.Size = new System.Drawing.Size(274, 35);
+            this.chapSeparate.TabIndex = 1;
+            this.chapSeparate.Text = "Separate Chapters";
+            this.chapSeparate.UseVisualStyleBackColor = true;
+            this.chapSeparate.CheckedChanged += new System.EventHandler(this.chapSeparate_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -320,10 +333,13 @@
         private System.Windows.Forms.RadioButton Double_Col;
         private System.Windows.Forms.GroupBox Justified_Text;
         private System.Windows.Forms.CheckBox isJustified;
+        private System.Windows.Forms.CheckBox chapSeparate;
         private bool isLeftJustified = true;
         private bool isTextJustified = false;
         private bool isSingleSpaced=true;
         private bool hasOneColumn=true;
         private bool isL2RDirection=true;
+        private bool willSeparateChap = false;
+        
     }
 }

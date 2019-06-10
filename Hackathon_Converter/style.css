@@ -55,18 +55,9 @@
     vertical-align: top;
 }
 /* Format Styles */
-.single-space {
-    line-height: 1;
-}
-
 .double-space {
     line-height: 2;
 }
-
-.one-column {
-    column-count: 1;
-}
-
 .multi-column {
     column-count: 2;
 }
@@ -74,6 +65,12 @@
 .justified {
     text-align: justify;
     text-justify: inter-word;
+}
+.right-attach {
+    text-align: right;
+}
+.rtl-direct{
+    direction:rtl;
 }
 /* body.one-column{
     page:WordSection2;

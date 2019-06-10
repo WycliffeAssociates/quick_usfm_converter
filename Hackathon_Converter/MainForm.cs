@@ -80,7 +80,8 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = false;
             fileDataGrid.Enabled = false;
 
-            var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5" });
+            // Does not parse through section headers
+            var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
             //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
             //
@@ -164,8 +165,7 @@ namespace Hackathon_Converter
         private void Single_space_CheckedChanged(object sender,EventArgs e)
         {
             //line-height: 1 ;
-            RadioButton singleSpaceOption = sender as RadioButton;
-            if (singleSpaceOption.Checked)
+            if (Single_Space.Checked)
             {
 
                 isSingleSpaced = true;
@@ -175,8 +175,7 @@ namespace Hackathon_Converter
         private void Double_space_CheckedChanged(object sender, EventArgs e)
         {
             //line-height: 2 ;
-            RadioButton doubleSpaceOption = sender as RadioButton;
-            if (doubleSpaceOption.Checked)
+            if (Double_Space.Checked)
             {
 
                 isSingleSpaced = false;
@@ -188,9 +187,7 @@ namespace Hackathon_Converter
             /* Column count */
             //columns: auto;
             //columns: 1;
-
-            RadioButton singleColOption = sender as RadioButton;
-            if (singleColOption.Checked)
+            if (Single_col.Checked)
             {
 
                 hasOneColumn = true;
@@ -202,11 +199,7 @@ namespace Hackathon_Converter
             /* Column count */
             //columns: auto;
             //columns: 2;
-
-            RadioButton doubleColOption = sender as RadioButton;
-            // Ensure that the RadioButton.Checked property
-            // changed to true.
-            if (doubleColOption.Checked)
+            if (Double_Col.Checked)
             {
                 // Keep track of the selected RadioButton by saving a reference
                 // to it.
@@ -216,8 +209,7 @@ namespace Hackathon_Converter
         }
         private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton L2ROption = sender as RadioButton;
-            if (L2ROption.Checked)
+            if (directL2R.Checked)
             {
 
                 isL2RDirection = true;
@@ -225,9 +217,7 @@ namespace Hackathon_Converter
         }
         private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton R2LOption = sender as RadioButton;
-
-            if (R2LOption.Checked)
+            if (directR2L.Checked)
             {
 
                 isL2RDirection = false;
@@ -236,8 +226,7 @@ namespace Hackathon_Converter
 
         private void isJustified_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox justifyText = sender as CheckBox;
-            if (justifyText.Checked)
+            if (isJustified.Checked)
             {
 
                 isTextJustified = true;
@@ -253,6 +242,19 @@ namespace Hackathon_Converter
                 {
                     isLeftJustified = false;
                 }
+            }
+        }
+
+        private void chapSeparate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chapSeparate.Checked)
+            {
+
+                willSeparateChap = true;
+            }
+            else
+            {
+                willSeparateChap = false;
             }
         }
     }
