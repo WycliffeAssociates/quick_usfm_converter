@@ -36,13 +36,13 @@
 .poetry-2 {
     line-break: normal;
     display: block;
-    text-indent: 5%;
+    text-indent: 30px !important;
 }
 
 .poetry-3 {
     line-break: normal;
     display: block;
-    text-indent: 10%;
+    text-indent: 50px !important;
 }
 
 .verse {
@@ -83,8 +83,9 @@
 .rtl-direct {
     direction: rtl;
 }
-.footnote-quote{
-    font-style:italic;
+
+.footnote-quote {
+    font-style: italic;
 }
 /* body.one-column{
     page:WordSection2;
