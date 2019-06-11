@@ -31,6 +31,16 @@ namespace USFMToolsSharpTest
         public void TestHeaderRender()
         {
             // RenderMarker(Marker input)
+            TestCase[] tests =
+            {
+                new TestCase()
+            };
+            List<TestCase> TestUSFM = new List<TestCase>(tests);
+
+            foreach (TestCase test in TestUSFM)
+            {
+                Assert.AreEqual(test.expected.HeaderText, test.actual.HeaderText);
+            }
         }
         [TestMethod]
         public void TestChapterRender()
