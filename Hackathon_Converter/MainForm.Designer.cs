@@ -31,8 +31,12 @@
             this.BtnConvert = new System.Windows.Forms.Button();
             this.btn_AddFiles = new System.Windows.Forms.Button();
             this.Btn_Control_Panel = new System.Windows.Forms.Panel();
-            this.btn_AddOnlyFile = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RemoveFile = new System.Windows.Forms.Button();
             this.btn_ClearList = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_AddOnlyFile = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
             this.Format_Options = new System.Windows.Forms.GroupBox();
             this.Other = new System.Windows.Forms.GroupBox();
@@ -48,6 +52,9 @@
             this.Single_Space = new System.Windows.Forms.RadioButton();
             this.Double_Space = new System.Windows.Forms.RadioButton();
             this.Btn_Control_Panel.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.Format_Options.SuspendLayout();
             this.Other.SuspendLayout();
@@ -58,10 +65,10 @@
             // 
             // BtnConvert
             // 
-            this.BtnConvert.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnConvert.Location = new System.Drawing.Point(0, 225);
+            this.BtnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConvert.Location = new System.Drawing.Point(78, 145);
             this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(1567, 75);
+            this.BtnConvert.Size = new System.Drawing.Size(363, 91);
             this.BtnConvert.TabIndex = 0;
             this.BtnConvert.Text = "Convert";
             this.BtnConvert.UseVisualStyleBackColor = true;
@@ -69,10 +76,10 @@
             // 
             // btn_AddFiles
             // 
-            this.btn_AddFiles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_AddFiles.Location = new System.Drawing.Point(0, 0);
+            this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddFiles.Location = new System.Drawing.Point(74, 99);
             this.btn_AddFiles.Name = "btn_AddFiles";
-            this.btn_AddFiles.Size = new System.Drawing.Size(1567, 75);
+            this.btn_AddFiles.Size = new System.Drawing.Size(347, 75);
             this.btn_AddFiles.TabIndex = 1;
             this.btn_AddFiles.Text = "Add Directory";
             this.btn_AddFiles.UseVisualStyleBackColor = true;
@@ -80,49 +87,97 @@
             // 
             // Btn_Control_Panel
             // 
-            this.Btn_Control_Panel.Controls.Add(this.btn_AddOnlyFile);
-            this.Btn_Control_Panel.Controls.Add(this.btn_ClearList);
-            this.Btn_Control_Panel.Controls.Add(this.btn_AddFiles);
-            this.Btn_Control_Panel.Controls.Add(this.BtnConvert);
+            this.Btn_Control_Panel.Controls.Add(this.groupBox3);
+            this.Btn_Control_Panel.Controls.Add(this.groupBox2);
+            this.Btn_Control_Panel.Controls.Add(this.groupBox1);
             this.Btn_Control_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 731);
+            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 693);
             this.Btn_Control_Panel.Name = "Btn_Control_Panel";
-            this.Btn_Control_Panel.Size = new System.Drawing.Size(1567, 300);
+            this.Btn_Control_Panel.Size = new System.Drawing.Size(1567, 338);
             this.Btn_Control_Panel.TabIndex = 3;
             // 
-            // btn_AddOnlyFile
+            // groupBox3
             // 
-            this.btn_AddOnlyFile.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_AddOnlyFile.Location = new System.Drawing.Point(0, 150);
-            this.btn_AddOnlyFile.Name = "btn_AddOnlyFile";
-            this.btn_AddOnlyFile.Size = new System.Drawing.Size(1567, 75);
-            this.btn_AddOnlyFile.TabIndex = 3;
-            this.btn_AddOnlyFile.Text = "Add File";
-            this.btn_AddOnlyFile.UseVisualStyleBackColor = true;
-            this.btn_AddOnlyFile.Click += new System.EventHandler(this.onAddOnlyFileClick);
+            this.groupBox3.Controls.Add(this.RemoveFile);
+            this.groupBox3.Controls.Add(this.btn_ClearList);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(510, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(494, 338);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Remove";
+            // 
+            // RemoveFile
+            // 
+            this.RemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveFile.Location = new System.Drawing.Point(81, 213);
+            this.RemoveFile.Name = "RemoveFile";
+            this.RemoveFile.Size = new System.Drawing.Size(347, 78);
+            this.RemoveFile.TabIndex = 4;
+            this.RemoveFile.Text = "Remove File";
+            this.RemoveFile.UseVisualStyleBackColor = true;
+            this.RemoveFile.Click += new System.EventHandler(this.onRemoveFileButtonClick);
             // 
             // btn_ClearList
             // 
             this.btn_ClearList.AutoSize = true;
-            this.btn_ClearList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_ClearList.Location = new System.Drawing.Point(0, 75);
+            this.btn_ClearList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClearList.Location = new System.Drawing.Point(81, 99);
             this.btn_ClearList.Name = "btn_ClearList";
-            this.btn_ClearList.Size = new System.Drawing.Size(1567, 75);
+            this.btn_ClearList.Size = new System.Drawing.Size(347, 75);
             this.btn_ClearList.TabIndex = 2;
             this.btn_ClearList.Text = "Clear List";
             this.btn_ClearList.UseVisualStyleBackColor = true;
             this.btn_ClearList.Click += new System.EventHandler(this.onClearListButtonClick);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btn_AddFiles);
+            this.groupBox2.Controls.Add(this.btn_AddOnlyFile);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(510, 338);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Add";
+            // 
+            // btn_AddOnlyFile
+            // 
+            this.btn_AddOnlyFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddOnlyFile.Location = new System.Drawing.Point(74, 216);
+            this.btn_AddOnlyFile.Name = "btn_AddOnlyFile";
+            this.btn_AddOnlyFile.Size = new System.Drawing.Size(347, 75);
+            this.btn_AddOnlyFile.TabIndex = 3;
+            this.btn_AddOnlyFile.Text = "Add File";
+            this.btn_AddOnlyFile.UseVisualStyleBackColor = true;
+            this.btn_AddOnlyFile.Click += new System.EventHandler(this.onAddOnlyFileClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BtnConvert);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(1052, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(515, 338);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Convert";
+            // 
             // fileDataGrid
             // 
+            this.fileDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fileDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fileDataGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.fileDataGrid.Location = new System.Drawing.Point(0, 0);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(1567, 731);
+            this.fileDataGrid.Size = new System.Drawing.Size(1142, 693);
             this.fileDataGrid.TabIndex = 4;
-            this.fileDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onRemoveFile);
             // 
             // Format_Options
             // 
@@ -134,7 +189,7 @@
             this.Format_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Format_Options.Location = new System.Drawing.Point(1148, 0);
             this.Format_Options.Name = "Format_Options";
-            this.Format_Options.Size = new System.Drawing.Size(419, 731);
+            this.Format_Options.Size = new System.Drawing.Size(419, 693);
             this.Format_Options.TabIndex = 5;
             this.Format_Options.TabStop = false;
             this.Format_Options.Text = "Format Options";
@@ -146,7 +201,7 @@
             this.Other.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Other.Location = new System.Drawing.Point(6, 458);
             this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(402, 237);
+            this.Other.Size = new System.Drawing.Size(402, 229);
             this.Other.TabIndex = 4;
             this.Other.TabStop = false;
             this.Other.Text = "Other";
@@ -298,7 +353,10 @@
             this.Name = "MainForm";
             this.Text = "Hackathon Converter";
             this.Btn_Control_Panel.ResumeLayout(false);
-            this.Btn_Control_Panel.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.Format_Options.ResumeLayout(false);
             this.Other.ResumeLayout(false);
@@ -346,6 +404,9 @@
         private bool hasOneColumn=true;
         private bool isL2RDirection=true;
         private bool willSeparateChap = false;
-        
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button RemoveFile;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
