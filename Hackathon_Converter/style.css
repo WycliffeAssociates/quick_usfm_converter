@@ -89,15 +89,16 @@
     font-style: italic;
 }
 
-@page WordSection1 {
+@page ColumnOne {
     size: 8.5in 11.0in;
     margin: 1.0in 1.0in 1.0in 1.0in;
     mso-header-margin: .5in;
     mso-footer-margin: .5in;
+    mso-columns: 1;
     mso-paper-source: 0;
 }
 
-@page WordSection2 {
+@page Column2 {
     size: 8.5in 11.0in;
     margin: 1.0in 1.0in 1.0in 1.0in;
     mso-header-margin: .5in;
@@ -106,10 +107,35 @@
     mso-paper-source: 0;
 }
 
+@page FooterSection {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-title-page: yes;
+    mso-header: h1;
+    mso-footer: f1;
+    mso-first-header: h1;
+    mso-first-footer: f1;
+    mso-paper-source: 0;
+}
+
 div.one-column {
-    page: WordSection1;
+    page: ColumnOne;
 }
 
 div.multi-column {
-    page: WordSection2;
+    page: Column2;
+}
+
+p.MsoFooter, li.MsoFooter, div.MsoFooter {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    tab-stops: center 3.0in right 6.0in;
+    font-size: 12.0pt;
+}
+
+div.FooterSection {
+    page: FooterSection;
 }

@@ -56,6 +56,10 @@ namespace Hackathon_Converter
         private void OnConvertButtonClick(object sender, EventArgs e)
         {
             Stream htmlStream;
+
+            
+            
+
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 FileName = "out.html",
@@ -87,6 +91,26 @@ namespace Hackathon_Converter
             //
             var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
 
+            //if (insert_USB_License.CanRead()) ;
+            string ULB_License_Doc = "insert_ULB_License.html";
+            FileInfo f = new FileInfo(ULB_License_Doc);
+            string fullname = f.FullName;
+            string licenseHTML = "";
+
+            if (File.Exists(ULB_License_Doc) == true)
+            {
+                
+                using (FileStream fs = File.OpenRead(fullname))
+                {
+                    byte[] b = new byte[1024];
+                    UTF8Encoding temp = new UTF8Encoding(true);
+                    while (fs.Read(b, 0, b.Length) > 0)
+                    {
+                        licenseHTML+=(temp.GetString(b));
+                    }
+                }
+            }
+            
             //var renderer = new USFMToolsSharp.HtmlRenderer();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
