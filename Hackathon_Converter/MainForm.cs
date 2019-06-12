@@ -241,7 +241,13 @@ namespace Hackathon_Converter
         private void onRemoveFileButtonClick(object sender, EventArgs e)
         { 
             if(fileDataGrid.Rows.Count > 1)
-                fileDataGrid.Rows.Remove(fileDataGrid.CurrentRow);
+            {
+                foreach(DataGridViewCell CellObject in fileDataGrid.SelectedCells)
+                {
+                    fileDataGrid.Rows.Remove(CellObject.OwningRow);
+                }
+            }
+                
         }
     }
 }
