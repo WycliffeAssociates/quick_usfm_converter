@@ -95,16 +95,15 @@ namespace USFMToolsSharpTest
             }
         }
 
-        // Finish Later
         [TestMethod]
         public void TestVerseRender()
         {
             TestCase[] tests =
             {
-                new TestCase("<div class=\"header\">Genesis</div>",render.Render(parser.ParseFromString("\\h Genesis")),true,true,false,true),
-                new TestCase("<div class=\"header\">1 John</div>",render.Render(parser.ParseFromString("\\h 1 John")),true,true,false,true),
-                new TestCase("<div class=\"header\"></div>",render.Render(parser.ParseFromString("\\h")),true,true,false,true),
-                new TestCase("<div class=\"header\"></div>",render.Render(parser.ParseFromString("\\h      ")),true,true,false,true)
+                new TestCase("<span class=\"verse\"><span class=\"versemarker\">200</span>Genesis</span>",render.Render(parser.ParseFromString("\\v 200 Genesis")),true,true,false,true),
+                //new TestCase("<span class=\"verse\"><span class=\"versemarker\">0</span></span>",render.Render(parser.ParseFromString("\\v 0")),true,true,false,true),
+                new TestCase("<span class=\"verse\"><span class=\"versemarker\">0</span>fff</span>",render.Render(parser.ParseFromString("\\v 0 fff")),true,true,false,true),
+                new TestCase("<div class=\"chapter\"><span class=\"chaptermarker\">1</span><span class=\"verse\"><span class=\"versemarker\">1</span>asdfasdf</span></div>",render.Render(parser.ParseFromString("\\c 1  \\v 1 asdfasdf")),true,true,false,true)
             };
             List<TestCase> TestUSFM = new List<TestCase>(tests);
 
@@ -121,7 +120,18 @@ namespace USFMToolsSharpTest
         [TestMethod]
         public void TestUnknownMarkerRender()
         {
+            TestCase[] tests =
+            {
+                new TestCase("",render.Render(parser.ParseFromString("\\yy")),true,true,false,true),
+                new TestCase("<div class=\"header\">1 John</div>",render.Render(parser.ParseFromString("\\h 1 John \\test")),true,true,false,true),
+                new TestCase("",render.Render(parser.ParseFromString("\\123 sdfgsgdfg")),true,true,false,true)
+            };
+            List<TestCase> TestUSFM = new List<TestCase>(tests);
 
+            foreach (TestCase test in TestUSFM)
+            {
+                Assert.AreEqual(test.expected, test.actual);
+            }
         }
 
     }

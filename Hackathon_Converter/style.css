@@ -31,6 +31,7 @@
 .poetry-1 {
     line-break: normal;
     display: block;
+    text-indent: 0px !important;
 }
 
 .poetry-2 {
@@ -87,22 +88,28 @@
 .footnote-quote {
     font-style: italic;
 }
-/* body.one-column{
-    page:WordSection2;
+
+@page WordSection1 {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-paper-source: 0;
 }
-body.multi-column{
-    page:WordSection2;
+
+@page WordSection2 {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-columns: 2 even .5in;
+    mso-paper-source: 0;
 }
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;
-	mso-header-margin:.5in;
-	mso-footer-margin:.5in;
-	mso-paper-source:0;}
-@page WordSection2
-    {size:8.5in 11.0in;
-    margin:1.0in 1.0in 1.0in 1.0in;
-    mso-header-margin:.5in;
-    mso-footer-margin:.5in;
-    mso-columns:2 even .5in;
-    mso-paper-source:0;} */
+
+div.one-column {
+    page: WordSection1;
+}
+
+div.multi-column {
+    page: WordSection2;
+}

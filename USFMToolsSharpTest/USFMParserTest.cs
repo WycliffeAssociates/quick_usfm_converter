@@ -66,14 +66,7 @@ namespace USFMToolsSharpTest
             foreach (TestCase test in TestUSFM)
             {
                 var temp = test.expected.PreProcess(test.expectedText);
-
-                try
-                {
-                    Assert.AreEqual(test.expected.Number, test.actual.Number);
-                } catch (Exception e)
-                {
-                    Console.WriteLine(test.expectedText);
-                }
+                Assert.AreEqual(test.expected.Number, test.actual.Number);
             }
 
         }
@@ -151,7 +144,7 @@ namespace USFMToolsSharpTest
                 new TestCase(new USFMToolsSharp.Models.Markers.UnknownMarker(),"what is 1?",(parser.ParseFromString("\\1  what is 1?")).Contents[0])
             };
             List<TestCase> TestUSFM = new List<TestCase>(tests);
-            string[] identifiers = {"yy","z","1","$" };
+            string[] identifiers = {"yy","z","1"};
             int count = 0;
             foreach (TestCase test in TestUSFM)
             {
