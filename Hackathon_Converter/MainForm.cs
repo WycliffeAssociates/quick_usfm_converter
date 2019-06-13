@@ -79,6 +79,7 @@ namespace Hackathon_Converter
 
             BtnConvert.Enabled = false;
             Format_Options.Enabled = false;
+            btnRemoveFile.Enabled = false;
             btn_ClearList.Enabled = false;
             btn_AddOnlyFile.Enabled = false;
             btn_AddFiles.Enabled = false;
@@ -91,26 +92,10 @@ namespace Hackathon_Converter
             //
             var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
 
-            //if (insert_USB_License.CanRead()) ;
-            string ULB_License_Doc = "insert_ULB_License.html";
-            FileInfo f = new FileInfo(ULB_License_Doc);
-            string fullname = f.FullName;
-            string licenseHTML = "";
-
-            if (File.Exists(ULB_License_Doc) == true)
-            {
-                
-                using (FileStream fs = File.OpenRead(fullname))
-                {
-                    byte[] b = new byte[1024];
-                    UTF8Encoding temp = new UTF8Encoding(true);
-                    while (fs.Read(b, 0, b.Length) > 0)
-                    {
-                        licenseHTML+=(temp.GetString(b));
-                    }
-                }
-            }
             
+            // Added ULB License and Page Number
+            renderer.InsertFirstPage(GetLicenseInfo());
+            renderer.InsertFooters(GetFooterInfo());
             //var renderer = new USFMToolsSharp.HtmlRenderer();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
@@ -140,10 +125,56 @@ namespace Hackathon_Converter
 
             BtnConvert.Enabled = true;
             Format_Options.Enabled = true;
+            btnRemoveFile.Enabled = true;
             btn_ClearList.Enabled = true;
             btn_AddOnlyFile.Enabled = true;
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
+        }
+        private string GetLicenseInfo()
+        {
+            //if (insert_USB_License.CanRead()) ;
+            string ULB_License_Doc = "insert_ULB_License.html";
+            FileInfo f = new FileInfo(ULB_License_Doc);
+            string fullname = f.FullName;
+            string licenseHTML = "";
+
+            if (File.Exists(ULB_License_Doc) == true)
+            {
+
+                using (FileStream fs = File.OpenRead(fullname))
+                {
+                    byte[] b = new byte[32 * 1024];
+                    UTF8Encoding temp = new UTF8Encoding(true);
+                    while (fs.Read(b, 0, b.Length) > 0)
+                    {
+                        licenseHTML += (temp.GetString(b));
+                    }
+                }
+            }
+            return licenseHTML;
+        }
+        private string GetFooterInfo()
+        {
+            // Format --  June 13, 2019 11:42
+            string dateFormat = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            StringBuilder footerHTML = new StringBuilder();
+            footerHTML.AppendLine("<div class=FooterSection> ");
+            footerHTML.AppendLine("<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>");
+            footerHTML.AppendLine("<tr><td>");
+            footerHTML.AppendLine("<div style='mso-element:footer' id=f1>");
+            footerHTML.AppendLine("<p class=MsoFooter></p>");
+            footerHTML.AppendLine(dateFormat);
+            footerHTML.AppendLine("<span style=mso-tab-count:1></span>");
+            footerHTML.AppendLine("  <span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>");
+            footerHTML.AppendLine("  <span style=mso-tab-count:1></span>");
+            footerHTML.AppendLine("  <img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by/4.0/88x31.png\" />");
+            footerHTML.AppendLine("</p>");
+            footerHTML.AppendLine("   </div>");
+            footerHTML.AppendLine("</td></tr>");
+            footerHTML.AppendLine("</table>");
+            footerHTML.AppendLine("</div>");
+            return footerHTML.ToString();
         }
         private void onClearListButtonClick(object sender, EventArgs e)
         {
@@ -155,8 +186,10 @@ namespace Hackathon_Converter
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Filter = "USFM files (*.usfm)|*.usfm|Text files (*.txt)|*.txt |All files (*.*)|*.*"
             };
+            
 
             //Show the FolderBrowserDialog.
             DialogResult result = openFileDialog.ShowDialog();

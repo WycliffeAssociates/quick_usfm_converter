@@ -32,7 +32,7 @@
             this.btn_AddFiles = new System.Windows.Forms.Button();
             this.Btn_Control_Panel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.RemoveFile = new System.Windows.Forms.Button();
+            this.btnRemoveFile = new System.Windows.Forms.Button();
             this.btn_ClearList = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_AddOnlyFile = new System.Windows.Forms.Button();
@@ -98,7 +98,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.RemoveFile);
+            this.groupBox3.Controls.Add(this.btnRemoveFile);
             this.groupBox3.Controls.Add(this.btn_ClearList);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,16 +109,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Remove";
             // 
-            // RemoveFile
+            // btnRemoveFile
             // 
-            this.RemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveFile.Location = new System.Drawing.Point(81, 213);
-            this.RemoveFile.Name = "RemoveFile";
-            this.RemoveFile.Size = new System.Drawing.Size(347, 78);
-            this.RemoveFile.TabIndex = 4;
-            this.RemoveFile.Text = "Remove File";
-            this.RemoveFile.UseVisualStyleBackColor = true;
-            this.RemoveFile.Click += new System.EventHandler(this.onRemoveFileButtonClick);
+            this.btnRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveFile.Location = new System.Drawing.Point(81, 213);
+            this.btnRemoveFile.Name = "btnRemoveFile";
+            this.btnRemoveFile.Size = new System.Drawing.Size(347, 78);
+            this.btnRemoveFile.TabIndex = 4;
+            this.btnRemoveFile.Text = "Remove File";
+            this.btnRemoveFile.UseVisualStyleBackColor = true;
+            this.btnRemoveFile.Click += new System.EventHandler(this.onRemoveFileButtonClick);
             // 
             // btn_ClearList
             // 
@@ -405,7 +405,7 @@
         private bool isL2RDirection=true;
         private bool willSeparateChap = false;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button RemoveFile;
+        private System.Windows.Forms.Button btnRemoveFile;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
     }
