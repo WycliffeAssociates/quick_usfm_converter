@@ -123,8 +123,9 @@ namespace Hackathon_Converter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap undraw_upload_87y9_2x {
-            get {
+        internal static System.Drawing.Bitmap undraw_upload_87y9_2x
+        { 
+            get{ 
                 object obj = ResourceManager.GetObject("undraw_upload_87y9_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }

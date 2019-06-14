@@ -123,8 +123,8 @@ namespace Hackathon_Converter
             this.USFMApp.Panel2.BackColor = System.Drawing.SystemColors.Window;
             this.USFMApp.Panel2.Controls.Add(this.ConversionPage);
             this.USFMApp.Panel2.Controls.Add(this.HomeCapture);
-            this.USFMApp.Size = new System.Drawing.Size(1074, 634);
-            this.USFMApp.SplitterDistance = 75;
+            this.USFMApp.Size = new System.Drawing.Size(1074, 625);
+            this.USFMApp.SplitterDistance = 73;
             this.USFMApp.SplitterWidth = 2;
             this.USFMApp.TabIndex = 0;
             // 
@@ -141,6 +141,7 @@ namespace Hackathon_Converter
             this.Btn_Convert.TabIndex = 2;
             this.Btn_Convert.Text = "Convert";
             this.Btn_Convert.UseVisualStyleBackColor = false;
+            this.Btn_Convert.Click += new System.EventHandler(this.OnConvertButtonClick);
             // 
             // LogoTitle
             // 
@@ -175,7 +176,7 @@ namespace Hackathon_Converter
             this.ConversionPage.Location = new System.Drawing.Point(2, 2);
             this.ConversionPage.Margin = new System.Windows.Forms.Padding(2);
             this.ConversionPage.Name = "ConversionPage";
-            this.ConversionPage.Size = new System.Drawing.Size(994, 533);
+            this.ConversionPage.Size = new System.Drawing.Size(1070, 533);
             this.ConversionPage.TabIndex = 4;
             this.ConversionPage.Visible = false;
             // 
@@ -190,6 +191,7 @@ namespace Hackathon_Converter
             this.btn_Clear.TabIndex = 4;
             this.btn_Clear.Text = "Restart";
             this.btn_Clear.UseVisualStyleBackColor = false;
+            this.btn_Clear.Click += new System.EventHandler(this.onClearListButtonClick);
             // 
             // btn_AddFiles
             // 
@@ -203,12 +205,14 @@ namespace Hackathon_Converter
             this.btn_AddFiles.TabIndex = 3;
             this.btn_AddFiles.Text = "+ Add UFSM Files";
             this.btn_AddFiles.UseVisualStyleBackColor = false;
+            this.btn_AddFiles.Click += new System.EventHandler(this.onAddOnlyFileClick);
             // 
             // HTMLtag
             // 
             this.HTMLtag.BackColor = System.Drawing.Color.White;
             this.HTMLtag.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HTMLtag.Location = new System.Drawing.Point(798, 43);
+            this.HTMLtag.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.HTMLtag.Location = new System.Drawing.Point(812, 43);
             this.HTMLtag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HTMLtag.Name = "HTMLtag";
             this.HTMLtag.Size = new System.Drawing.Size(112, 35);
@@ -218,7 +222,8 @@ namespace Hackathon_Converter
             // FileNameInput
             // 
             this.FileNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FileNameInput.Location = new System.Drawing.Point(178, 43);
+            this.FileNameInput.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.FileNameInput.Location = new System.Drawing.Point(189, 43);
             this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.FileNameInput.Name = "FileNameInput";
             this.FileNameInput.Size = new System.Drawing.Size(619, 38);
@@ -228,14 +233,14 @@ namespace Hackathon_Converter
             // 
             // fileDataGrid
             // 
-            this.fileDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.fileDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.fileDataGrid.Location = new System.Drawing.Point(178, 87);
+            this.fileDataGrid.Location = new System.Drawing.Point(158, 85);
             this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(732, 314);
+            this.fileDataGrid.Size = new System.Drawing.Size(779, 314);
             this.fileDataGrid.TabIndex = 0;
             // 
             // HomeCapture
@@ -262,7 +267,7 @@ namespace Hackathon_Converter
             this.Btn_BrowseFiles.TabIndex = 2;
             this.Btn_BrowseFiles.Text = "Browse Files";
             this.Btn_BrowseFiles.UseVisualStyleBackColor = false;
-            this.Btn_BrowseFiles.Click += new System.EventHandler(this.Btn_BrowseFiles_Click);
+            this.Btn_BrowseFiles.Click += new System.EventHandler(this.OnAddFilesButtonClick);
             // 
             // HomeImg
             // 
@@ -290,7 +295,7 @@ namespace Hackathon_Converter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 634);
+            this.ClientSize = new System.Drawing.Size(1074, 625);
             this.Controls.Add(this.USFMApp);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";

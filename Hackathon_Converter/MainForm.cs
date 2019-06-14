@@ -25,6 +25,8 @@ namespace Hackathon_Converter
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
+            
+
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
             {
                 Description = "Select the directory containing the files you want to convert.",
@@ -51,6 +53,10 @@ namespace Hackathon_Converter
                     fileDataGrid.Rows.Add(new String[] { fileInfo.FullName });
                 }
             }
+
+            this.ConversionPage.Visible = true;
+            this.Btn_Convert.Enabled = true;
+            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
         }
 
         private void OnConvertButtonClick(object sender, EventArgs e)
@@ -202,7 +208,10 @@ namespace Hackathon_Converter
             {
                 fileDataGrid.Rows.Add(new String[] { filePath });
             }
-            
+            this.ConversionPage.Visible = true;
+            this.Btn_Convert.Enabled = true;
+            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+
         }
         //private void Single_space_CheckedChanged(object sender,EventArgs e)
         //{
