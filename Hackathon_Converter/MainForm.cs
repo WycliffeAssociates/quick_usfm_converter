@@ -89,14 +89,12 @@ namespace Hackathon_Converter
             var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
             //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
-            //
             var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
 
             
             // Added ULB License and Page Number
             renderer.InsertFirstPage(GetLicenseInfo());
             renderer.InsertFooters(GetFooterInfo());
-            //var renderer = new USFMToolsSharp.HtmlRenderer();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
             foreach (DataGridViewRow row in fileDataGrid.Rows)
@@ -133,7 +131,7 @@ namespace Hackathon_Converter
         }
         private string GetLicenseInfo()
         {
-            //if (insert_USB_License.CanRead()) ;
+            // Identifies License within Directory 
             string ULB_License_Doc = "insert_ULB_License.html";
             FileInfo f = new FileInfo(ULB_License_Doc);
             string fullname = f.FullName;
@@ -178,7 +176,6 @@ namespace Hackathon_Converter
         }
         private void onClearListButtonClick(object sender, EventArgs e)
         {
-            //Empties/Resets entire list
             fileDataGrid.Rows.Clear();
         }
 
@@ -212,7 +209,8 @@ namespace Hackathon_Converter
             //line-height: 1 ;
             if (Single_Space.Checked)
             {
-
+                // Keep track of the selected RadioButton by saving a reference
+                // to it.
                 isSingleSpaced = true;
             }
 
@@ -222,7 +220,6 @@ namespace Hackathon_Converter
             //line-height: 2 ;
             if (Double_Space.Checked)
             {
-
                 isSingleSpaced = false;
             }
 
@@ -234,7 +231,6 @@ namespace Hackathon_Converter
             //columns: 1;
             if (Single_col.Checked)
             {
-
                 hasOneColumn = true;
             }
 
@@ -246,8 +242,6 @@ namespace Hackathon_Converter
             //columns: 2;
             if (Double_Col.Checked)
             {
-                // Keep track of the selected RadioButton by saving a reference
-                // to it.
                 hasOneColumn = false;
             }
 
