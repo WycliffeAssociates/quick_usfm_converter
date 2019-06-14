@@ -107,6 +107,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Lato-Regular.ttf" />
+    <None Include="Resources\Muli-ExtraBold.ttf" />
+    <None Include="Resources\Muli-Light.ttf" />
+    <None Include="Resources\Muli-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -114,9 +118,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Hackathon Logo.png" />
+    <None Include="Hackathon Logo%402x.png" />
     <Content Include="insert_ULB_License.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\undraw_upload_87y9%402x.png" />
+    <None Include="Resources\Hackathon Logo.png" />
+    <None Include="Resources\Hackathon Logo%402x.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

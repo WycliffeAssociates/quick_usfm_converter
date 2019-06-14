@@ -77,11 +77,11 @@ namespace Hackathon_Converter
                 return;
             }
 
-            BtnConvert.Enabled = false;
-            Format_Options.Enabled = false;
-            btnRemoveFile.Enabled = false;
-            btn_ClearList.Enabled = false;
-            btn_AddOnlyFile.Enabled = false;
+            //BtnConvert.Enabled = false;
+            //Format_Options.Enabled = false;
+            //btnRemoveFile.Enabled = false;
+            //btn_ClearList.Enabled = false;
+            //btn_AddOnlyFile.Enabled = false;
             btn_AddFiles.Enabled = false;
             fileDataGrid.Enabled = false;
 
@@ -121,11 +121,11 @@ namespace Hackathon_Converter
                 File.Copy("style.css", cssFilename);
             }
 
-            BtnConvert.Enabled = true;
-            Format_Options.Enabled = true;
-            btnRemoveFile.Enabled = true;
-            btn_ClearList.Enabled = true;
-            btn_AddOnlyFile.Enabled = true;
+            //BtnConvert.Enabled = true;
+            //Format_Options.Enabled = true;
+            //btnRemoveFile.Enabled = true;
+            //btn_ClearList.Enabled = true;
+            //btn_AddOnlyFile.Enabled = true;
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
         }
@@ -204,90 +204,90 @@ namespace Hackathon_Converter
             }
             
         }
-        private void Single_space_CheckedChanged(object sender,EventArgs e)
-        {
-            //line-height: 1 ;
-            if (Single_Space.Checked)
-            {
-                // Keep track of the selected RadioButton by saving a reference
-                // to it.
-                isSingleSpaced = true;
-            }
+        //private void Single_space_CheckedChanged(object sender,EventArgs e)
+        //{
+        //    //line-height: 1 ;
+        //    if (Single_Space.Checked)
+        //    {
+        //        // Keep track of the selected RadioButton by saving a reference
+        //        // to it.
+        //        isSingleSpaced = true;
+        //    }
 
-        }
-        private void Double_space_CheckedChanged(object sender, EventArgs e)
-        {
-            //line-height: 2 ;
-            if (Double_Space.Checked)
-            {
-                isSingleSpaced = false;
-            }
+        //}
+        //private void Double_space_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //line-height: 2 ;
+        //    if (Double_Space.Checked)
+        //    {
+        //        isSingleSpaced = false;
+        //    }
 
-        }
-        private void Single_col_CheckedChanged(object sender, EventArgs e)
-        {
-            /* Column count */
-            //columns: auto;
-            //columns: 1;
-            if (Single_col.Checked)
-            {
-                hasOneColumn = true;
-            }
+        //}
+        //private void Single_col_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    /* Column count */
+        //    //columns: auto;
+        //    //columns: 1;
+        //    if (Single_col.Checked)
+        //    {
+        //        hasOneColumn = true;
+        //    }
 
-        }
-        private void Double_col_CheckedChanged(object sender, EventArgs e)
-        {
-            /* Column count */
-            //columns: auto;
-            //columns: 2;
-            if (Double_Col.Checked)
-            {
-                hasOneColumn = false;
-            }
+        //}
+        //private void Double_col_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    /* Column count */
+        //    //columns: auto;
+        //    //columns: 2;
+        //    if (Double_Col.Checked)
+        //    {
+        //        hasOneColumn = false;
+        //    }
 
-        }
-        private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
-        {
-            if (directL2R.Checked)
-            {
+        //}
+        //private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (directL2R.Checked)
+        //    {
 
-                isL2RDirection = true;
-            }
-        }
-        private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
-        {
-            if (directR2L.Checked)
-            {
+        //        isL2RDirection = true;
+        //    }
+        //}
+        //private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (directR2L.Checked)
+        //    {
 
-                isL2RDirection = false;
-            }
-        }
+        //        isL2RDirection = false;
+        //    }
+        //}
 
-        private void isJustified_CheckedChanged(object sender, EventArgs e)
-        {
-            if (isJustified.Checked)
-            {
+        //private void isJustified_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (isJustified.Checked)
+        //    {
 
-                isTextJustified = true;
-            }
-            else
-            {
-                isTextJustified = false;
-            }
-        }
+        //        isTextJustified = true;
+        //    }
+        //    else
+        //    {
+        //        isTextJustified = false;
+        //    }
+        //}
 
-        private void chapSeparate_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chapSeparate.Checked)
-            {
+        //private void chapSeparate_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (chapSeparate.Checked)
+        //    {
 
-                willSeparateChap = true;
-            }
-            else
-            {
-                willSeparateChap = false;
-            }
-        }
+        //        willSeparateChap = true;
+        //    }
+        //    else
+        //    {
+        //        willSeparateChap = false;
+        //    }
+        //}
 
         private void onRemoveFileButtonClick(object sender, EventArgs e)
         { 
@@ -299,6 +299,13 @@ namespace Hackathon_Converter
                 }
             }
                 
+        }
+
+        private void Btn_BrowseFiles_Click(object sender, EventArgs e)
+        {
+            this.ConversionPage.Visible = true;
+            this.Btn_Convert.Enabled = true;
+            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
         }
     }
 }

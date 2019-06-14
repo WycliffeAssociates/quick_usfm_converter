@@ -1,4 +1,7 @@
-﻿namespace Hackathon_Converter
+﻿using System.Drawing.Text;
+using System.Runtime.InteropServices;
+
+namespace Hackathon_Converter
 {
     partial class MainForm
     {
@@ -19,6 +22,52 @@
             }
             base.Dispose(disposing);
         }
+        private void InitCustomLabelFont()
+        {
+            //Create your private font collection object.
+            PrivateFontCollection pfc = new PrivateFontCollection();
+
+            //Select your font from the resources.
+            //My font here is "Muli_ExtraBold.ttf"
+            int fontLength = Properties.Resources.Muli_ExtraBold.Length;
+
+            // create a buffer to read in to
+            byte[] fontdata = Properties.Resources.Muli_ExtraBold;
+
+            // create an unsafe memory block for the font data
+            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
+
+            // copy the bytes to the unsafe memory block
+            System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
+
+            // pass the font to the font collection
+            pfc.AddMemoryFont(data, fontLength);
+
+
+            // Muli_Light.ttf
+            fontLength = Properties.Resources.Muli_Light.Length;
+            fontdata = Properties.Resources.Muli_Light;
+            data = Marshal.AllocCoTaskMem(fontLength);
+            System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
+            pfc.AddMemoryFont(data, fontLength);
+
+
+
+            // Muli_Regular.ttf
+            fontLength = Properties.Resources.Muli_Regular.Length;
+            fontdata = Properties.Resources.Muli_Regular;
+            data = Marshal.AllocCoTaskMem(fontLength);
+            System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
+            pfc.AddMemoryFont(data, fontLength);
+
+            // Lato_Regular.ttf
+            fontLength = Properties.Resources.Lato_Regular.Length;
+            fontdata = Properties.Resources.Lato_Regular;
+            data = Marshal.AllocCoTaskMem(fontLength);
+            System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
+            pfc.AddMemoryFont(data, fontLength);
+
+        }
 
         #region Windows Form Designer generated code
 
@@ -28,385 +77,261 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnConvert = new System.Windows.Forms.Button();
+            this.USFMApp = new System.Windows.Forms.SplitContainer();
+            this.Btn_Convert = new System.Windows.Forms.Button();
+            this.LogoTitle = new System.Windows.Forms.Label();
+            this.LogoImg = new System.Windows.Forms.PictureBox();
+            this.ConversionPage = new System.Windows.Forms.Panel();
+            this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_AddFiles = new System.Windows.Forms.Button();
-            this.Btn_Control_Panel = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnRemoveFile = new System.Windows.Forms.Button();
-            this.btn_ClearList = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_AddOnlyFile = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.HTMLtag = new System.Windows.Forms.Label();
+            this.FileNameInput = new System.Windows.Forms.TextBox();
             this.fileDataGrid = new System.Windows.Forms.DataGridView();
-            this.Format_Options = new System.Windows.Forms.GroupBox();
-            this.Other = new System.Windows.Forms.GroupBox();
-            this.chapSeparate = new System.Windows.Forms.CheckBox();
-            this.isJustified = new System.Windows.Forms.CheckBox();
-            this.Read_Direction = new System.Windows.Forms.GroupBox();
-            this.directL2R = new System.Windows.Forms.RadioButton();
-            this.directR2L = new System.Windows.Forms.RadioButton();
-            this.Num_Columns = new System.Windows.Forms.GroupBox();
-            this.Single_col = new System.Windows.Forms.RadioButton();
-            this.Double_Col = new System.Windows.Forms.RadioButton();
-            this.Spacing = new System.Windows.Forms.GroupBox();
-            this.Single_Space = new System.Windows.Forms.RadioButton();
-            this.Double_Space = new System.Windows.Forms.RadioButton();
-            this.Btn_Control_Panel.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.HomeCapture = new System.Windows.Forms.Panel();
+            this.Btn_BrowseFiles = new System.Windows.Forms.Button();
+            this.HomeImg = new System.Windows.Forms.PictureBox();
+            this.HomeInstruct = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.USFMApp)).BeginInit();
+            this.USFMApp.Panel1.SuspendLayout();
+            this.USFMApp.Panel2.SuspendLayout();
+            this.USFMApp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoImg)).BeginInit();
+            this.ConversionPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
-            this.Format_Options.SuspendLayout();
-            this.Other.SuspendLayout();
-            this.Read_Direction.SuspendLayout();
-            this.Num_Columns.SuspendLayout();
-            this.Spacing.SuspendLayout();
+            this.HomeCapture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
             this.SuspendLayout();
             // 
-            // BtnConvert
+            // USFMApp
             // 
-            this.BtnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConvert.Location = new System.Drawing.Point(78, 145);
-            this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(363, 91);
-            this.BtnConvert.TabIndex = 0;
-            this.BtnConvert.Text = "Convert";
-            this.BtnConvert.UseVisualStyleBackColor = true;
-            this.BtnConvert.Click += new System.EventHandler(this.OnConvertButtonClick);
+            this.USFMApp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.USFMApp.Location = new System.Drawing.Point(0, 0);
+            this.USFMApp.Margin = new System.Windows.Forms.Padding(2);
+            this.USFMApp.MinimumSize = new System.Drawing.Size(500, 604);
+            this.USFMApp.Name = "USFMApp";
+            this.USFMApp.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // USFMApp.Panel1
+            // 
+            this.USFMApp.Panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.USFMApp.Panel1.Controls.Add(this.Btn_Convert);
+            this.USFMApp.Panel1.Controls.Add(this.LogoTitle);
+            this.USFMApp.Panel1.Controls.Add(this.LogoImg);
+            // 
+            // USFMApp.Panel2
+            // 
+            this.USFMApp.Panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.USFMApp.Panel2.Controls.Add(this.ConversionPage);
+            this.USFMApp.Panel2.Controls.Add(this.HomeCapture);
+            this.USFMApp.Size = new System.Drawing.Size(1074, 634);
+            this.USFMApp.SplitterDistance = 75;
+            this.USFMApp.SplitterWidth = 2;
+            this.USFMApp.TabIndex = 0;
+            // 
+            // Btn_Convert
+            // 
+            this.Btn_Convert.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_Convert.Enabled = false;
+            this.Btn_Convert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Convert.ForeColor = System.Drawing.Color.White;
+            this.Btn_Convert.Location = new System.Drawing.Point(774, 20);
+            this.Btn_Convert.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Convert.Name = "Btn_Convert";
+            this.Btn_Convert.Size = new System.Drawing.Size(207, 40);
+            this.Btn_Convert.TabIndex = 2;
+            this.Btn_Convert.Text = "Convert";
+            this.Btn_Convert.UseVisualStyleBackColor = false;
+            // 
+            // LogoTitle
+            // 
+            this.LogoTitle.AutoSize = true;
+            this.LogoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoTitle.Location = new System.Drawing.Point(154, 20);
+            this.LogoTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LogoTitle.Name = "LogoTitle";
+            this.LogoTitle.Size = new System.Drawing.Size(88, 31);
+            this.LogoTitle.TabIndex = 1;
+            this.LogoTitle.Text = "Matos";
+            // 
+            // LogoImg
+            // 
+            this.LogoImg.Image = global::Hackathon_Converter.Properties.Resources.Hackathon_Logo_2x;
+            this.LogoImg.Location = new System.Drawing.Point(106, 14);
+            this.LogoImg.Margin = new System.Windows.Forms.Padding(2);
+            this.LogoImg.Name = "LogoImg";
+            this.LogoImg.Size = new System.Drawing.Size(44, 46);
+            this.LogoImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogoImg.TabIndex = 0;
+            this.LogoImg.TabStop = false;
+            // 
+            // ConversionPage
+            // 
+            this.ConversionPage.BackColor = System.Drawing.SystemColors.Window;
+            this.ConversionPage.Controls.Add(this.btn_Clear);
+            this.ConversionPage.Controls.Add(this.btn_AddFiles);
+            this.ConversionPage.Controls.Add(this.HTMLtag);
+            this.ConversionPage.Controls.Add(this.FileNameInput);
+            this.ConversionPage.Controls.Add(this.fileDataGrid);
+            this.ConversionPage.Location = new System.Drawing.Point(2, 2);
+            this.ConversionPage.Margin = new System.Windows.Forms.Padding(2);
+            this.ConversionPage.Name = "ConversionPage";
+            this.ConversionPage.Size = new System.Drawing.Size(994, 533);
+            this.ConversionPage.TabIndex = 4;
+            this.ConversionPage.Visible = false;
+            // 
+            // btn_Clear
+            // 
+            this.btn_Clear.BackColor = System.Drawing.Color.White;
+            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Clear.Location = new System.Drawing.Point(464, 480);
+            this.btn_Clear.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(139, 34);
+            this.btn_Clear.TabIndex = 4;
+            this.btn_Clear.Text = "Restart";
+            this.btn_Clear.UseVisualStyleBackColor = false;
             // 
             // btn_AddFiles
             // 
-            this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AddFiles.Location = new System.Drawing.Point(74, 99);
+            this.btn_AddFiles.BackColor = System.Drawing.Color.White;
+            this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            this.btn_AddFiles.Location = new System.Drawing.Point(436, 412);
+            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddFiles.Name = "btn_AddFiles";
-            this.btn_AddFiles.Size = new System.Drawing.Size(347, 75);
-            this.btn_AddFiles.TabIndex = 1;
-            this.btn_AddFiles.Text = "Add Directory";
-            this.btn_AddFiles.UseVisualStyleBackColor = true;
-            this.btn_AddFiles.Click += new System.EventHandler(this.OnAddFilesButtonClick);
+            this.btn_AddFiles.Size = new System.Drawing.Size(204, 41);
+            this.btn_AddFiles.TabIndex = 3;
+            this.btn_AddFiles.Text = "+ Add UFSM Files";
+            this.btn_AddFiles.UseVisualStyleBackColor = false;
             // 
-            // Btn_Control_Panel
+            // HTMLtag
             // 
-            this.Btn_Control_Panel.Controls.Add(this.groupBox3);
-            this.Btn_Control_Panel.Controls.Add(this.groupBox2);
-            this.Btn_Control_Panel.Controls.Add(this.groupBox1);
-            this.Btn_Control_Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Btn_Control_Panel.Location = new System.Drawing.Point(0, 693);
-            this.Btn_Control_Panel.Name = "Btn_Control_Panel";
-            this.Btn_Control_Panel.Size = new System.Drawing.Size(1567, 338);
-            this.Btn_Control_Panel.TabIndex = 3;
+            this.HTMLtag.BackColor = System.Drawing.Color.White;
+            this.HTMLtag.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HTMLtag.Location = new System.Drawing.Point(798, 43);
+            this.HTMLtag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HTMLtag.Name = "HTMLtag";
+            this.HTMLtag.Size = new System.Drawing.Size(112, 35);
+            this.HTMLtag.TabIndex = 2;
+            this.HTMLtag.Text = "HTML";
             // 
-            // groupBox3
+            // FileNameInput
             // 
-            this.groupBox3.Controls.Add(this.btnRemoveFile);
-            this.groupBox3.Controls.Add(this.btn_ClearList);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(510, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(494, 338);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Remove";
-            // 
-            // btnRemoveFile
-            // 
-            this.btnRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveFile.Location = new System.Drawing.Point(81, 213);
-            this.btnRemoveFile.Name = "btnRemoveFile";
-            this.btnRemoveFile.Size = new System.Drawing.Size(347, 78);
-            this.btnRemoveFile.TabIndex = 4;
-            this.btnRemoveFile.Text = "Remove File";
-            this.btnRemoveFile.UseVisualStyleBackColor = true;
-            this.btnRemoveFile.Click += new System.EventHandler(this.onRemoveFileButtonClick);
-            // 
-            // btn_ClearList
-            // 
-            this.btn_ClearList.AutoSize = true;
-            this.btn_ClearList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ClearList.Location = new System.Drawing.Point(81, 99);
-            this.btn_ClearList.Name = "btn_ClearList";
-            this.btn_ClearList.Size = new System.Drawing.Size(347, 75);
-            this.btn_ClearList.TabIndex = 2;
-            this.btn_ClearList.Text = "Clear List";
-            this.btn_ClearList.UseVisualStyleBackColor = true;
-            this.btn_ClearList.Click += new System.EventHandler(this.onClearListButtonClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btn_AddFiles);
-            this.groupBox2.Controls.Add(this.btn_AddOnlyFile);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(510, 338);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add";
-            // 
-            // btn_AddOnlyFile
-            // 
-            this.btn_AddOnlyFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AddOnlyFile.Location = new System.Drawing.Point(74, 216);
-            this.btn_AddOnlyFile.Name = "btn_AddOnlyFile";
-            this.btn_AddOnlyFile.Size = new System.Drawing.Size(347, 75);
-            this.btn_AddOnlyFile.TabIndex = 3;
-            this.btn_AddOnlyFile.Text = "Add File";
-            this.btn_AddOnlyFile.UseVisualStyleBackColor = true;
-            this.btn_AddOnlyFile.Click += new System.EventHandler(this.onAddOnlyFileClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.BtnConvert);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(1052, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(515, 338);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Convert";
+            this.FileNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileNameInput.Location = new System.Drawing.Point(178, 43);
+            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
+            this.FileNameInput.Name = "FileNameInput";
+            this.FileNameInput.Size = new System.Drawing.Size(619, 38);
+            this.FileNameInput.TabIndex = 1;
+            this.FileNameInput.Text = "    Name your Project...";
+            this.FileNameInput.WordWrap = false;
             // 
             // fileDataGrid
             // 
-            this.fileDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fileDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fileDataGrid.Dock = System.Windows.Forms.DockStyle.Left;
-            this.fileDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.fileDataGrid.Location = new System.Drawing.Point(178, 87);
+            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(1142, 693);
-            this.fileDataGrid.TabIndex = 4;
+            this.fileDataGrid.Size = new System.Drawing.Size(732, 314);
+            this.fileDataGrid.TabIndex = 0;
             // 
-            // Format_Options
+            // HomeCapture
             // 
-            this.Format_Options.Controls.Add(this.Other);
-            this.Format_Options.Controls.Add(this.Read_Direction);
-            this.Format_Options.Controls.Add(this.Num_Columns);
-            this.Format_Options.Controls.Add(this.Spacing);
-            this.Format_Options.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Format_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Format_Options.Location = new System.Drawing.Point(1148, 0);
-            this.Format_Options.Name = "Format_Options";
-            this.Format_Options.Size = new System.Drawing.Size(419, 693);
-            this.Format_Options.TabIndex = 5;
-            this.Format_Options.TabStop = false;
-            this.Format_Options.Text = "Format Options";
+            this.HomeCapture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.HomeCapture.Controls.Add(this.Btn_BrowseFiles);
+            this.HomeCapture.Controls.Add(this.HomeImg);
+            this.HomeCapture.Controls.Add(this.HomeInstruct);
+            this.HomeCapture.Location = new System.Drawing.Point(231, 19);
+            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeCapture.Name = "HomeCapture";
+            this.HomeCapture.Size = new System.Drawing.Size(623, 473);
+            this.HomeCapture.TabIndex = 3;
             // 
-            // Other
+            // Btn_BrowseFiles
             // 
-            this.Other.Controls.Add(this.chapSeparate);
-            this.Other.Controls.Add(this.isJustified);
-            this.Other.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Other.Location = new System.Drawing.Point(6, 458);
-            this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(402, 229);
-            this.Other.TabIndex = 4;
-            this.Other.TabStop = false;
-            this.Other.Text = "Other";
+            this.Btn_BrowseFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
+            this.Btn_BrowseFiles.Location = new System.Drawing.Point(156, 404);
+            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
+            this.Btn_BrowseFiles.Size = new System.Drawing.Size(312, 44);
+            this.Btn_BrowseFiles.TabIndex = 2;
+            this.Btn_BrowseFiles.Text = "Browse Files";
+            this.Btn_BrowseFiles.UseVisualStyleBackColor = false;
+            this.Btn_BrowseFiles.Click += new System.EventHandler(this.Btn_BrowseFiles_Click);
             // 
-            // chapSeparate
+            // HomeImg
             // 
-            this.chapSeparate.AutoSize = true;
-            this.chapSeparate.Location = new System.Drawing.Point(45, 96);
-            this.chapSeparate.Name = "chapSeparate";
-            this.chapSeparate.Size = new System.Drawing.Size(274, 35);
-            this.chapSeparate.TabIndex = 1;
-            this.chapSeparate.Text = "Separate Chapters";
-            this.chapSeparate.UseVisualStyleBackColor = true;
-            this.chapSeparate.CheckedChanged += new System.EventHandler(this.chapSeparate_CheckedChanged);
+            this.HomeImg.Image = global::Hackathon_Converter.Properties.Resources.undraw_upload_87y9_2x;
+            this.HomeImg.Location = new System.Drawing.Point(134, 8);
+            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeImg.Name = "HomeImg";
+            this.HomeImg.Size = new System.Drawing.Size(366, 253);
+            this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.HomeImg.TabIndex = 0;
+            this.HomeImg.TabStop = false;
             // 
-            // isJustified
+            // HomeInstruct
             // 
-            this.isJustified.AutoSize = true;
-            this.isJustified.Location = new System.Drawing.Point(45, 45);
-            this.isJustified.Name = "isJustified";
-            this.isJustified.Size = new System.Drawing.Size(187, 35);
-            this.isJustified.TabIndex = 0;
-            this.isJustified.Text = "Justify-Text";
-            this.isJustified.UseVisualStyleBackColor = true;
-            this.isJustified.CheckedChanged += new System.EventHandler(this.isJustified_CheckedChanged);
-            // 
-            // Read_Direction
-            // 
-            this.Read_Direction.Controls.Add(this.directL2R);
-            this.Read_Direction.Controls.Add(this.directR2L);
-            this.Read_Direction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Read_Direction.Location = new System.Drawing.Point(6, 296);
-            this.Read_Direction.Name = "Read_Direction";
-            this.Read_Direction.Size = new System.Drawing.Size(403, 148);
-            this.Read_Direction.TabIndex = 3;
-            this.Read_Direction.TabStop = false;
-            this.Read_Direction.Text = "Reading Direction";
-            // 
-            // directL2R
-            // 
-            this.directL2R.AutoSize = true;
-            this.directL2R.Checked = true;
-            this.directL2R.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directL2R.Location = new System.Drawing.Point(45, 47);
-            this.directL2R.Name = "directL2R";
-            this.directL2R.Size = new System.Drawing.Size(196, 35);
-            this.directL2R.TabIndex = 0;
-            this.directL2R.TabStop = true;
-            this.directL2R.Text = "Left-to-Right";
-            this.directL2R.UseVisualStyleBackColor = true;
-            this.directL2R.CheckedChanged += new System.EventHandler(this.Direct_L2R_CheckedChanged);
-            // 
-            // directR2L
-            // 
-            this.directR2L.AutoSize = true;
-            this.directR2L.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directR2L.Location = new System.Drawing.Point(45, 88);
-            this.directR2L.Name = "directR2L";
-            this.directR2L.Size = new System.Drawing.Size(196, 35);
-            this.directR2L.TabIndex = 1;
-            this.directR2L.Text = "Right-to-Left";
-            this.directR2L.UseVisualStyleBackColor = true;
-            this.directR2L.CheckedChanged += new System.EventHandler(this.Direct_R2L_CheckedChanged);
-            // 
-            // Num_Columns
-            // 
-            this.Num_Columns.Controls.Add(this.Single_col);
-            this.Num_Columns.Controls.Add(this.Double_Col);
-            this.Num_Columns.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_Columns.Location = new System.Drawing.Point(6, 192);
-            this.Num_Columns.Name = "Num_Columns";
-            this.Num_Columns.Size = new System.Drawing.Size(403, 98);
-            this.Num_Columns.TabIndex = 3;
-            this.Num_Columns.TabStop = false;
-            this.Num_Columns.Text = "# of Columns";
-            // 
-            // Single_col
-            // 
-            this.Single_col.AutoSize = true;
-            this.Single_col.Checked = true;
-            this.Single_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Single_col.Location = new System.Drawing.Point(45, 47);
-            this.Single_col.Name = "Single_col";
-            this.Single_col.Size = new System.Drawing.Size(60, 35);
-            this.Single_col.TabIndex = 0;
-            this.Single_col.TabStop = true;
-            this.Single_col.Text = "1";
-            this.Single_col.UseVisualStyleBackColor = true;
-            this.Single_col.CheckedChanged += new System.EventHandler(this.Single_col_CheckedChanged);
-            // 
-            // Double_Col
-            // 
-            this.Double_Col.AutoSize = true;
-            this.Double_Col.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Double_Col.Location = new System.Drawing.Point(187, 47);
-            this.Double_Col.Name = "Double_Col";
-            this.Double_Col.Size = new System.Drawing.Size(60, 35);
-            this.Double_Col.TabIndex = 1;
-            this.Double_Col.Text = "2";
-            this.Double_Col.UseVisualStyleBackColor = true;
-            this.Double_Col.CheckedChanged += new System.EventHandler(this.Double_col_CheckedChanged);
-            // 
-            // Spacing
-            // 
-            this.Spacing.Controls.Add(this.Single_Space);
-            this.Spacing.Controls.Add(this.Double_Space);
-            this.Spacing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Spacing.Location = new System.Drawing.Point(6, 88);
-            this.Spacing.Name = "Spacing";
-            this.Spacing.Size = new System.Drawing.Size(403, 98);
-            this.Spacing.TabIndex = 2;
-            this.Spacing.TabStop = false;
-            this.Spacing.Text = "Spacing";
-            // 
-            // Single_Space
-            // 
-            this.Single_Space.AutoSize = true;
-            this.Single_Space.Checked = true;
-            this.Single_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Single_Space.Location = new System.Drawing.Point(45, 47);
-            this.Single_Space.Name = "Single_Space";
-            this.Single_Space.Size = new System.Drawing.Size(120, 35);
-            this.Single_Space.TabIndex = 0;
-            this.Single_Space.TabStop = true;
-            this.Single_Space.Text = "Single";
-            this.Single_Space.UseVisualStyleBackColor = true;
-            this.Single_Space.CheckedChanged += new System.EventHandler(this.Single_space_CheckedChanged);
-            // 
-            // Double_Space
-            // 
-            this.Double_Space.AutoSize = true;
-            this.Double_Space.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Double_Space.Location = new System.Drawing.Point(187, 47);
-            this.Double_Space.Name = "Double_Space";
-            this.Double_Space.Size = new System.Drawing.Size(131, 35);
-            this.Double_Space.TabIndex = 1;
-            this.Double_Space.Text = "Double";
-            this.Double_Space.UseVisualStyleBackColor = true;
-            this.Double_Space.CheckedChanged += new System.EventHandler(this.Double_space_CheckedChanged);
+            this.HomeInstruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeInstruct.Location = new System.Drawing.Point(24, 269);
+            this.HomeInstruct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HomeInstruct.Name = "HomeInstruct";
+            this.HomeInstruct.Size = new System.Drawing.Size(573, 93);
+            this.HomeInstruct.TabIndex = 1;
+            this.HomeInstruct.Text = "Drag and drop some USFM files or folders to get started.";
+            this.HomeInstruct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1567, 1031);
-            this.Controls.Add(this.Format_Options);
-            this.Controls.Add(this.fileDataGrid);
-            this.Controls.Add(this.Btn_Control_Panel);
+            this.ClientSize = new System.Drawing.Size(1074, 634);
+            this.Controls.Add(this.USFMApp);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Hackathon Converter";
-            this.Btn_Control_Panel.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.USFMApp.Panel1.ResumeLayout(false);
+            this.USFMApp.Panel1.PerformLayout();
+            this.USFMApp.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.USFMApp)).EndInit();
+            this.USFMApp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LogoImg)).EndInit();
+            this.ConversionPage.ResumeLayout(false);
+            this.ConversionPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
-            this.Format_Options.ResumeLayout(false);
-            this.Other.ResumeLayout(false);
-            this.Other.PerformLayout();
-            this.Read_Direction.ResumeLayout(false);
-            this.Read_Direction.PerformLayout();
-            this.Num_Columns.ResumeLayout(false);
-            this.Num_Columns.PerformLayout();
-            this.Spacing.ResumeLayout(false);
-            this.Spacing.PerformLayout();
+            this.HomeCapture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView fileDataGrid;
-
-        private System.Windows.Forms.Panel Btn_Control_Panel;
-        private System.Windows.Forms.Button BtnConvert;
-        private System.Windows.Forms.Button btn_AddFiles;
-        private System.Windows.Forms.Button btn_ClearList;
-        private System.Windows.Forms.Button btn_AddOnlyFile;
-        
-        
-        private System.Windows.Forms.GroupBox Format_Options;
-
-        private System.Windows.Forms.GroupBox Spacing;
-        private System.Windows.Forms.RadioButton Double_Space;
-        private System.Windows.Forms.RadioButton Single_Space;
-        
-        private System.Windows.Forms.GroupBox Read_Direction;
-        private System.Windows.Forms.RadioButton directL2R;
-        private System.Windows.Forms.RadioButton directR2L;
-
-        private System.Windows.Forms.GroupBox Num_Columns;
-        private System.Windows.Forms.RadioButton Single_col;
-        private System.Windows.Forms.RadioButton Double_Col;
-
-        private System.Windows.Forms.GroupBox Other;
-        private System.Windows.Forms.CheckBox isJustified;
-        private System.Windows.Forms.CheckBox chapSeparate;
 
         private bool isTextJustified = false;
         private bool isSingleSpaced=true;
         private bool hasOneColumn=true;
         private bool isL2RDirection=true;
         private bool willSeparateChap = false;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnRemoveFile;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.SplitContainer USFMApp;
+        private System.Windows.Forms.PictureBox LogoImg;
+        private System.Windows.Forms.Label LogoTitle;
+        private System.Windows.Forms.Button Btn_Convert;
+        private System.Windows.Forms.PictureBox HomeImg;
+        private System.Windows.Forms.Button Btn_BrowseFiles;
+        private System.Windows.Forms.Label HomeInstruct;
+        private System.Windows.Forms.Panel HomeCapture;
+        private System.Windows.Forms.Panel ConversionPage;
+        private System.Windows.Forms.DataGridView fileDataGrid;
+        private System.Windows.Forms.Label HTMLtag;
+        private System.Windows.Forms.TextBox FileNameInput;
+        private System.Windows.Forms.Button btn_Clear;
+        private System.Windows.Forms.Button btn_AddFiles;
+
+        
     }
 }
