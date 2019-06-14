@@ -1,0 +1,27 @@
+.header {
+    margin-top: 1em;
+    font-size: 32px;
+    font-weight: bold;
+    display: block;
+}
+
+.majortitle {
+    display: none;
+}
+
+.chapter {
+    margin-top: 1em;
+}
+
+.chaptermarker {
+    font-size: 32px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    margin-right: 0.25em;
+}
+
+.versemarker {
+    font-size: 10px;
+    vertical-align: top;
+}
