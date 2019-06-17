@@ -307,12 +307,24 @@ namespace Hackathon_Converter
         { 
             if(fileDataGrid.Rows.Count > 1)
             {
-                foreach(DataGridViewCell CellObject in fileDataGrid.SelectedCells)
+                //foreach(DataGridViewCell CellObject in fileDataGrid.SelectedCells)
+                //{
+                //    if (CellObject.RowIndex != fileDataGrid.Rows.Count)
+                //        fileDataGrid.Rows.Remove(CellObject.OwningRow);
+                //}
+                DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
+                for (int fileIndex = 0;fileIndex< SelectedFiles.Count && SelectedFiles[fileIndex].RowIndex != fileDataGrid.RowCount-1; fileIndex++)
                 {
-                    fileDataGrid.Rows.Remove(CellObject.OwningRow);
+                    fileDataGrid.Rows.Remove(SelectedFiles[fileIndex].OwningRow);
                 }
             }
-                
+            int numRemove = 0;
+            if (fileDataGrid.Rows.Count > 1)
+                numRemove = 1;
+
+            btn_Remove.Text = $"Remove ( {numRemove} )";
+
+
         }
 
         private void Btn_BrowseFiles_Click(object sender, EventArgs e)
