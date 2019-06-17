@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -136,6 +137,8 @@ namespace Hackathon_Converter
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
             Confirmation_Page.Visible = true;
+            Btn_Convert.Enabled = false;
+            Btn_Convert.BackColor = System.Drawing.Color.DarkGray;
         }
         private string GetLicenseInfo()
         {
@@ -323,14 +326,18 @@ namespace Hackathon_Converter
         {
             ConversionPage.Visible = false;
             Confirmation_Page.Visible = false;
-            Btn_Convert.Enabled = false;
-            Btn_Convert.BackColor = System.Drawing.Color.DarkGray;
             fileDataGrid.Rows.Clear();
         }
 
         private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
         {
-
+            Process.Start("explorer.exe",@"c:\does_not_exists");
+        }
+        private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            DataGridViewElementStates state = e.StateChanged;
+            int numFilesRemove = fileDataGrid.SelectedCells.Count;
+            btn_Remove.Text = $"Remove ( {numFilesRemove} )";
         }
     }
 }

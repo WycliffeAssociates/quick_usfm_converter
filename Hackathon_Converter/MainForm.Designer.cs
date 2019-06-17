@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Hackathon_Converter
 {
@@ -330,6 +331,7 @@ namespace Hackathon_Converter
             this.fileDataGrid.RowTemplate.Height = 33;
             this.fileDataGrid.Size = new System.Drawing.Size(779, 314);
             this.fileDataGrid.TabIndex = 0;
+            this.fileDataGrid.CellStateChanged+= new DataGridViewCellStateChangedEventHandler(this.fileDataGrid_CellStateChanged);
             // 
             // HomeCapture
             // 
