@@ -24,8 +24,11 @@ namespace Hackathon_Converter
         }
         private void InitCustomLabelFont()
         {
+
+            
+
             //Create your private font collection object.
-            PrivateFontCollection pfc = new PrivateFontCollection();
+            PrivateFontCollection customFonts = new PrivateFontCollection();
 
             //Select your font from the resources.
             //My font here is "Muli_ExtraBold.ttf"
@@ -41,7 +44,7 @@ namespace Hackathon_Converter
             System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
 
             // pass the font to the font collection
-            pfc.AddMemoryFont(data, fontLength);
+            customFonts.AddMemoryFont(data, fontLength);
 
 
             // Muli_Light.ttf
@@ -49,7 +52,7 @@ namespace Hackathon_Converter
             fontdata = Properties.Resources.Muli_Light;
             data = Marshal.AllocCoTaskMem(fontLength);
             System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
-            pfc.AddMemoryFont(data, fontLength);
+            customFonts.AddMemoryFont(data, fontLength);
 
 
 
@@ -58,14 +61,14 @@ namespace Hackathon_Converter
             fontdata = Properties.Resources.Muli_Regular;
             data = Marshal.AllocCoTaskMem(fontLength);
             System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
-            pfc.AddMemoryFont(data, fontLength);
+            customFonts.AddMemoryFont(data, fontLength);
 
             // Lato_Regular.ttf
             fontLength = Properties.Resources.Lato_Regular.Length;
             fontdata = Properties.Resources.Lato_Regular;
             data = Marshal.AllocCoTaskMem(fontLength);
             System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
-            pfc.AddMemoryFont(data, fontLength);
+            customFonts.AddMemoryFont(data, fontLength);
 
         }
 
@@ -82,7 +85,13 @@ namespace Hackathon_Converter
             this.LogoTitle = new System.Windows.Forms.Label();
             this.LogoImg = new System.Windows.Forms.PictureBox();
             this.ConversionPage = new System.Windows.Forms.Panel();
-            this.btn_Clear = new System.Windows.Forms.Button();
+            this.Confirmation_Page = new Hackathon_Converter.ColorGradient();
+            this.LabelCheck = new System.Windows.Forms.Label();
+            this.Btn_NewProj = new System.Windows.Forms.Button();
+            this.LabelDesc = new System.Windows.Forms.Label();
+            this.Btn_OpenFileLocation = new System.Windows.Forms.Button();
+            this.LabelSuccess = new System.Windows.Forms.Label();
+            this.btn_Remove = new System.Windows.Forms.Button();
             this.btn_AddFiles = new System.Windows.Forms.Button();
             this.HTMLtag = new System.Windows.Forms.Label();
             this.FileNameInput = new System.Windows.Forms.TextBox();
@@ -97,6 +106,7 @@ namespace Hackathon_Converter
             this.USFMApp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImg)).BeginInit();
             this.ConversionPage.SuspendLayout();
+            this.Confirmation_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.HomeCapture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
@@ -123,8 +133,8 @@ namespace Hackathon_Converter
             this.USFMApp.Panel2.BackColor = System.Drawing.SystemColors.Window;
             this.USFMApp.Panel2.Controls.Add(this.ConversionPage);
             this.USFMApp.Panel2.Controls.Add(this.HomeCapture);
-            this.USFMApp.Size = new System.Drawing.Size(1074, 625);
-            this.USFMApp.SplitterDistance = 73;
+            this.USFMApp.Size = new System.Drawing.Size(1077, 615);
+            this.USFMApp.SplitterDistance = 71;
             this.USFMApp.SplitterWidth = 2;
             this.USFMApp.TabIndex = 0;
             // 
@@ -146,11 +156,11 @@ namespace Hackathon_Converter
             // LogoTitle
             // 
             this.LogoTitle.AutoSize = true;
-            this.LogoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogoTitle.Location = new System.Drawing.Point(154, 20);
             this.LogoTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LogoTitle.Name = "LogoTitle";
-            this.LogoTitle.Size = new System.Drawing.Size(88, 31);
+            this.LogoTitle.Size = new System.Drawing.Size(93, 31);
             this.LogoTitle.TabIndex = 1;
             this.LogoTitle.Text = "Matos";
             // 
@@ -168,30 +178,108 @@ namespace Hackathon_Converter
             // ConversionPage
             // 
             this.ConversionPage.BackColor = System.Drawing.SystemColors.Window;
-            this.ConversionPage.Controls.Add(this.btn_Clear);
+            this.ConversionPage.Controls.Add(this.Confirmation_Page);
+            this.ConversionPage.Controls.Add(this.btn_Remove);
             this.ConversionPage.Controls.Add(this.btn_AddFiles);
             this.ConversionPage.Controls.Add(this.HTMLtag);
             this.ConversionPage.Controls.Add(this.FileNameInput);
             this.ConversionPage.Controls.Add(this.fileDataGrid);
-            this.ConversionPage.Location = new System.Drawing.Point(2, 2);
+            this.ConversionPage.Location = new System.Drawing.Point(0, 2);
             this.ConversionPage.Margin = new System.Windows.Forms.Padding(2);
             this.ConversionPage.Name = "ConversionPage";
-            this.ConversionPage.Size = new System.Drawing.Size(1070, 533);
+            this.ConversionPage.Size = new System.Drawing.Size(1079, 548);
             this.ConversionPage.TabIndex = 4;
             this.ConversionPage.Visible = false;
             // 
-            // btn_Clear
+            // Confirmation_Page
             // 
-            this.btn_Clear.BackColor = System.Drawing.Color.White;
-            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clear.Location = new System.Drawing.Point(464, 480);
-            this.btn_Clear.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(139, 34);
-            this.btn_Clear.TabIndex = 4;
-            this.btn_Clear.Text = "Restart";
-            this.btn_Clear.UseVisualStyleBackColor = false;
-            this.btn_Clear.Click += new System.EventHandler(this.onClearListButtonClick);
+            this.Confirmation_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            this.Confirmation_Page.ColorTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(245)))), ((int)(((byte)(152)))));
+            this.Confirmation_Page.Controls.Add(this.LabelCheck);
+            this.Confirmation_Page.Controls.Add(this.Btn_NewProj);
+            this.Confirmation_Page.Controls.Add(this.LabelDesc);
+            this.Confirmation_Page.Controls.Add(this.Btn_OpenFileLocation);
+            this.Confirmation_Page.Controls.Add(this.LabelSuccess);
+            this.Confirmation_Page.Location = new System.Drawing.Point(0, 1);
+            this.Confirmation_Page.Name = "Confirmation_Page";
+            this.Confirmation_Page.Size = new System.Drawing.Size(1091, 561);
+            this.Confirmation_Page.TabIndex = 5;
+            this.Confirmation_Page.Visible = false;
+            // 
+            // LabelCheck
+            // 
+            this.LabelCheck.AutoSize = true;
+            this.LabelCheck.BackColor = System.Drawing.Color.Transparent;
+            this.LabelCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 100F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCheck.ForeColor = System.Drawing.Color.White;
+            this.LabelCheck.Location = new System.Drawing.Point(462, 63);
+            this.LabelCheck.Name = "LabelCheck";
+            this.LabelCheck.Size = new System.Drawing.Size(157, 153);
+            this.LabelCheck.TabIndex = 2;
+            this.LabelCheck.Text = "✔";
+            // 
+            // Btn_NewProj
+            // 
+            this.Btn_NewProj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(205)))), ((int)(((byte)(199)))));
+            this.Btn_NewProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_NewProj.ForeColor = System.Drawing.Color.White;
+            this.Btn_NewProj.Location = new System.Drawing.Point(390, 432);
+            this.Btn_NewProj.Name = "Btn_NewProj";
+            this.Btn_NewProj.Size = new System.Drawing.Size(302, 53);
+            this.Btn_NewProj.TabIndex = 4;
+            this.Btn_NewProj.Text = "New Project";
+            this.Btn_NewProj.UseVisualStyleBackColor = false;
+            this.Btn_NewProj.Click += new System.EventHandler(this.Btn_NewProj_Click);
+            // 
+            // LabelDesc
+            // 
+            this.LabelDesc.BackColor = System.Drawing.Color.Transparent;
+            this.LabelDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelDesc.ForeColor = System.Drawing.Color.White;
+            this.LabelDesc.Location = new System.Drawing.Point(346, 277);
+            this.LabelDesc.Name = "LabelDesc";
+            this.LabelDesc.Size = new System.Drawing.Size(413, 85);
+            this.LabelDesc.TabIndex = 0;
+            this.LabelDesc.Text = "Your project was successfully converted to HTML.";
+            this.LabelDesc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // Btn_OpenFileLocation
+            // 
+            this.Btn_OpenFileLocation.BackColor = System.Drawing.Color.White;
+            this.Btn_OpenFileLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_OpenFileLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            this.Btn_OpenFileLocation.Location = new System.Drawing.Point(390, 363);
+            this.Btn_OpenFileLocation.Name = "Btn_OpenFileLocation";
+            this.Btn_OpenFileLocation.Size = new System.Drawing.Size(302, 53);
+            this.Btn_OpenFileLocation.TabIndex = 3;
+            this.Btn_OpenFileLocation.Text = "Open File Location";
+            this.Btn_OpenFileLocation.UseVisualStyleBackColor = false;
+            this.Btn_OpenFileLocation.Click += new System.EventHandler(this.Btn_OpenFileLocation_Click);
+            // 
+            // LabelSuccess
+            // 
+            this.LabelSuccess.AutoSize = true;
+            this.LabelSuccess.BackColor = System.Drawing.Color.Transparent;
+            this.LabelSuccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelSuccess.ForeColor = System.Drawing.Color.White;
+            this.LabelSuccess.Location = new System.Drawing.Point(464, 216);
+            this.LabelSuccess.Name = "LabelSuccess";
+            this.LabelSuccess.Size = new System.Drawing.Size(155, 39);
+            this.LabelSuccess.TabIndex = 1;
+            this.LabelSuccess.Text = "Success!";
+            // 
+            // btn_Remove
+            // 
+            this.btn_Remove.BackColor = System.Drawing.Color.White;
+            this.btn_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Remove.Location = new System.Drawing.Point(464, 480);
+            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Remove.Name = "btn_Remove";
+            this.btn_Remove.Size = new System.Drawing.Size(139, 34);
+            this.btn_Remove.TabIndex = 4;
+            this.btn_Remove.Text = "Remove";
+            this.btn_Remove.UseVisualStyleBackColor = false;
+            this.btn_Remove.Click += new System.EventHandler(this.onRemoveFileButtonClick);
             // 
             // btn_AddFiles
             // 
@@ -236,7 +324,7 @@ namespace Hackathon_Converter
             this.fileDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.fileDataGrid.Location = new System.Drawing.Point(158, 85);
+            this.fileDataGrid.Location = new System.Drawing.Point(145, 85);
             this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
@@ -295,7 +383,7 @@ namespace Hackathon_Converter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 625);
+            this.ClientSize = new System.Drawing.Size(1077, 615);
             this.Controls.Add(this.USFMApp);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -308,6 +396,8 @@ namespace Hackathon_Converter
             ((System.ComponentModel.ISupportInitialize)(this.LogoImg)).EndInit();
             this.ConversionPage.ResumeLayout(false);
             this.ConversionPage.PerformLayout();
+            this.Confirmation_Page.ResumeLayout(false);
+            this.Confirmation_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.HomeCapture.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
@@ -334,9 +424,13 @@ namespace Hackathon_Converter
         private System.Windows.Forms.DataGridView fileDataGrid;
         private System.Windows.Forms.Label HTMLtag;
         private System.Windows.Forms.TextBox FileNameInput;
-        private System.Windows.Forms.Button btn_Clear;
+        private System.Windows.Forms.Button btn_Remove;
         private System.Windows.Forms.Button btn_AddFiles;
-
-        
+        private ColorGradient Confirmation_Page;
+        private System.Windows.Forms.Label LabelCheck;
+        private System.Windows.Forms.Button Btn_NewProj;
+        private System.Windows.Forms.Label LabelDesc;
+        private System.Windows.Forms.Button Btn_OpenFileLocation;
+        private System.Windows.Forms.Label LabelSuccess;
     }
 }

@@ -15,6 +15,7 @@ namespace Hackathon_Converter
     {
         public MainForm()
         {
+            InitCustomLabelFont();
             InitializeComponent();
 
             fileDataGrid.ColumnCount = 1;
@@ -99,8 +100,8 @@ namespace Hackathon_Converter
 
             
             // Added ULB License and Page Number
-            renderer.InsertFirstPage(GetLicenseInfo());
-            renderer.InsertFooters(GetFooterInfo());
+            renderer.FrontMatterHTML = GetLicenseInfo();
+            renderer.InsertedFooter = GetFooterInfo();
 
             var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
             foreach (DataGridViewRow row in fileDataGrid.Rows)
@@ -134,6 +135,7 @@ namespace Hackathon_Converter
             //btn_AddOnlyFile.Enabled = true;
             btn_AddFiles.Enabled = true;
             fileDataGrid.Enabled = true;
+            Confirmation_Page.Visible = true;
         }
         private string GetLicenseInfo()
         {
@@ -315,6 +317,20 @@ namespace Hackathon_Converter
             this.ConversionPage.Visible = true;
             this.Btn_Convert.Enabled = true;
             this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+        }
+
+        private void Btn_NewProj_Click(object sender, EventArgs e)
+        {
+            ConversionPage.Visible = false;
+            Confirmation_Page.Visible = false;
+            Btn_Convert.Enabled = false;
+            Btn_Convert.BackColor = System.Drawing.Color.DarkGray;
+            fileDataGrid.Rows.Clear();
+        }
+
+        private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

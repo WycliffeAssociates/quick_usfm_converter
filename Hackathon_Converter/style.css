@@ -73,8 +73,8 @@
 .rtl-direct{
     direction:rtl;
 }
-.footnote-quote{
-    font-style:italic;
+.footnote-alternate-translation {
+    font-style: italic;
 }
 @page ColumnOne{
     size:8.5in 11.0in;
