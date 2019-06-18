@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hackathon_logo_inverted_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -121,14 +124,29 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Hackathon Logo.png" />
-    <None Include="Hackathon Logo%402x.png" />
+    <Content Include="hackathon_logo_inverted_icon.ico" />
     <Content Include="insert_ULB_License.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\undraw_upload_87y9%402x.png" />
     <None Include="Resources\Hackathon Logo.png" />
     <None Include="Resources\Hackathon Logo%402x.png" />
+    <None Include="Resources\Group 88.png" />
+    <None Include="Resources\Group 89.png" />
+    <None Include="Resources\Group 123.png" />
+    <None Include="Resources\Group 122%402x.png" />
+    <None Include="Resources\Group 122.png" />
+    <None Include="Resources\format-columns-1.png" />
+    <None Include="Resources\format-columns.png" />
+    <None Include="Resources\Group 119.png" />
+    <None Include="Resources\Group 118.png" />
+    <None Include="Resources\Group 115.png" />
+    <None Include="Resources\Group 116.png" />
+    <None Include="Resources\format-page-break.png" />
+    <None Include="Resources\left-arrowpng.png" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\arrow-left-c.png" />
+    <None Include="Resources\arrow-left-c1.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -56,9 +56,9 @@ namespace Hackathon_Converter
                 }
             }
 
-            this.ConversionPage.Visible = true;
+            this.Conversion_Page.Visible = true;
             this.Btn_Convert.Enabled = true;
-            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            
         }
 
         private void OnConvertButtonClick(object sender, EventArgs e)
@@ -78,67 +78,68 @@ namespace Hackathon_Converter
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
-                return;
+                Success_Page.Visible = false;
+                Conversion_Page.Visible = false;
+                Format_Page.Visible = false;
+                Error_Page.Visible = true;
+                
             }
-            if ((htmlStream = saveFileDialog.OpenFile()) == null)
+            else if ((htmlStream = saveFileDialog.OpenFile()) == null)
             {
-                return;
+                Success_Page.Visible = false;
+                Conversion_Page.Visible = false;
+                Format_Page.Visible = false;
+                Error_Page.Visible = true;
             }
+            else
+            { 
+                btn_AddFiles.Enabled = false;
+                fileDataGrid.Enabled = false;
 
-            //BtnConvert.Enabled = false;
-            //Format_Options.Enabled = false;
-            //btnRemoveFile.Enabled = false;
-            //btn_ClearList.Enabled = false;
-            //btn_AddOnlyFile.Enabled = false;
-            btn_AddFiles.Enabled = false;
-            fileDataGrid.Enabled = false;
+                // Does not parse through section headers yet
+                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
-            // Does not parse through section headers yet
-            var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
-
-            //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
-            var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
+                //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
+                var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
 
             
-            // Added ULB License and Page Number
-            renderer.FrontMatterHTML = GetLicenseInfo();
-            renderer.InsertedFooter = GetFooterInfo();
+                // Added ULB License and Page Number
+                renderer.FrontMatterHTML = GetLicenseInfo();
+                renderer.InsertedFooter = GetFooterInfo();
 
-            var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
-            foreach (DataGridViewRow row in fileDataGrid.Rows)
-            {
-                var cell = row.Cells[0];
-                if (cell.Value == null)
+                var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
+                foreach (DataGridViewRow row in fileDataGrid.Rows)
                 {
-                    continue;
+                    var cell = row.Cells[0];
+                    if (cell.Value == null)
+                    {
+                        continue;
+                    }
+                    var filename = cell.Value.ToString();
+                    var text = File.ReadAllText(filename);
+                    usfm.Insert(parser.ParseFromString(text));
                 }
-                var filename = cell.Value.ToString();
-                var text = File.ReadAllText(filename);
-                usfm.Insert(parser.ParseFromString(text));
-            }
-            var html = renderer.Render(usfm);
-            var bytes = Encoding.UTF8.GetBytes(html);
-            htmlStream.Write(bytes, 0, bytes.Length);
-            htmlStream.Close();
+                var html = renderer.Render(usfm);
+                var bytes = Encoding.UTF8.GetBytes(html);
+                htmlStream.Write(bytes, 0, bytes.Length);
+                htmlStream.Close();
 
-            var htmlFilename = saveFileDialog.FileName;
-            var dirname = Path.GetDirectoryName(htmlFilename);
-            var cssFilename = Path.Combine(dirname, "style.css");
-            if (File.Exists(cssFilename) == false)
-            {
-                File.Copy("style.css", cssFilename);
-            }
+                var htmlFilename = saveFileDialog.FileName;
+                var dirname = Path.GetDirectoryName(htmlFilename);
+                var cssFilename = Path.Combine(dirname, "style.css");
+                if (File.Exists(cssFilename) == false)
+                {
+                    File.Copy("style.css", cssFilename);
+                }
 
-            //BtnConvert.Enabled = true;
-            //Format_Options.Enabled = true;
-            //btnRemoveFile.Enabled = true;
-            //btn_ClearList.Enabled = true;
-            //btn_AddOnlyFile.Enabled = true;
-            btn_AddFiles.Enabled = true;
-            fileDataGrid.Enabled = true;
-            Confirmation_Page.Visible = true;
-            Btn_Convert.Enabled = false;
-            Btn_Convert.BackColor = System.Drawing.Color.DarkGray;
+                btn_AddFiles.Enabled = true;
+                fileDataGrid.Enabled = true;
+
+                Success_Page.Visible = true;
+                Conversion_Page.Visible = false;
+                Format_Page.Visible = false;
+                Error_Page.Visible = false;
+            }
         }
         private string GetLicenseInfo()
         {
@@ -213,9 +214,7 @@ namespace Hackathon_Converter
             {
                 fileDataGrid.Rows.Add(new String[] { filePath });
             }
-            this.ConversionPage.Visible = true;
-            this.Btn_Convert.Enabled = true;
-            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
+            
 
         }
         //private void Single_space_CheckedChanged(object sender,EventArgs e)
@@ -307,17 +306,14 @@ namespace Hackathon_Converter
         { 
             if(fileDataGrid.Rows.Count > 1)
             {
-                //foreach(DataGridViewCell CellObject in fileDataGrid.SelectedCells)
-                //{
-                //    if (CellObject.RowIndex != fileDataGrid.Rows.Count)
-                //        fileDataGrid.Rows.Remove(CellObject.OwningRow);
-                //}
+
                 DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
                 for (int fileIndex = 0;fileIndex< SelectedFiles.Count && SelectedFiles[fileIndex].RowIndex != fileDataGrid.RowCount-1; fileIndex++)
                 {
                     fileDataGrid.Rows.Remove(SelectedFiles[fileIndex].OwningRow);
                 }
             }
+
             int numRemove = 0;
             if (fileDataGrid.Rows.Count > 1)
                 numRemove = 1;
@@ -327,17 +323,12 @@ namespace Hackathon_Converter
 
         }
 
-        private void Btn_BrowseFiles_Click(object sender, EventArgs e)
-        {
-            this.ConversionPage.Visible = true;
-            this.Btn_Convert.Enabled = true;
-            this.Btn_Convert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(174)))), ((int)(((byte)(234)))));
-        }
-
         private void Btn_NewProj_Click(object sender, EventArgs e)
         {
-            ConversionPage.Visible = false;
-            Confirmation_Page.Visible = false;
+            Conversion_Page.Visible = false;
+            Success_Page.Visible = false;
+            Format_Page.Visible = false;
+            Error_Page.Visible = false;
             fileDataGrid.Rows.Clear();
         }
 
@@ -348,8 +339,19 @@ namespace Hackathon_Converter
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
             DataGridViewElementStates state = e.StateChanged;
-            int numFilesRemove = fileDataGrid.SelectedCells.Count;
+            DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
+            int numFilesRemove = SelectedFiles.Count;
+            //if (SelectedFiles.Contains(fileDataGrid.Rows[fileDataGrid.RowCount - 1].Cells[1]))
+            //    numFilesRemove--;
             btn_Remove.Text = $"Remove ( {numFilesRemove} )";
+        }
+
+        private void Btn_Format_Click(object sender, EventArgs e)
+        {
+            Conversion_Page.Visible = false;
+            Success_Page.Visible = false;
+            Format_Page.Visible = true;
+            Error_Page.Visible = false;
         }
     }
 }
