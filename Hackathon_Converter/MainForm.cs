@@ -65,12 +65,17 @@ namespace Hackathon_Converter
         {
             Stream htmlStream;
 
-            
+            StringBuilder fileName = new StringBuilder();
+            fileName.Append(FileNameInput.Text.Trim());
+            if (fileName.ToString().Length > 0)
+                fileName.Append(".html");
+            else
+                fileName.Append("out.html");
             
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                FileName = "out.html",
+                FileName = fileName.ToString(),
                 Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*",
                 FilterIndex = 1,
                 RestoreDirectory = false
