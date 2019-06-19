@@ -56,7 +56,7 @@ namespace Hackathon_Converter
                 }
             }
 
-            this.Conversion_Page.Visible = true;
+            Show_Conversion_Page();
             this.Btn_Convert.Enabled = true;
             
         }
@@ -78,23 +78,19 @@ namespace Hackathon_Converter
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
-                Success_Page.Visible = false;
-                Conversion_Page.Visible = false;
-                Format_Page.Visible = false;
-                Error_Page.Visible = true;
+                return;
                 
             }
-            else if ((htmlStream = saveFileDialog.OpenFile()) == null)
+            if ((htmlStream = saveFileDialog.OpenFile()) == null)
             {
-                Success_Page.Visible = false;
-                Conversion_Page.Visible = false;
-                Format_Page.Visible = false;
-                Error_Page.Visible = true;
+                Show_Error_Page();
             }
             else
             { 
                 btn_AddFiles.Enabled = false;
                 fileDataGrid.Enabled = false;
+                //Show_Loading_Page();
+
 
                 // Does not parse through section headers yet
                 var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
@@ -108,6 +104,10 @@ namespace Hackathon_Converter
                 renderer.InsertedFooter = GetFooterInfo();
 
                 var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
+
+                //var progress = fileDataGrid.RowCount-1;
+                //var progressStep = 0;
+
                 foreach (DataGridViewRow row in fileDataGrid.Rows)
                 {
                     var cell = row.Cells[0];
@@ -118,7 +118,11 @@ namespace Hackathon_Converter
                     var filename = cell.Value.ToString();
                     var text = File.ReadAllText(filename);
                     usfm.Insert(parser.ParseFromString(text));
+
+                    //progressStep++;
+                    //LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
+
                 var html = renderer.Render(usfm);
                 var bytes = Encoding.UTF8.GetBytes(html);
                 htmlStream.Write(bytes, 0, bytes.Length);
@@ -134,11 +138,8 @@ namespace Hackathon_Converter
 
                 btn_AddFiles.Enabled = true;
                 fileDataGrid.Enabled = true;
-
-                Success_Page.Visible = true;
-                Conversion_Page.Visible = false;
-                Format_Page.Visible = false;
-                Error_Page.Visible = false;
+                //LoadingBar.Value = 0;
+                Show_Success_Page();
             }
         }
         private string GetLicenseInfo()
@@ -217,90 +218,6 @@ namespace Hackathon_Converter
             
 
         }
-        //private void Single_space_CheckedChanged(object sender,EventArgs e)
-        //{
-        //    //line-height: 1 ;
-        //    if (Single_Space.Checked)
-        //    {
-        //        // Keep track of the selected RadioButton by saving a reference
-        //        // to it.
-        //        isSingleSpaced = true;
-        //    }
-
-        //}
-        //private void Double_space_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    //line-height: 2 ;
-        //    if (Double_Space.Checked)
-        //    {
-        //        isSingleSpaced = false;
-        //    }
-
-        //}
-        //private void Single_col_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    /* Column count */
-        //    //columns: auto;
-        //    //columns: 1;
-        //    if (Single_col.Checked)
-        //    {
-        //        hasOneColumn = true;
-        //    }
-
-        //}
-        //private void Double_col_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    /* Column count */
-        //    //columns: auto;
-        //    //columns: 2;
-        //    if (Double_Col.Checked)
-        //    {
-        //        hasOneColumn = false;
-        //    }
-
-        //}
-        //private void Direct_L2R_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (directL2R.Checked)
-        //    {
-
-        //        isL2RDirection = true;
-        //    }
-        //}
-        //private void Direct_R2L_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (directR2L.Checked)
-        //    {
-
-        //        isL2RDirection = false;
-        //    }
-        //}
-
-        //private void isJustified_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (isJustified.Checked)
-        //    {
-
-        //        isTextJustified = true;
-        //    }
-        //    else
-        //    {
-        //        isTextJustified = false;
-        //    }
-        //}
-
-        //private void chapSeparate_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (chapSeparate.Checked)
-        //    {
-
-        //        willSeparateChap = true;
-        //    }
-        //    else
-        //    {
-        //        willSeparateChap = false;
-        //    }
-        //}
 
         private void onRemoveFileButtonClick(object sender, EventArgs e)
         { 
@@ -325,33 +242,236 @@ namespace Hackathon_Converter
 
         private void Btn_NewProj_Click(object sender, EventArgs e)
         {
-            Conversion_Page.Visible = false;
-            Success_Page.Visible = false;
-            Format_Page.Visible = false;
-            Error_Page.Visible = false;
+            Show_Home_Page();
             fileDataGrid.Rows.Clear();
         }
 
         private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe",@"c:\does_not_exists");
+            Process.Start("explorer.exe");
         }
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
+            
             DataGridViewElementStates state = e.StateChanged;
             DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
+
+            if (SelectedFiles.Count >= 1)
+                btn_Remove.Visible = true;
+            else
+                btn_Remove.Visible = false;
+
             int numFilesRemove = SelectedFiles.Count;
             //if (SelectedFiles.Contains(fileDataGrid.Rows[fileDataGrid.RowCount - 1].Cells[1]))
             //    numFilesRemove--;
-            btn_Remove.Text = $"Remove ( {numFilesRemove} )";
+            btn_Remove.Text = $"Delete ({numFilesRemove}) Files";
         }
 
         private void Btn_Format_Click(object sender, EventArgs e)
         {
-            Conversion_Page.Visible = false;
+            Show_Format_Page();
+        }
+
+        private void Btn_Spaced_Click(object sender, EventArgs e)
+        {
+            // Pseudo Radio Button Styling
+            isSingleSpaced = !isSingleSpaced;
+            if (isSingleSpaced)
+            {
+                this.Btn_SingleSpaced.BackColor = System.Drawing.Color.White;
+                this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+            else
+            {
+                this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.White;
+                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_SingleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+        }
+
+        private void Btn_Col_Click(object sender, EventArgs e)
+        {
+            hasOneColumn = !hasOneColumn;
+            if (hasOneColumn)
+            {
+                this.Btn_OneCol.BackColor = System.Drawing.Color.White;
+                this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_TwoCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+            else
+            {
+                this.Btn_TwoCol.BackColor = System.Drawing.Color.White;
+                this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_OneCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+        }
+
+        private void Btn_Direction_Click(object sender, EventArgs e)
+        {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
+            isL2RDirection = !isL2RDirection;
+            if (isL2RDirection)
+            {
+                this.Btn_LTR.BackColor = System.Drawing.Color.White;
+                this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_RTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                // Switch Alignment
+                this.Btn_TextAlignDefault.Text = "   Left Aligned";
+                this.Btn_TextAlignDefault.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextAlignDefault.Image")));
+                this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            }
+            else
+            {
+                this.Btn_RTL.BackColor = System.Drawing.Color.White;
+                this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_LTR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                // Switch Alignment
+                this.Btn_TextAlignDefault.Text = "   Right Aligned";
+                this.Btn_TextAlignDefault.Image = global::Hackathon_Converter.Properties.Resources.Text_Align_R;
+                this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
+            }
+        }
+        private void Btn_TextAlign_Click(object sender, EventArgs e)
+        {
+            isTextJustified = !isTextJustified;
+            if (isTextJustified)
+            {
+                this.Btn_TextJustify.BackColor = System.Drawing.Color.White;
+                this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+            else
+            {
+                this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.White;
+                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_TextJustify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+        }
+        private void Btn_Chap_Click(object sender, EventArgs e)
+        {
+            willSeparateChap = !willSeparateChap;
+            if (willSeparateChap)
+            {
+                this.Btn_ChapBreak.BackColor = System.Drawing.Color.White;
+                this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_ChapComb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+            else
+            {
+                this.Btn_ChapComb.BackColor = System.Drawing.Color.White;
+                this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+
+                // Grayed Out Button
+                this.Btn_ChapBreak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+                this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            }
+        }
+
+        private void Btn_FormatBack_Click(object sender, EventArgs e)
+        {
+            Show_Conversion_Page();
+        }
+
+        private void Show_Home_Page()
+        {
             Success_Page.Visible = false;
+            Conversion_Page.Visible = false;
+            Loading_Page.Visible = false;
+            Format_Page.Visible = false;
+            Error_Page.Visible = false;
+        }
+        private void Show_Conversion_Page()
+        {
+            Success_Page.Visible = false;
+            Conversion_Page.Visible = true;
+            Loading_Page.Visible = false;
+            Format_Page.Visible = false;
+            Error_Page.Visible = false;
+        }
+        private void Show_Success_Page()
+        {
+            Success_Page.Visible = true;
+            Conversion_Page.Visible = false;
+            Loading_Page.Visible = false;
+            Format_Page.Visible = false;
+            Error_Page.Visible = false;
+        }
+        private void Show_Format_Page()
+        {
+            Success_Page.Visible = false;
+            Conversion_Page.Visible = false;
+            Loading_Page.Visible = false;
             Format_Page.Visible = true;
             Error_Page.Visible = false;
         }
+        private void Show_Error_Page()
+        {
+            Success_Page.Visible = false;
+            Conversion_Page.Visible = false;
+            Loading_Page.Visible = false;
+            Format_Page.Visible = false;
+            Error_Page.Visible = true;
+        }
+        private void Show_Loading_Page()
+        {
+            Success_Page.Visible = false;
+            Conversion_Page.Visible = false;
+            Loading_Page.Visible = true;
+            Format_Page.Visible = false;
+            Error_Page.Visible = false;
+        }
+
     }
+
 }

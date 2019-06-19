@@ -90,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,6 +148,13 @@
     <None Include="Resources\left-arrow.png" />
     <None Include="Resources\arrow-left-c.png" />
     <None Include="Resources\arrow-left-c1.png" />
+    <None Include="Resources\text_right_align_format.png" />
+    <None Include="Resources\Mask Group 1.png" />
+    <None Include="Resources\Hackathon Logo Inverted.png" />
+    <None Include="Resources\Mask Group 11.png" />
+    <None Include="Resources\Group 69.png" />
+    <None Include="Resources\Group 70.png" />
+    <None Include="Resources\Group 127.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -94,16 +94,21 @@ namespace Hackathon_Converter
             this.ProjectLabel = new System.Windows.Forms.Label();
             this.HomeCapture = new System.Windows.Forms.Panel();
             this.Btn_BrowseFiles = new System.Windows.Forms.Button();
-            this.HomeImg = new System.Windows.Forms.PictureBox();
             this.HomeInstruct = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Format_Page = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Btn_FormatBack = new System.Windows.Forms.Button();
             this.Btn_Convert = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Btn_ChapComb = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Conversion_Page = new System.Windows.Forms.SplitContainer();
+            this.Btn_FormatBack = new System.Windows.Forms.Button();
             this.Btn_ChapBreak = new System.Windows.Forms.Button();
             this.Btn_TextJustify = new System.Windows.Forms.Button();
             this.Btn_TextAlignDefault = new System.Windows.Forms.Button();
@@ -113,28 +118,28 @@ namespace Hackathon_Converter
             this.Btn_OneCol = new System.Windows.Forms.Button();
             this.Btn_DoubleSpaced = new System.Windows.Forms.Button();
             this.Btn_SingleSpaced = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Loading_Page = new System.Windows.Forms.Panel();
+            this.LoadingBar = new System.Windows.Forms.ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.HomeImg = new System.Windows.Forms.PictureBox();
+            this.Success_Page = new Hackathon_Converter.ColorGradient();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.Error_Page = new Hackathon_Converter.ColorGradient();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_RestartProj = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.Success_Page = new Hackathon_Converter.ColorGradient();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Btn_NewProj = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Btn_OpenFile = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Conversion_Page = new System.Windows.Forms.SplitContainer();
+            this.Btn_TextAlignRight = new System.Windows.Forms.Button();
             this.ConversionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
             this.ConversionBanner.SuspendLayout();
             this.HomeCapture.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Format_Page)).BeginInit();
             this.Format_Page.Panel1.SuspendLayout();
@@ -142,14 +147,17 @@ namespace Hackathon_Converter
             this.Format_Page.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.Error_Page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.Success_Page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).BeginInit();
             this.Conversion_Page.Panel1.SuspendLayout();
             this.Conversion_Page.Panel2.SuspendLayout();
             this.Conversion_Page.SuspendLayout();
+            this.Loading_Page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
+            this.Success_Page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.Error_Page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ConversionPanel
@@ -303,17 +311,6 @@ namespace Hackathon_Converter
             this.Btn_BrowseFiles.UseVisualStyleBackColor = false;
             this.Btn_BrowseFiles.Click += new System.EventHandler(this.OnAddFilesButtonClick);
             // 
-            // HomeImg
-            // 
-            this.HomeImg.Image = global::Hackathon_Converter.Properties.Resources.undraw_upload_87y9_2x;
-            this.HomeImg.Location = new System.Drawing.Point(159, 18);
-            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
-            this.HomeImg.Name = "HomeImg";
-            this.HomeImg.Size = new System.Drawing.Size(520, 389);
-            this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.HomeImg.TabIndex = 0;
-            this.HomeImg.TabStop = false;
-            // 
             // HomeInstruct
             // 
             this.HomeInstruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -328,8 +325,9 @@ namespace Hackathon_Converter
             // panel1
             // 
             this.panel1.Controls.Add(this.Format_Page);
-            this.panel1.Controls.Add(this.Error_Page);
+            this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Success_Page);
+            this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
@@ -367,23 +365,6 @@ namespace Hackathon_Converter
             this.panel2.Size = new System.Drawing.Size(1085, 95);
             this.panel2.TabIndex = 6;
             // 
-            // Btn_FormatBack
-            // 
-            this.Btn_FormatBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
-            this.Btn_FormatBack.FlatAppearance.BorderSize = 0;
-            this.Btn_FormatBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_FormatBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_FormatBack.ForeColor = System.Drawing.Color.White;
-            this.Btn_FormatBack.Image = global::Hackathon_Converter.Properties.Resources.BackArrow;
-            this.Btn_FormatBack.Location = new System.Drawing.Point(660, 29);
-            this.Btn_FormatBack.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_FormatBack.Name = "Btn_FormatBack";
-            this.Btn_FormatBack.Size = new System.Drawing.Size(123, 41);
-            this.Btn_FormatBack.TabIndex = 2;
-            this.Btn_FormatBack.Text = "Back";
-            this.Btn_FormatBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_FormatBack.UseVisualStyleBackColor = false;
-            // 
             // Btn_Convert
             // 
             this.Btn_Convert.BackColor = System.Drawing.Color.White;
@@ -410,6 +391,7 @@ namespace Hackathon_Converter
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
+            this.panel3.Controls.Add(this.Btn_TextAlignRight);
             this.panel3.Controls.Add(this.Btn_ChapComb);
             this.panel3.Controls.Add(this.Btn_ChapBreak);
             this.panel3.Controls.Add(this.Btn_TextJustify);
@@ -434,161 +416,19 @@ namespace Hackathon_Converter
             // 
             // Btn_ChapComb
             // 
-            this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_ChapComb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_ChapComb.FlatAppearance.BorderSize = 2;
             this.Btn_ChapComb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ChapComb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_ChapComb.Location = new System.Drawing.Point(520, 418);
+            this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_ChapComb.Location = new System.Drawing.Point(508, 419);
             this.Btn_ChapComb.Name = "Btn_ChapComb";
             this.Btn_ChapComb.Size = new System.Drawing.Size(213, 39);
             this.Btn_ChapComb.TabIndex = 24;
             this.Btn_ChapComb.Text = "Chapter Combine";
-            this.Btn_ChapComb.UseVisualStyleBackColor = true;
-            // 
-            // Btn_ChapBreak
-            // 
-            this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_ChapBreak.FlatAppearance.BorderSize = 2;
-            this.Btn_ChapBreak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ChapBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_ChapBreak.Image = global::Hackathon_Converter.Properties.Resources.Chapter_PageBreak;
-            this.Btn_ChapBreak.Location = new System.Drawing.Point(287, 418);
-            this.Btn_ChapBreak.Name = "Btn_ChapBreak";
-            this.Btn_ChapBreak.Size = new System.Drawing.Size(213, 39);
-            this.Btn_ChapBreak.TabIndex = 23;
-            this.Btn_ChapBreak.Text = "   Chapter Break";
-            this.Btn_ChapBreak.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_ChapBreak.UseVisualStyleBackColor = true;
-            // 
-            // Btn_TextJustify
-            // 
-            this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TextJustify.FlatAppearance.BorderSize = 2;
-            this.Btn_TextJustify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_TextJustify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TextJustify.Image = global::Hackathon_Converter.Properties.Resources.Test_Justify;
-            this.Btn_TextJustify.Location = new System.Drawing.Point(520, 324);
-            this.Btn_TextJustify.Name = "Btn_TextJustify";
-            this.Btn_TextJustify.Size = new System.Drawing.Size(213, 39);
-            this.Btn_TextJustify.TabIndex = 22;
-            this.Btn_TextJustify.Text = "   Justified";
-            this.Btn_TextJustify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_TextJustify.UseVisualStyleBackColor = true;
-            // 
-            // Btn_TextAlignDefault
-            // 
-            this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TextAlignDefault.FlatAppearance.BorderSize = 2;
-            this.Btn_TextAlignDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_TextAlignDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TextAlignDefault.Image = global::Hackathon_Converter.Properties.Resources.Text_Align;
-            this.Btn_TextAlignDefault.Location = new System.Drawing.Point(287, 324);
-            this.Btn_TextAlignDefault.Name = "Btn_TextAlignDefault";
-            this.Btn_TextAlignDefault.Size = new System.Drawing.Size(213, 39);
-            this.Btn_TextAlignDefault.TabIndex = 21;
-            this.Btn_TextAlignDefault.Text = "   Left Aligned";
-            this.Btn_TextAlignDefault.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_TextAlignDefault.UseVisualStyleBackColor = true;
-            // 
-            // Btn_RTL
-            // 
-            this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_RTL.FlatAppearance.BorderSize = 2;
-            this.Btn_RTL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_RTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_RTL.Image = global::Hackathon_Converter.Properties.Resources.Right_Left;
-            this.Btn_RTL.Location = new System.Drawing.Point(520, 232);
-            this.Btn_RTL.Name = "Btn_RTL";
-            this.Btn_RTL.Size = new System.Drawing.Size(213, 39);
-            this.Btn_RTL.TabIndex = 20;
-            this.Btn_RTL.Text = "   Right to Left";
-            this.Btn_RTL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_RTL.UseVisualStyleBackColor = true;
-            // 
-            // Btn_LTR
-            // 
-            this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_LTR.FlatAppearance.BorderSize = 2;
-            this.Btn_LTR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_LTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_LTR.Image = global::Hackathon_Converter.Properties.Resources.Left_Right;
-            this.Btn_LTR.Location = new System.Drawing.Point(287, 232);
-            this.Btn_LTR.Name = "Btn_LTR";
-            this.Btn_LTR.Size = new System.Drawing.Size(213, 39);
-            this.Btn_LTR.TabIndex = 19;
-            this.Btn_LTR.Text = "   Left to Right";
-            this.Btn_LTR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_LTR.UseVisualStyleBackColor = true;
-            // 
-            // Btn_TwoCol
-            // 
-            this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TwoCol.FlatAppearance.BorderSize = 2;
-            this.Btn_TwoCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_TwoCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TwoCol.Image = global::Hackathon_Converter.Properties.Resources.TwoColumns;
-            this.Btn_TwoCol.Location = new System.Drawing.Point(520, 144);
-            this.Btn_TwoCol.Name = "Btn_TwoCol";
-            this.Btn_TwoCol.Size = new System.Drawing.Size(213, 39);
-            this.Btn_TwoCol.TabIndex = 18;
-            this.Btn_TwoCol.Text = "   Two Columns";
-            this.Btn_TwoCol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_TwoCol.UseVisualStyleBackColor = true;
-            // 
-            // Btn_OneCol
-            // 
-            this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_OneCol.FlatAppearance.BorderSize = 2;
-            this.Btn_OneCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_OneCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_OneCol.Image = global::Hackathon_Converter.Properties.Resources.OneColumn;
-            this.Btn_OneCol.Location = new System.Drawing.Point(287, 144);
-            this.Btn_OneCol.Name = "Btn_OneCol";
-            this.Btn_OneCol.Size = new System.Drawing.Size(213, 39);
-            this.Btn_OneCol.TabIndex = 17;
-            this.Btn_OneCol.Text = "   One Column";
-            this.Btn_OneCol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_OneCol.UseVisualStyleBackColor = true;
-            // 
-            // Btn_DoubleSpaced
-            // 
-            this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_DoubleSpaced.FlatAppearance.BorderSize = 2;
-            this.Btn_DoubleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_DoubleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_DoubleSpaced.Image = global::Hackathon_Converter.Properties.Resources.Double_Spaced;
-            this.Btn_DoubleSpaced.Location = new System.Drawing.Point(520, 55);
-            this.Btn_DoubleSpaced.Name = "Btn_DoubleSpaced";
-            this.Btn_DoubleSpaced.Size = new System.Drawing.Size(213, 39);
-            this.Btn_DoubleSpaced.TabIndex = 16;
-            this.Btn_DoubleSpaced.Text = "   Double Space";
-            this.Btn_DoubleSpaced.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_DoubleSpaced.UseVisualStyleBackColor = true;
-            // 
-            // Btn_SingleSpaced
-            // 
-            this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_SingleSpaced.FlatAppearance.BorderSize = 2;
-            this.Btn_SingleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_SingleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_SingleSpaced.Image = global::Hackathon_Converter.Properties.Resources.Single_Spaced;
-            this.Btn_SingleSpaced.Location = new System.Drawing.Point(287, 55);
-            this.Btn_SingleSpaced.Name = "Btn_SingleSpaced";
-            this.Btn_SingleSpaced.Size = new System.Drawing.Size(213, 39);
-            this.Btn_SingleSpaced.TabIndex = 15;
-            this.Btn_SingleSpaced.Text = "   Single Space";
-            this.Btn_SingleSpaced.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_SingleSpaced.UseVisualStyleBackColor = true;
+            this.Btn_ChapComb.UseVisualStyleBackColor = false;
+            this.Btn_ChapComb.Click += new System.EventHandler(this.Btn_Chap_Click);
             // 
             // label12
             // 
@@ -635,6 +475,347 @@ namespace Hackathon_Converter
             this.label3.TabIndex = 9;
             this.label3.Text = "Line Spacing";
             // 
+            // Conversion_Page
+            // 
+            this.Conversion_Page.Location = new System.Drawing.Point(0, 0);
+            this.Conversion_Page.Name = "Conversion_Page";
+            this.Conversion_Page.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // Conversion_Page.Panel1
+            // 
+            this.Conversion_Page.Panel1.Controls.Add(this.ConversionBanner);
+            // 
+            // Conversion_Page.Panel2
+            // 
+            this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
+            this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
+            this.Conversion_Page.SplitterDistance = 95;
+            this.Conversion_Page.TabIndex = 5;
+            this.Conversion_Page.Visible = false;
+            // 
+            // Btn_FormatBack
+            // 
+            this.Btn_FormatBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
+            this.Btn_FormatBack.FlatAppearance.BorderSize = 0;
+            this.Btn_FormatBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_FormatBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_FormatBack.ForeColor = System.Drawing.Color.White;
+            this.Btn_FormatBack.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FormatBack.Image")));
+            this.Btn_FormatBack.Location = new System.Drawing.Point(660, 29);
+            this.Btn_FormatBack.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_FormatBack.Name = "Btn_FormatBack";
+            this.Btn_FormatBack.Size = new System.Drawing.Size(123, 41);
+            this.Btn_FormatBack.TabIndex = 2;
+            this.Btn_FormatBack.Text = "Back";
+            this.Btn_FormatBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_FormatBack.UseVisualStyleBackColor = false;
+            this.Btn_FormatBack.Click += new System.EventHandler(this.Btn_FormatBack_Click);
+            // 
+            // Btn_ChapBreak
+            // 
+            this.Btn_ChapBreak.BackColor = System.Drawing.Color.White;
+            this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_ChapBreak.FlatAppearance.BorderSize = 2;
+            this.Btn_ChapBreak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ChapBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_ChapBreak.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ChapBreak.Image")));
+            this.Btn_ChapBreak.Location = new System.Drawing.Point(299, 419);
+            this.Btn_ChapBreak.Name = "Btn_ChapBreak";
+            this.Btn_ChapBreak.Size = new System.Drawing.Size(213, 39);
+            this.Btn_ChapBreak.TabIndex = 23;
+            this.Btn_ChapBreak.Text = "   Chapter Break";
+            this.Btn_ChapBreak.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_ChapBreak.UseVisualStyleBackColor = false;
+            this.Btn_ChapBreak.Click += new System.EventHandler(this.Btn_Chap_Click);
+            // 
+            // Btn_TextJustify
+            // 
+            this.Btn_TextJustify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TextJustify.FlatAppearance.BorderSize = 2;
+            this.Btn_TextJustify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TextJustify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TextJustify.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextJustify.Image")));
+            this.Btn_TextJustify.Location = new System.Drawing.Point(506, 324);
+            this.Btn_TextJustify.Name = "Btn_TextJustify";
+            this.Btn_TextJustify.Size = new System.Drawing.Size(213, 39);
+            this.Btn_TextJustify.TabIndex = 22;
+            this.Btn_TextJustify.Text = "   Justified";
+            this.Btn_TextJustify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_TextJustify.UseVisualStyleBackColor = false;
+            this.Btn_TextJustify.Click += new System.EventHandler(this.Btn_TextAlign_Click);
+            // 
+            // Btn_TextAlignDefault
+            // 
+            this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.White;
+            this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignDefault.FlatAppearance.BorderSize = 2;
+            this.Btn_TextAlignDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TextAlignDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignDefault.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextAlignDefault.Image")));
+            this.Btn_TextAlignDefault.Location = new System.Drawing.Point(299, 324);
+            this.Btn_TextAlignDefault.Name = "Btn_TextAlignDefault";
+            this.Btn_TextAlignDefault.Size = new System.Drawing.Size(213, 39);
+            this.Btn_TextAlignDefault.TabIndex = 21;
+            this.Btn_TextAlignDefault.Text = "   Left Aligned";
+            this.Btn_TextAlignDefault.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_TextAlignDefault.UseVisualStyleBackColor = false;
+            this.Btn_TextAlignDefault.Click += new System.EventHandler(this.Btn_TextAlign_Click);
+            // 
+            // Btn_RTL
+            // 
+            this.Btn_RTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_RTL.FlatAppearance.BorderSize = 2;
+            this.Btn_RTL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_RTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_RTL.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RTL.Image")));
+            this.Btn_RTL.Location = new System.Drawing.Point(506, 235);
+            this.Btn_RTL.Name = "Btn_RTL";
+            this.Btn_RTL.Size = new System.Drawing.Size(213, 39);
+            this.Btn_RTL.TabIndex = 20;
+            this.Btn_RTL.Text = "   Right to Left";
+            this.Btn_RTL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_RTL.UseVisualStyleBackColor = false;
+            this.Btn_RTL.Click += new System.EventHandler(this.Btn_Direction_Click);
+            // 
+            // Btn_LTR
+            // 
+            this.Btn_LTR.BackColor = System.Drawing.Color.White;
+            this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_LTR.FlatAppearance.BorderSize = 2;
+            this.Btn_LTR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_LTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_LTR.Image = ((System.Drawing.Image)(resources.GetObject("Btn_LTR.Image")));
+            this.Btn_LTR.Location = new System.Drawing.Point(299, 235);
+            this.Btn_LTR.Name = "Btn_LTR";
+            this.Btn_LTR.Size = new System.Drawing.Size(213, 39);
+            this.Btn_LTR.TabIndex = 19;
+            this.Btn_LTR.Text = "   Left to Right";
+            this.Btn_LTR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_LTR.UseVisualStyleBackColor = false;
+            this.Btn_LTR.Click += new System.EventHandler(this.Btn_Direction_Click);
+            // 
+            // Btn_TwoCol
+            // 
+            this.Btn_TwoCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TwoCol.FlatAppearance.BorderSize = 2;
+            this.Btn_TwoCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TwoCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TwoCol.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TwoCol.Image")));
+            this.Btn_TwoCol.Location = new System.Drawing.Point(506, 144);
+            this.Btn_TwoCol.Name = "Btn_TwoCol";
+            this.Btn_TwoCol.Size = new System.Drawing.Size(213, 39);
+            this.Btn_TwoCol.TabIndex = 18;
+            this.Btn_TwoCol.Text = "   Two Columns";
+            this.Btn_TwoCol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_TwoCol.UseVisualStyleBackColor = false;
+            this.Btn_TwoCol.Click += new System.EventHandler(this.Btn_Col_Click);
+            // 
+            // Btn_OneCol
+            // 
+            this.Btn_OneCol.BackColor = System.Drawing.Color.White;
+            this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_OneCol.FlatAppearance.BorderSize = 2;
+            this.Btn_OneCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_OneCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_OneCol.Image = ((System.Drawing.Image)(resources.GetObject("Btn_OneCol.Image")));
+            this.Btn_OneCol.Location = new System.Drawing.Point(299, 144);
+            this.Btn_OneCol.Name = "Btn_OneCol";
+            this.Btn_OneCol.Size = new System.Drawing.Size(213, 39);
+            this.Btn_OneCol.TabIndex = 17;
+            this.Btn_OneCol.Text = "   One Column";
+            this.Btn_OneCol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_OneCol.UseVisualStyleBackColor = false;
+            this.Btn_OneCol.Click += new System.EventHandler(this.Btn_Col_Click);
+            // 
+            // Btn_DoubleSpaced
+            // 
+            this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_DoubleSpaced.FlatAppearance.BorderSize = 2;
+            this.Btn_DoubleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_DoubleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_DoubleSpaced.Image = ((System.Drawing.Image)(resources.GetObject("Btn_DoubleSpaced.Image")));
+            this.Btn_DoubleSpaced.Location = new System.Drawing.Point(506, 53);
+            this.Btn_DoubleSpaced.Name = "Btn_DoubleSpaced";
+            this.Btn_DoubleSpaced.Size = new System.Drawing.Size(213, 39);
+            this.Btn_DoubleSpaced.TabIndex = 16;
+            this.Btn_DoubleSpaced.Text = "   Double Space";
+            this.Btn_DoubleSpaced.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_DoubleSpaced.UseVisualStyleBackColor = false;
+            this.Btn_DoubleSpaced.Click += new System.EventHandler(this.Btn_Spaced_Click);
+            // 
+            // Btn_SingleSpaced
+            // 
+            this.Btn_SingleSpaced.BackColor = System.Drawing.Color.White;
+            this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_SingleSpaced.FlatAppearance.BorderSize = 2;
+            this.Btn_SingleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_SingleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_SingleSpaced.Image = ((System.Drawing.Image)(resources.GetObject("Btn_SingleSpaced.Image")));
+            this.Btn_SingleSpaced.Location = new System.Drawing.Point(299, 53);
+            this.Btn_SingleSpaced.Name = "Btn_SingleSpaced";
+            this.Btn_SingleSpaced.Size = new System.Drawing.Size(213, 39);
+            this.Btn_SingleSpaced.TabIndex = 15;
+            this.Btn_SingleSpaced.Text = "   Single Space";
+            this.Btn_SingleSpaced.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_SingleSpaced.UseVisualStyleBackColor = false;
+            this.Btn_SingleSpaced.Click += new System.EventHandler(this.Btn_Spaced_Click);
+            // 
+            // Loading_Page
+            // 
+            this.Loading_Page.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Loading_Page.BackgroundImage")));
+            this.Loading_Page.Controls.Add(this.LoadingBar);
+            this.Loading_Page.Controls.Add(this.label6);
+            this.Loading_Page.Controls.Add(this.label5);
+            this.Loading_Page.Controls.Add(this.pictureBox2);
+            this.Loading_Page.Location = new System.Drawing.Point(0, 0);
+            this.Loading_Page.Name = "Loading_Page";
+            this.Loading_Page.Size = new System.Drawing.Size(1085, 621);
+            this.Loading_Page.TabIndex = 6;
+            this.Loading_Page.Visible = false;
+            // 
+            // LoadingBar
+            // 
+            this.LoadingBar.Location = new System.Drawing.Point(404, 399);
+            this.LoadingBar.Name = "LoadingBar";
+            this.LoadingBar.Size = new System.Drawing.Size(333, 18);
+            this.LoadingBar.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label6.Location = new System.Drawing.Point(440, 364);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(260, 29);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "USFM File Converter";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(488, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 46);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Matos";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(510, 212);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(98, 103);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // HomeImg
+            // 
+            this.HomeImg.Image = ((System.Drawing.Image)(resources.GetObject("HomeImg.Image")));
+            this.HomeImg.Location = new System.Drawing.Point(159, 18);
+            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeImg.Name = "HomeImg";
+            this.HomeImg.Size = new System.Drawing.Size(520, 389);
+            this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.HomeImg.TabIndex = 0;
+            this.HomeImg.TabStop = false;
+            // 
+            // Success_Page
+            // 
+            this.Success_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.Success_Page.ColorTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.Success_Page.Controls.Add(this.pictureBox3);
+            this.Success_Page.Controls.Add(this.button1);
+            this.Success_Page.Controls.Add(this.label11);
+            this.Success_Page.Controls.Add(this.button2);
+            this.Success_Page.Controls.Add(this.label13);
+            this.Success_Page.Location = new System.Drawing.Point(0, 0);
+            this.Success_Page.Name = "Success_Page";
+            this.Success_Page.Size = new System.Drawing.Size(1087, 624);
+            this.Success_Page.TabIndex = 6;
+            this.Success_Page.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(500, 174);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(114, 108);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.button1.Location = new System.Drawing.Point(238, 396);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(302, 53);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "New Project";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Btn_NewProj_Click);
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label11.Location = new System.Drawing.Point(288, 340);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(538, 45);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Your project was successfully converted.";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(569, 396);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(302, 53);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Open File Location";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Btn_OpenFileLocation_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label13.Location = new System.Drawing.Point(461, 285);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(184, 46);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Success!";
+            // 
             // Error_Page
             // 
             this.Error_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
@@ -652,7 +833,7 @@ namespace Hackathon_Converter
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.pictureBox1.Image = global::Hackathon_Converter.Properties.Resources.Error_Img;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(500, 174);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 108);
@@ -700,103 +881,23 @@ namespace Hackathon_Converter
             this.label10.TabIndex = 1;
             this.label10.Text = "Uh-oh...";
             // 
-            // Success_Page
+            // Btn_TextAlignRight
             // 
-            this.Success_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.Success_Page.ColorTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.Success_Page.Controls.Add(this.pictureBox2);
-            this.Success_Page.Controls.Add(this.Btn_NewProj);
-            this.Success_Page.Controls.Add(this.label5);
-            this.Success_Page.Controls.Add(this.Btn_OpenFile);
-            this.Success_Page.Controls.Add(this.label6);
-            this.Success_Page.Location = new System.Drawing.Point(6, 0);
-            this.Success_Page.Name = "Success_Page";
-            this.Success_Page.Size = new System.Drawing.Size(1079, 616);
-            this.Success_Page.TabIndex = 5;
-            this.Success_Page.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.pictureBox2.Image = global::Hackathon_Converter.Properties.Resources.Success_Check;
-            this.pictureBox2.Location = new System.Drawing.Point(500, 174);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(114, 108);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // Btn_NewProj
-            // 
-            this.Btn_NewProj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.Btn_NewProj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.Btn_NewProj.FlatAppearance.BorderSize = 3;
-            this.Btn_NewProj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_NewProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_NewProj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.Btn_NewProj.Location = new System.Drawing.Point(238, 396);
-            this.Btn_NewProj.Name = "Btn_NewProj";
-            this.Btn_NewProj.Size = new System.Drawing.Size(302, 53);
-            this.Btn_NewProj.TabIndex = 4;
-            this.Btn_NewProj.Text = "New Project";
-            this.Btn_NewProj.UseVisualStyleBackColor = false;
-            this.Btn_NewProj.Click += new System.EventHandler(this.Btn_NewProj_Click);
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label5.Location = new System.Drawing.Point(288, 340);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(538, 45);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Your project was successfully converted.";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // Btn_OpenFile
-            // 
-            this.Btn_OpenFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.Btn_OpenFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_OpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_OpenFile.ForeColor = System.Drawing.Color.White;
-            this.Btn_OpenFile.Location = new System.Drawing.Point(569, 396);
-            this.Btn_OpenFile.Name = "Btn_OpenFile";
-            this.Btn_OpenFile.Size = new System.Drawing.Size(302, 53);
-            this.Btn_OpenFile.TabIndex = 3;
-            this.Btn_OpenFile.Text = "Open File Location";
-            this.Btn_OpenFile.UseVisualStyleBackColor = false;
-            this.Btn_OpenFile.Click += new System.EventHandler(this.Btn_OpenFileLocation_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label6.Location = new System.Drawing.Point(461, 285);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 46);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Success!";
-            // 
-            // Conversion_Page
-            // 
-            this.Conversion_Page.Location = new System.Drawing.Point(0, 0);
-            this.Conversion_Page.Name = "Conversion_Page";
-            this.Conversion_Page.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // Conversion_Page.Panel1
-            // 
-            this.Conversion_Page.Panel1.Controls.Add(this.ConversionBanner);
-            // 
-            // Conversion_Page.Panel2
-            // 
-            this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
-            this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
-            this.Conversion_Page.SplitterDistance = 95;
-            this.Conversion_Page.TabIndex = 5;
-            this.Conversion_Page.Visible = false;
+            this.Btn_TextAlignRight.BackColor = System.Drawing.Color.White;
+            this.Btn_TextAlignRight.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignRight.FlatAppearance.BorderSize = 2;
+            this.Btn_TextAlignRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TextAlignRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_TextAlignRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignRight.Image = global::Hackathon_Converter.Properties.Resources.Text_Align_R;
+            this.Btn_TextAlignRight.Location = new System.Drawing.Point(299, 324);
+            this.Btn_TextAlignRight.Name = "Btn_TextAlignRight";
+            this.Btn_TextAlignRight.Size = new System.Drawing.Size(213, 39);
+            this.Btn_TextAlignRight.TabIndex = 25;
+            this.Btn_TextAlignRight.Text = "   Left Aligned";
+            this.Btn_TextAlignRight.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_TextAlignRight.UseVisualStyleBackColor = false;
+            this.Btn_TextAlignRight.Visible = false;
             // 
             // MainForm
             // 
@@ -813,7 +914,6 @@ namespace Hackathon_Converter
             ((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
             this.ConversionBanner.ResumeLayout(false);
             this.HomeCapture.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
             this.panel1.ResumeLayout(false);
             this.Format_Page.Panel1.ResumeLayout(false);
             this.Format_Page.Panel2.ResumeLayout(false);
@@ -821,16 +921,19 @@ namespace Hackathon_Converter
             this.Format_Page.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.Error_Page.ResumeLayout(false);
-            this.Error_Page.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.Success_Page.ResumeLayout(false);
-            this.Success_Page.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Conversion_Page.Panel1.ResumeLayout(false);
             this.Conversion_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
             this.Conversion_Page.ResumeLayout(false);
+            this.Loading_Page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
+            this.Success_Page.ResumeLayout(false);
+            this.Success_Page.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.Error_Page.ResumeLayout(false);
+            this.Error_Page.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -841,7 +944,8 @@ namespace Hackathon_Converter
         private bool isSingleSpaced=true;
         private bool hasOneColumn=true;
         private bool isL2RDirection=true;
-        private bool willSeparateChap = false;
+        private bool willSeparateChap = true;
+
         private System.Windows.Forms.PictureBox HomeImg;
         private System.Windows.Forms.Button Btn_BrowseFiles;
         private System.Windows.Forms.Label HomeInstruct;
@@ -868,12 +972,6 @@ namespace Hackathon_Converter
         private Label label4;
         private Label label3;
         private SplitContainer Conversion_Page;
-        private ColorGradient Success_Page;
-        private PictureBox pictureBox2;
-        private Button Btn_NewProj;
-        private Label label5;
-        private Button Btn_OpenFile;
-        private Label label6;
         private Button Btn_DoubleSpaced;
         private Button Btn_SingleSpaced;
         private Button Btn_ChapComb;
@@ -890,5 +988,17 @@ namespace Hackathon_Converter
         private Label label10;
         private PictureBox pictureBox1;
         private Button Btn_FormatBack;
+        private ColorGradient Success_Page;
+        private PictureBox pictureBox3;
+        private Button button1;
+        private Label label11;
+        private Button button2;
+        private Label label13;
+        private Panel Loading_Page;
+        private PictureBox pictureBox2;
+        private ProgressBar LoadingBar;
+        private Label label6;
+        private Label label5;
+        private Button Btn_TextAlignRight;
     }
 }

@@ -103,9 +103,39 @@ namespace Hackathon_Converter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Group_69 {
+            get {
+                object obj = ResourceManager.GetObject("Group_69", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_70 {
+            get {
+                object obj = ResourceManager.GetObject("Group_70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hackathon_Logo {
             get {
                 object obj = ResourceManager.GetObject("Hackathon_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hackathon_Logo_Inverted {
+            get {
+                object obj = ResourceManager.GetObject("Hackathon_Logo_Inverted", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +156,16 @@ namespace Hackathon_Converter.Properties {
         internal static System.Drawing.Bitmap Left_Right {
             get {
                 object obj = ResourceManager.GetObject("Left_Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mask_Group_11 {
+            get {
+                object obj = ResourceManager.GetObject("Mask_Group_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +256,16 @@ namespace Hackathon_Converter.Properties {
         internal static System.Drawing.Bitmap Text_Align {
             get {
                 object obj = ResourceManager.GetObject("Text_Align", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Text_Align_R {
+            get {
+                object obj = ResourceManager.GetObject("Text_Align_R", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
