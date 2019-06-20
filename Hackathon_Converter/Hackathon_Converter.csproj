@@ -156,6 +156,8 @@
     <None Include="Resources\Group 70.png" />
     <None Include="Resources\Group 127.png" />
     <None Include="Resources\Group 701.png" />
+    <None Include="Resources\Mask_Group_1_Logo.png" />
+    <None Include="Resources\Mask_Group_1_Logo1.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

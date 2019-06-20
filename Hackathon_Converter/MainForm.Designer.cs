@@ -787,9 +787,6 @@ namespace Hackathon_Converter
             // 
             this.Loading_Page.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Loading_Page.BackgroundImage")));
             this.Loading_Page.Controls.Add(this.LoadingBar);
-            this.Loading_Page.Controls.Add(this.label6);
-            this.Loading_Page.Controls.Add(this.label5);
-            this.Loading_Page.Controls.Add(this.pictureBox2);
             this.Loading_Page.Location = new System.Drawing.Point(0, 0);
             this.Loading_Page.Name = "Loading_Page";
             this.Loading_Page.Size = new System.Drawing.Size(1085, 621);
@@ -798,8 +795,9 @@ namespace Hackathon_Converter
             // 
             // LoadingBar
             // 
-            this.LoadingBar.Location = new System.Drawing.Point(404, 399);
+            this.LoadingBar.Location = new System.Drawing.Point(360, 399);
             this.LoadingBar.Name = "LoadingBar";
+            this.LoadingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
             this.LoadingBar.Size = new System.Drawing.Size(333, 18);
             this.LoadingBar.TabIndex = 3;
             // 

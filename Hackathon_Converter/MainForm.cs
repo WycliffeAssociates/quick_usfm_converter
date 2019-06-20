@@ -94,7 +94,7 @@ namespace Hackathon_Converter
             { 
                 btn_AddFiles.Enabled = false;
                 fileDataGrid.Enabled = false;
-                //Show_Loading_Page();
+                Show_Loading_Page();
 
 
                 // Does not parse through section headers yet
@@ -110,8 +110,8 @@ namespace Hackathon_Converter
 
                 var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
 
-                //var progress = fileDataGrid.RowCount-1;
-                //var progressStep = 0;
+                var progress = fileDataGrid.RowCount - 1;
+                var progressStep = 0;
 
                 foreach (DataGridViewRow row in fileDataGrid.Rows)
                 {
@@ -124,8 +124,8 @@ namespace Hackathon_Converter
                     var text = File.ReadAllText(filename);
                     usfm.Insert(parser.ParseFromString(text));
 
-                    //progressStep++;
-                    //LoadingBar.Value = (int)(progressStep / (float)progress * 100);
+                    progressStep++;
+                    LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
 
                 var html = renderer.Render(usfm);
@@ -143,7 +143,7 @@ namespace Hackathon_Converter
 
                 btn_AddFiles.Enabled = true;
                 fileDataGrid.Enabled = true;
-                //LoadingBar.Value = 0;
+                LoadingBar.Value = 0;
                 Show_Success_Page();
             }
         }
@@ -202,7 +202,8 @@ namespace Hackathon_Converter
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Filter = "USFM files (*.usfm)|*.usfm|Text files (*.txt)|*.txt |All files (*.*)|*.*"
+                Filter = "USFM files (*.usfm)|*.usfm|Text files (*.txt)|*.txt |All files (*.*)|*.*",
+                Multiselect = true
             };
             
 
@@ -213,12 +214,14 @@ namespace Hackathon_Converter
                 return;
             }
 
-            var filePath = openFileDialog.FileName;
 
-            if (filePath.ToLower().EndsWith(".usfm") ||
-                filePath.ToLower().EndsWith(".txt"))
+            foreach (var filePath in openFileDialog.FileNames)
             {
-                fileDataGrid.Rows.Add(new String[] { filePath });
+                if (filePath.ToLower().EndsWith(".usfm") ||
+                    filePath.ToLower().EndsWith(".txt"))
+                {
+                    fileDataGrid.Rows.Add(new String[] { filePath });
+                }
             }
             
 
