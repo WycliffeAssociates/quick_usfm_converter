@@ -155,6 +155,7 @@
     <None Include="Resources\Group 69.png" />
     <None Include="Resources\Group 70.png" />
     <None Include="Resources\Group 127.png" />
+    <None Include="Resources\Group 701.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

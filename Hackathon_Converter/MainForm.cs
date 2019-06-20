@@ -225,22 +225,24 @@ namespace Hackathon_Converter
         }
 
         private void onRemoveFileButtonClick(object sender, EventArgs e)
-        { 
-            if(fileDataGrid.Rows.Count > 1)
+        {
+            DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
+            int numRemove = 1;
+            if (fileDataGrid.Rows.Count > 1)
             {
 
-                DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
-                for (int fileIndex = 0;fileIndex< SelectedFiles.Count && SelectedFiles[fileIndex].RowIndex != fileDataGrid.RowCount-1; fileIndex++)
+                
+                for (int fileIndex = 0;fileIndex< SelectedFiles.Count && (SelectedFiles[fileIndex].RowIndex != fileDataGrid.RowCount-1); fileIndex++)
                 {
                     fileDataGrid.Rows.Remove(SelectedFiles[fileIndex].OwningRow);
                 }
             }
 
-            int numRemove = 0;
-            if (fileDataGrid.Rows.Count > 1)
-                numRemove = 1;
+            
+            if (fileDataGrid.Rows.Count == 1)
+                numRemove = 0;
 
-            btn_Remove.Text = $"Remove ( {numRemove} )";
+            btn_Remove.Text = $"Delete ({numRemove}) Files";
 
 
         }
@@ -261,12 +263,11 @@ namespace Hackathon_Converter
             DataGridViewElementStates state = e.StateChanged;
             DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
 
-            if (SelectedFiles.Count >= 1)
-                btn_Remove.Visible = true;
-            else
-                btn_Remove.Visible = false;
 
             int numFilesRemove = SelectedFiles.Count;
+            if (SelectedFiles.Contains(fileDataGrid[0, fileDataGrid.RowCount-1]))
+                numFilesRemove--;
+
             //if (SelectedFiles.Contains(fileDataGrid.Rows[fileDataGrid.RowCount - 1].Cells[1]))
             //    numFilesRemove--;
             btn_Remove.Text = $"Delete ({numFilesRemove}) Files";
