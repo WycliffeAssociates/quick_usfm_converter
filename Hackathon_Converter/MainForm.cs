@@ -232,9 +232,10 @@ namespace Hackathon_Converter
             {
 
                 
-                for (int fileIndex = 0;fileIndex< SelectedFiles.Count && (SelectedFiles[fileIndex].RowIndex != fileDataGrid.RowCount-1); fileIndex++)
+                foreach(DataGridViewCell SelectFile in SelectedFiles)
                 {
-                    fileDataGrid.Rows.Remove(SelectedFiles[fileIndex].OwningRow);
+                    if(SelectFile.OwningRow.Index != fileDataGrid.RowCount-1)
+                        fileDataGrid.Rows.Remove(SelectFile.OwningRow);
                 }
             }
 
