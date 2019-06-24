@@ -135,6 +135,7 @@ namespace Hackathon_Converter
 
                 var htmlFilename = saveFileDialog.FileName;
                 var dirname = Path.GetDirectoryName(htmlFilename);
+                filePathConversion = dirname;
                 var cssFilename = Path.Combine(dirname, "style.css");
                 if (File.Exists(cssFilename) == false)
                 {
@@ -263,7 +264,10 @@ namespace Hackathon_Converter
 
         private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe");
+            if (filePathConversion == null)
+                Process.Start("explorer.exe");
+            else
+                Process.Start(filePathConversion);
         }
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {

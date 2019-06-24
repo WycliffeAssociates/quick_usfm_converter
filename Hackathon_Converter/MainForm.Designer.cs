@@ -1101,5 +1101,7 @@ namespace Hackathon_Converter
         private Button Btn_TextAlignRight;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
+
+        private string filePathConversion;
     }
 }
