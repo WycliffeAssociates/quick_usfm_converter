@@ -144,9 +144,13 @@ namespace Hackathon_Converter
                 btn_AddFiles.Enabled = true;
                 fileDataGrid.Enabled = true;
                 LoadingBar.Value = 0;
+                ResetValues();
                 Show_Success_Page();
             }
         }
+
+        
+
         private string GetLicenseInfo()
         {
             // Identifies License within Directory 
@@ -184,7 +188,7 @@ namespace Hackathon_Converter
             footerHTML.AppendLine("<span style=mso-tab-count:1></span>");
             footerHTML.AppendLine("  <span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>");
             footerHTML.AppendLine("  <span style=mso-tab-count:1></span>");
-            footerHTML.AppendLine("  <img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by/4.0/88x31.png\" />");
+            footerHTML.AppendLine("  <img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/4.0/88x31.png\" />");
             footerHTML.AppendLine("</p>");
             footerHTML.AppendLine("   </div>");
             footerHTML.AppendLine("</td></tr>");
@@ -481,7 +485,16 @@ namespace Hackathon_Converter
             Format_Page.Visible = false;
             Error_Page.Visible = false;
         }
+        private void ResetValues()
+        {
+            FileNameInput.Text = "";
+            isL2RDirection = true;
+            hasOneColumn = true;
+            isSingleSpaced = true;
+            isTextJustified = false;
+            willSeparateChap = true;
 
+        }
     }
 
 }

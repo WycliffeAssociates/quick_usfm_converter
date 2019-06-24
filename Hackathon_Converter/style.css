@@ -142,8 +142,8 @@ div.FooterSection {
 }
 
 table#hrdftrtbl {
-    margin: 0in 0in 0in 0in 12in;
-    width: 1px;
+    margin: 0in 0in 0in 0in 900in;
+    width: 900px;
     height: 1px;
     tab-stops: center 3.0in right 6.0in;
     overflow: hidden;
