@@ -63,6 +63,8 @@ namespace Hackathon_Converter
 
         private void OnConvertButtonClick(object sender, EventArgs e)
         {
+            //Implement for dropdown options setConfigObject();
+
             Stream htmlStream;
 
             StringBuilder fileName = new StringBuilder();
@@ -98,10 +100,10 @@ namespace Hackathon_Converter
 
 
                 // Does not parse through section headers yet
-                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
+                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4","s5" });
 
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
-                var renderer = new USFMToolsSharp.HtmlRenderer(isSingleSpaced, hasOneColumn, isL2RDirection,isTextJustified,willSeparateChap);
+                var renderer = new USFMToolsSharp.HtmlRenderer(configHTML);
 
             
                 // Added ULB License and Page Number
@@ -150,7 +152,7 @@ namespace Hackathon_Converter
             }
         }
 
-        
+
 
         private string GetLicenseInfo()
         {
@@ -304,6 +306,9 @@ namespace Hackathon_Converter
                 this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[0] = LineSpacingClasses[1.0];
+
             }
             else
             {
@@ -315,6 +320,8 @@ namespace Hackathon_Converter
                 this.Btn_SingleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[0] = LineSpacingClasses[2.0];
             }
         }
 
@@ -331,6 +338,8 @@ namespace Hackathon_Converter
                 this.Btn_TwoCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[1] = ColumnClasses[0];
             }
             else
             {
@@ -342,6 +351,8 @@ namespace Hackathon_Converter
                 this.Btn_OneCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[1] = ColumnClasses[1];
             }
         }
 
@@ -365,6 +376,10 @@ namespace Hackathon_Converter
                 this.Btn_TextAlignDefault.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextAlignDefault.Image")));
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
 
+                configHTML.divClasses[2] = TextDirectionClasses[0];
+
+
+
             }
             else
             {
@@ -381,6 +396,8 @@ namespace Hackathon_Converter
                 this.Btn_TextAlignDefault.Text = "   Right Aligned";
                 this.Btn_TextAlignDefault.Image = global::Hackathon_Converter.Properties.Resources.Text_Align_R;
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+                configHTML.divClasses[2] = TextDirectionClasses[1];
             }
         }
         private void Btn_TextAlign_Click(object sender, EventArgs e)
@@ -396,6 +413,8 @@ namespace Hackathon_Converter
                 this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[3] = TextAlignmentClasses[3];
             }
             else
             {
@@ -407,6 +426,8 @@ namespace Hackathon_Converter
                 this.Btn_TextJustify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
                 this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
                 this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+
+                configHTML.divClasses[3] = TextAlignmentClasses[1];
             }
         }
         private void Btn_Chap_Click(object sender, EventArgs e)
@@ -492,13 +513,32 @@ namespace Hackathon_Converter
         private void ResetValues()
         {
             FileNameInput.Text = "";
-            isL2RDirection = true;
-            hasOneColumn = true;
-            isSingleSpaced = true;
-            isTextJustified = false;
-            willSeparateChap = true;
 
         }
+
+        private void ColumnDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = ColumnDrop.SelectedIndex;
+            configHTML.divClasses[1] = ColumnClasses[index];
+        }
+
+        private void SpacingValueStep_ValueChanged(object sender, EventArgs e)
+        {
+            configHTML.divClasses[0] = LineSpacingClasses[(double)SpacingValueStep.Value];
+        }
+
+        private void TextDirectDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            configHTML.divClasses[2] = TextDirectionClasses[TextDirectDrop.SelectedIndex];
+        }
+
+        private void TextAlignDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            configHTML.divClasses[3] = TextAlignmentClasses[TextAlignDrop.SelectedIndex];
+        }
+        
+
+
     }
 
 }

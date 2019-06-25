@@ -60,9 +60,17 @@
 .single-space {
     line-height: 1;
 }
-
+.one-half-space{
+    line-height:150%;
+}
 .double-space {
     line-height: 2;
+}
+.two-half-space {
+    line-height: 250%;
+}
+.triple-space {
+    line-height: 3;
 }
 
 .justified {
@@ -70,10 +78,12 @@
     text-justify: inter-word;
 }
 
-.right-attach {
+.right-align {
     text-align: right;
 }
-
+.center-align{
+    text-align:center;
+}
 .rtl-direct {
     direction: rtl;
 }
@@ -120,13 +130,13 @@
 div.one-column {
     column-count: 1;
     mso-columns: 1;
-    /* page:ColumnOne; */
+    page:ColumnOne; 
 }
 
-div.multi-column {
+div.two-column {
     column-count: 2;
     mso-columns: 2 even .5in;
-    /* page:Column2; */
+    page:Column2; 
 }
 
 p.MsoFooter, li.MsoFooter, div.MsoFooter {
@@ -142,7 +152,7 @@ div.FooterSection {
 }
 
 table#hrdftrtbl {
-    margin: 0in 0in 0in 0in 900in;
+    margin: 0in 0in 0in 900in;
     width: 900px;
     height: 1px;
     tab-stops: center 3.0in right 6.0in;
