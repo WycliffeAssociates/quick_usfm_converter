@@ -102,6 +102,7 @@ namespace Hackathon_Converter
                 // Does not parse through section headers yet
                 var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4","s5" });
 
+                formatConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
                 var renderer = new USFMToolsSharp.HtmlRenderer(configHTML);
 
@@ -537,6 +538,14 @@ namespace Hackathon_Converter
             configHTML.divClasses[3] = TextAlignmentClasses[TextAlignDrop.SelectedIndex];
         }
         
+        private void formatConfig()
+        {
+            for(int i= configHTML.divClasses.Count-1; i > 0; i--)
+            {
+                if (configHTML.divClasses[i].Length == 0)
+                    configHTML.divClasses.RemoveAt(i);
+            }
+        }
 
 
     }
