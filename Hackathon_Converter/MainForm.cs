@@ -100,7 +100,7 @@ namespace Hackathon_Converter
 
 
                 // Does not parse through section headers yet
-                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4","s5" });
+                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
                 formatConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
@@ -199,10 +199,6 @@ namespace Hackathon_Converter
             footerHTML.AppendLine("</table>");
             footerHTML.AppendLine("</div>");
             return footerHTML.ToString();
-        }
-        private void onClearListButtonClick(object sender, EventArgs e)
-        {
-            fileDataGrid.Rows.Clear();
         }
 
         private void onAddOnlyFileClick(object sender, EventArgs e)
