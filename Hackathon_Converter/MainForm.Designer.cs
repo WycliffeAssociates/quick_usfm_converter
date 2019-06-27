@@ -1124,7 +1124,7 @@ namespace Hackathon_Converter
 
         private string filePathConversion;
 
-        private HTMLConfig configHTML = new HTMLConfig(new List<string>{"","","","","" });
+        private HTMLConfig configHTML = new HTMLConfig();
         private NumericUpDown SpacingValueStep;
         private Button Btn_DoubleSpaced;
         private Button Btn_SingleSpaced;
@@ -1143,5 +1143,11 @@ namespace Hackathon_Converter
         private string[] TextDirectionClasses = {"", "rtl-direct" };
         private string[] TextAlignmentClasses = { "","right-align","center-align","justified" };
         private bool willSeparateChap = true;
+
+
+        private System.Drawing.Color whiteColor = System.Drawing.Color.White;
+        private System.Drawing.Color darkBlue = System.Drawing.Color.FromArgb(0,68,214);
+        private System.Drawing.Color disableBack = System.Drawing.Color.FromArgb(215,218,224);
+        private System.Drawing.Color disableFore = System.Drawing.Color.FromArgb(118,118,118);
     }
 }

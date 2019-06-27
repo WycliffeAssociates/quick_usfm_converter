@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using USFMToolsSharp;
 
 namespace Hackathon_Converter
 {
@@ -67,17 +68,12 @@ namespace Hackathon_Converter
 
             Stream htmlStream;
 
-            StringBuilder fileName = new StringBuilder();
-            fileName.Append(FileNameInput.Text.Trim());
-            if (fileName.ToString().Length > 0)
-                fileName.Append(".html");
-            else
-                fileName.Append("out.html");
-            
+            string saveFileName = (!string.IsNullOrWhiteSpace(FileNameInput.Text) ? FileNameInput.Text.Trim() : "out") + ".html";
+
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                FileName = fileName.ToString(),
+                FileName = saveFileName,
                 Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*",
                 FilterIndex = 1,
                 RestoreDirectory = false
@@ -100,11 +96,11 @@ namespace Hackathon_Converter
 
 
                 // Does not parse through section headers yet
-                var parser = new USFMToolsSharp.USFMParser(new List<string> { "s5","s","s2","s3","s4" });
+                var parser = new USFMParser(new List<string> { "s5","s","s2","s3","s4" });
 
                 formatConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
-                var renderer = new USFMToolsSharp.HtmlRenderer(configHTML);
+                var renderer = new HtmlRenderer(configHTML);
 
             
                 // Added ULB License and Page Number
@@ -131,12 +127,18 @@ namespace Hackathon_Converter
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
 
+
                 var html = renderer.Render(usfm);
-                var bytes = Encoding.UTF8.GetBytes(html);
-                htmlStream.Write(bytes, 0, bytes.Length);
-                htmlStream.Close();
+
+
+                //var bytes = Encoding.UTF8.GetBytes(html);
+                //htmlStream.Write(bytes, 0, bytes.Length);
+                //htmlStream.Close();
 
                 var htmlFilename = saveFileDialog.FileName;
+
+                File.WriteAllText(htmlFilename, html);
+
                 var dirname = Path.GetDirectoryName(htmlFilename);
                 filePathConversion = dirname;
                 var cssFilename = Path.Combine(dirname, "style.css");
@@ -160,45 +162,36 @@ namespace Hackathon_Converter
             // Identifies License within Directory 
             string ULB_License_Doc = "insert_ULB_License.html";
             FileInfo f = new FileInfo(ULB_License_Doc);
-            string fullname = f.FullName;
             string licenseHTML = "";
 
-            if (File.Exists(ULB_License_Doc) == true)
+            if (File.Exists(ULB_License_Doc))
             {
 
-                using (FileStream fs = File.OpenRead(fullname))
-                {
-                    byte[] b = new byte[32 * 1024];
-                    UTF8Encoding temp = new UTF8Encoding(true);
-                    while (fs.Read(b, 0, b.Length) > 0)
-                    {
-                        licenseHTML += (temp.GetString(b));
-                    }
-                }
+                licenseHTML = File.ReadAllText(ULB_License_Doc);
             }
             return licenseHTML;
         }
         private string GetFooterInfo()
         {
             // Format --  June 13, 2019 11:42
-            string dateFormat = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm");
-            StringBuilder footerHTML = new StringBuilder();
-            footerHTML.AppendLine("<div class=FooterSection> ");
-            footerHTML.AppendLine("<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>");
-            footerHTML.AppendLine("<tr><td>");
-            footerHTML.AppendLine("<div style='mso-element:footer' id=f1>");
-            footerHTML.AppendLine("<p class=MsoFooter></p>");
-            footerHTML.AppendLine(dateFormat);
-            footerHTML.AppendLine("<span style=mso-tab-count:1></span>");
-            footerHTML.AppendLine("  <span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>");
-            footerHTML.AppendLine("  <span style=mso-tab-count:1></span>");
-            footerHTML.AppendLine("  <img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/4.0/88x31.png\" />");
-            footerHTML.AppendLine("</p>");
-            footerHTML.AppendLine("   </div>");
-            footerHTML.AppendLine("</td></tr>");
-            footerHTML.AppendLine("</table>");
-            footerHTML.AppendLine("</div>");
-            return footerHTML.ToString();
+            string dateFormat = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string footerHTML = "";
+            footerHTML+="<div class=FooterSection>";
+            footerHTML+="<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>";
+            footerHTML+="<tr><td>";
+            footerHTML+="<div style='mso-element:footer' id=f1>";
+            footerHTML+="<p class=MsoFooter></p>";
+            footerHTML+=dateFormat;
+            footerHTML+="<span style=mso-tab-count:1></span>";
+            footerHTML+="<span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>";
+            footerHTML+="<span style=mso-tab-count:1></span>";
+            footerHTML+="<img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/4.0/88x31.png\" />";
+            footerHTML+="</p>";
+            footerHTML+="</div>";
+            footerHTML+="</td></tr>";
+            footerHTML+="</table>";
+            footerHTML+="</div>";
+            return footerHTML;
         }
 
         private void onAddOnlyFileClick(object sender, EventArgs e)
@@ -206,7 +199,7 @@ namespace Hackathon_Converter
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Filter = "USFM files (*.usfm)|*.usfm|Text files (*.txt)|*.txt |All files (*.*)|*.*",
+                Filter = "USFM files (*.usfm)|*.usfm|Text files (*.txt)|*.txt",
                 Multiselect = true
             };
             
@@ -295,30 +288,26 @@ namespace Hackathon_Converter
             isSingleSpaced = !isSingleSpaced;
             if (isSingleSpaced)
             {
-                this.Btn_SingleSpaced.BackColor = System.Drawing.Color.White;
-                this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_SingleSpaced.BackColor = whiteColor;
+                this.Btn_SingleSpaced.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_SingleSpaced.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-
-                configHTML.divClasses[0] = LineSpacingClasses[1.0];
-
+                this.Btn_DoubleSpaced.BackColor = disableBack;
+                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = disableFore;
+                this.Btn_DoubleSpaced.ForeColor = disableFore;
             }
             else
             {
-                this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.White;
-                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_DoubleSpaced.BackColor = whiteColor;
+                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_DoubleSpaced.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_SingleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_SingleSpaced.BackColor = disableBack;
+                this.Btn_SingleSpaced.FlatAppearance.BorderColor = disableFore;
+                this.Btn_SingleSpaced.ForeColor = disableFore;
 
-                configHTML.divClasses[0] = LineSpacingClasses[2.0];
             }
         }
 
@@ -327,29 +316,27 @@ namespace Hackathon_Converter
             hasOneColumn = !hasOneColumn;
             if (hasOneColumn)
             {
-                this.Btn_OneCol.BackColor = System.Drawing.Color.White;
-                this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_OneCol.BackColor = whiteColor;
+                this.Btn_OneCol.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_OneCol.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_TwoCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TwoCol.BackColor = disableBack;
+                this.Btn_TwoCol.FlatAppearance.BorderColor = disableFore;
+                this.Btn_TwoCol.ForeColor = disableFore;
 
-                configHTML.divClasses[1] = ColumnClasses[0];
             }
             else
             {
-                this.Btn_TwoCol.BackColor = System.Drawing.Color.White;
-                this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TwoCol.BackColor = whiteColor;
+                this.Btn_TwoCol.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_TwoCol.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_OneCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_OneCol.BackColor = disableBack;
+                this.Btn_OneCol.FlatAppearance.BorderColor = disableFore;
+                this.Btn_OneCol.ForeColor = disableFore;
 
-                configHTML.divClasses[1] = ColumnClasses[1];
             }
         }
 
@@ -359,42 +346,40 @@ namespace Hackathon_Converter
             isL2RDirection = !isL2RDirection;
             if (isL2RDirection)
             {
-                this.Btn_LTR.BackColor = System.Drawing.Color.White;
-                this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_LTR.BackColor = whiteColor;
+                this.Btn_LTR.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_LTR.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_RTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_RTL.BackColor = disableBack;
+                this.Btn_RTL.FlatAppearance.BorderColor = disableFore;
+                this.Btn_RTL.ForeColor = disableFore;
 
                 // Switch Alignment
                 this.Btn_TextAlignDefault.Text = "   Left Aligned";
-                this.Btn_TextAlignDefault.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextAlignDefault.Image")));
+                this.Btn_TextAlignDefault.Image = Properties.Resources.Text_Align;
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
 
-                configHTML.divClasses[2] = TextDirectionClasses[0];
 
 
 
             }
             else
             {
-                this.Btn_RTL.BackColor = System.Drawing.Color.White;
-                this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_RTL.BackColor = whiteColor;
+                this.Btn_RTL.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_RTL.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_LTR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_LTR.BackColor = disableBack;
+                this.Btn_LTR.FlatAppearance.BorderColor = disableFore;
+                this.Btn_LTR.ForeColor = disableFore;
 
                 // Switch Alignment
                 this.Btn_TextAlignDefault.Text = "   Right Aligned";
-                this.Btn_TextAlignDefault.Image = global::Hackathon_Converter.Properties.Resources.Text_Align_R;
+                this.Btn_TextAlignDefault.Image = Properties.Resources.Text_Align_R;
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
 
-                configHTML.divClasses[2] = TextDirectionClasses[1];
             }
         }
         private void Btn_TextAlign_Click(object sender, EventArgs e)
@@ -402,29 +387,27 @@ namespace Hackathon_Converter
             isTextJustified = !isTextJustified;
             if (isTextJustified)
             {
-                this.Btn_TextJustify.BackColor = System.Drawing.Color.White;
-                this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TextJustify.BackColor = whiteColor;
+                this.Btn_TextJustify.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_TextJustify.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TextAlignDefault.BackColor = disableBack;
+                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = disableFore;
+                this.Btn_TextAlignDefault.ForeColor = disableFore;
 
-                configHTML.divClasses[3] = TextAlignmentClasses[3];
             }
             else
             {
-                this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.White;
-                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_TextAlignDefault.BackColor = whiteColor;
+                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_TextAlignDefault.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_TextJustify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_TextJustify.BackColor = disableBack;
+                this.Btn_TextJustify.FlatAppearance.BorderColor = disableFore;
+                this.Btn_TextJustify.ForeColor = disableFore;
 
-                configHTML.divClasses[3] = TextAlignmentClasses[1];
             }
         }
         private void Btn_Chap_Click(object sender, EventArgs e)
@@ -432,25 +415,25 @@ namespace Hackathon_Converter
             willSeparateChap = !willSeparateChap;
             if (willSeparateChap)
             {
-                this.Btn_ChapBreak.BackColor = System.Drawing.Color.White;
-                this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_ChapBreak.BackColor = whiteColor;
+                this.Btn_ChapBreak.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_ChapBreak.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_ChapComb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_ChapComb.BackColor = disableBack;
+                this.Btn_ChapComb.FlatAppearance.BorderColor = disableFore;
+                this.Btn_ChapComb.ForeColor = disableFore;
             }
             else
             {
-                this.Btn_ChapComb.BackColor = System.Drawing.Color.White;
-                this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-                this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+                this.Btn_ChapComb.BackColor = whiteColor;
+                this.Btn_ChapComb.FlatAppearance.BorderColor = darkBlue;
+                this.Btn_ChapComb.ForeColor = darkBlue;
 
                 // Grayed Out Button
-                this.Btn_ChapBreak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-                this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-                this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+                this.Btn_ChapBreak.BackColor = disableBack;
+                this.Btn_ChapBreak.FlatAppearance.BorderColor = disableFore;
+                this.Btn_ChapBreak.ForeColor = disableFore;
             }
         }
 
@@ -536,11 +519,23 @@ namespace Hackathon_Converter
         
         private void formatConfig()
         {
-            for(int i= configHTML.divClasses.Count-1; i > 0; i--)
+            if (!isSingleSpaced)
             {
-                if (configHTML.divClasses[i].Length == 0)
-                    configHTML.divClasses.RemoveAt(i);
+                configHTML.divClasses.Add(LineSpacingClasses[2.0]);
             }
+            if (!hasOneColumn)
+            {
+                configHTML.divClasses.Add(ColumnClasses[1]);
+            }
+            if (!isL2RDirection)
+            {
+                configHTML.divClasses.Add(TextDirectionClasses[1]);
+            }
+            if (isTextJustified)
+            {
+                configHTML.divClasses.Add(TextAlignmentClasses[3]);
+            }
+            configHTML.separateChapters = willSeparateChap;
         }
 
 
