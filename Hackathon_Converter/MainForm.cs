@@ -123,7 +123,7 @@ namespace Hackathon_Converter
                 // Does not parse through section headers yet
                 var parser = new USFMParser(new List<string> { "s5" });
 
-                configHTML = SetUpConfig();
+                configHTML = BuildConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
                 var renderer = new HtmlRenderer(configHTML);
 
@@ -500,7 +500,7 @@ namespace Hackathon_Converter
             FileNameInput.Text = "";
 
         }        
-        private HTMLConfig SetUpConfig()
+        private HTMLConfig BuildConfig()
         {
             HTMLConfig config = new HTMLConfig();
             if (!isSingleSpaced)
