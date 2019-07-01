@@ -24,7 +24,7 @@ namespace Hackathon_Converter
         private bool willSeparateChap = true;
         private string filePathConversion;
 
-        private HTMLConfig configHTML = new HTMLConfig();
+        private HTMLConfig configHTML;
 
         private Dictionary<double, string> LineSpacingClasses;
         private string[] ColumnClasses;
@@ -109,9 +109,6 @@ namespace Hackathon_Converter
                 RestoreDirectory = false
             };
             
-
-
-
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -126,11 +123,10 @@ namespace Hackathon_Converter
                 // Does not parse through section headers yet
                 var parser = new USFMParser(new List<string> { "s5" });
 
-                formatConfig();
+                configHTML = SetUpConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
                 var renderer = new HtmlRenderer(configHTML);
 
-            
                 // Added ULB License and Page Number
                 renderer.FrontMatterHTML = GetLicenseInfo();
                 renderer.InsertedFooter = GetFooterInfo();
@@ -372,9 +368,6 @@ namespace Hackathon_Converter
                 this.Btn_TextAlignDefault.Image = Properties.Resources.Text_Align;
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
 
-
-
-
             }
             else
             {
@@ -507,25 +500,27 @@ namespace Hackathon_Converter
             FileNameInput.Text = "";
 
         }        
-        private void formatConfig()
+        private HTMLConfig SetUpConfig()
         {
+            HTMLConfig config = new HTMLConfig();
             if (!isSingleSpaced)
             {
-                configHTML.divClasses.Add(LineSpacingClasses[2.0]);
+                config.divClasses.Add(LineSpacingClasses[2.0]);
             }
             if (!hasOneColumn)
             {
-                configHTML.divClasses.Add(ColumnClasses[1]);
+                config.divClasses.Add(ColumnClasses[1]);
             }
             if (!isL2RDirection)
             {
-                configHTML.divClasses.Add(TextDirectionClasses[1]);
+                config.divClasses.Add(TextDirectionClasses[1]);
             }
             if (isTextJustified)
             {
-                configHTML.divClasses.Add(TextAlignmentClasses[3]);
+                config.divClasses.Add(TextAlignmentClasses[3]);
             }
-            configHTML.separateChapters = willSeparateChap;
+            config.separateChapters = willSeparateChap;
+            return config;
         }
 
 
