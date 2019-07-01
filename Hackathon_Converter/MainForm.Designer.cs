@@ -108,10 +108,6 @@ namespace Hackathon_Converter
             this.Btn_Convert = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.TextAlignDrop = new System.Windows.Forms.ComboBox();
-            this.TextDirectDrop = new System.Windows.Forms.ComboBox();
-            this.ColumnDrop = new System.Windows.Forms.ComboBox();
-            this.SpacingValueStep = new System.Windows.Forms.NumericUpDown();
             this.Btn_TextAlignRight = new System.Windows.Forms.Button();
             this.Btn_ChapComb = new System.Windows.Forms.Button();
             this.Btn_ChapBreak = new System.Windows.Forms.Button();
@@ -159,7 +155,6 @@ namespace Hackathon_Converter
             this.Format_Page.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpacingValueStep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).BeginInit();
             this.Conversion_Page.Panel1.SuspendLayout();
             this.Conversion_Page.Panel2.SuspendLayout();
@@ -185,9 +180,9 @@ namespace Hackathon_Converter
             this.ConversionPanel.Controls.Add(this.fileDataGrid);
             this.ConversionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionPanel.Location = new System.Drawing.Point(0, 0);
-            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ConversionPanel.Name = "ConversionPanel";
-            this.ConversionPanel.Size = new System.Drawing.Size(1085, 529);
+            this.ConversionPanel.Size = new System.Drawing.Size(1085, 530);
             this.ConversionPanel.TabIndex = 4;
             // 
             // pictureBox4
@@ -236,7 +231,7 @@ namespace Hackathon_Converter
             this.btn_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Remove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_Remove.Location = new System.Drawing.Point(748, 90);
-            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(196, 34);
             this.btn_Remove.TabIndex = 4;
@@ -253,7 +248,7 @@ namespace Hackathon_Converter
             this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AddFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_AddFiles.Location = new System.Drawing.Point(488, 88);
-            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_AddFiles.Name = "btn_AddFiles";
             this.btn_AddFiles.Size = new System.Drawing.Size(181, 38);
             this.btn_AddFiles.TabIndex = 3;
@@ -266,7 +261,7 @@ namespace Hackathon_Converter
             this.FileNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileNameInput.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FileNameInput.Location = new System.Drawing.Point(54, 91);
-            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
+            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FileNameInput.Name = "FileNameInput";
             this.FileNameInput.Size = new System.Drawing.Size(408, 29);
             this.FileNameInput.TabIndex = 1;
@@ -278,7 +273,7 @@ namespace Hackathon_Converter
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileDataGrid.Location = new System.Drawing.Point(54, 182);
-            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
             this.fileDataGrid.Size = new System.Drawing.Size(904, 314);
@@ -293,7 +288,7 @@ namespace Hackathon_Converter
             this.ConversionBanner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionBanner.Location = new System.Drawing.Point(0, 0);
             this.ConversionBanner.Name = "ConversionBanner";
-            this.ConversionBanner.Size = new System.Drawing.Size(1085, 94);
+            this.ConversionBanner.Size = new System.Drawing.Size(1085, 93);
             this.ConversionBanner.TabIndex = 6;
             // 
             // Btn_Format
@@ -325,7 +320,7 @@ namespace Hackathon_Converter
             this.HomeCapture.Controls.Add(this.HomeImg);
             this.HomeCapture.Controls.Add(this.HomeInstruct);
             this.HomeCapture.Location = new System.Drawing.Point(104, 11);
-            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HomeCapture.Name = "HomeCapture";
             this.HomeCapture.Size = new System.Drawing.Size(912, 577);
             this.HomeCapture.TabIndex = 3;
@@ -336,7 +331,7 @@ namespace Hackathon_Converter
             this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
             this.Btn_BrowseFiles.Location = new System.Drawing.Point(277, 495);
-            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
             this.Btn_BrowseFiles.Size = new System.Drawing.Size(296, 57);
             this.Btn_BrowseFiles.TabIndex = 2;
@@ -348,7 +343,7 @@ namespace Hackathon_Converter
             // 
             this.HomeImg.Image = ((System.Drawing.Image)(resources.GetObject("HomeImg.Image")));
             this.HomeImg.Location = new System.Drawing.Point(159, 18);
-            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HomeImg.Name = "HomeImg";
             this.HomeImg.Size = new System.Drawing.Size(520, 389);
             this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -393,7 +388,7 @@ namespace Hackathon_Converter
             // 
             this.Format_Page.Panel2.Controls.Add(this.panel3);
             this.Format_Page.Size = new System.Drawing.Size(1085, 624);
-            this.Format_Page.SplitterDistance = 94;
+            this.Format_Page.SplitterDistance = 93;
             this.Format_Page.TabIndex = 6;
             this.Format_Page.Visible = false;
             // 
@@ -406,7 +401,7 @@ namespace Hackathon_Converter
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1085, 94);
+            this.panel2.Size = new System.Drawing.Size(1085, 93);
             this.panel2.TabIndex = 6;
             // 
             // Btn_FormatBack
@@ -453,10 +448,6 @@ namespace Hackathon_Converter
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
-            this.panel3.Controls.Add(this.TextAlignDrop);
-            this.panel3.Controls.Add(this.TextDirectDrop);
-            this.panel3.Controls.Add(this.ColumnDrop);
-            this.panel3.Controls.Add(this.SpacingValueStep);
             this.panel3.Controls.Add(this.Btn_TextAlignRight);
             this.panel3.Controls.Add(this.Btn_ChapComb);
             this.panel3.Controls.Add(this.Btn_ChapBreak);
@@ -475,93 +466,10 @@ namespace Hackathon_Converter
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1085, 526);
+            this.panel3.Size = new System.Drawing.Size(1085, 527);
             this.panel3.TabIndex = 4;
-            // 
-            // TextAlignDrop
-            // 
-            this.TextAlignDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextAlignDrop.FormattingEnabled = true;
-            this.TextAlignDrop.Items.AddRange(new object[] {
-            "Left Aligned",
-            "Right Aligned",
-            "Center Aligned",
-            "Justified"});
-            this.TextAlignDrop.Location = new System.Drawing.Point(742, 326);
-            this.TextAlignDrop.Margin = new System.Windows.Forms.Padding(2);
-            this.TextAlignDrop.Name = "TextAlignDrop";
-            this.TextAlignDrop.Size = new System.Drawing.Size(172, 33);
-            this.TextAlignDrop.TabIndex = 29;
-            this.TextAlignDrop.Text = "      -- Select --";
-            this.TextAlignDrop.Visible = false;
-            this.TextAlignDrop.SelectedIndexChanged += new System.EventHandler(this.TextAlignDrop_SelectedIndexChanged);
-            // 
-            // TextDirectDrop
-            // 
-            this.TextDirectDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextDirectDrop.FormattingEnabled = true;
-            this.TextDirectDrop.Items.AddRange(new object[] {
-            "Left to Right",
-            "Right to Left"});
-            this.TextDirectDrop.Location = new System.Drawing.Point(742, 243);
-            this.TextDirectDrop.Margin = new System.Windows.Forms.Padding(2);
-            this.TextDirectDrop.Name = "TextDirectDrop";
-            this.TextDirectDrop.Size = new System.Drawing.Size(172, 33);
-            this.TextDirectDrop.TabIndex = 28;
-            this.TextDirectDrop.Text = "      -- Select --";
-            this.TextDirectDrop.Visible = false;
-            this.TextDirectDrop.SelectedIndexChanged += new System.EventHandler(this.TextDirectDrop_SelectedIndexChanged);
-            // 
-            // ColumnDrop
-            // 
-            this.ColumnDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnDrop.FormattingEnabled = true;
-            this.ColumnDrop.Items.AddRange(new object[] {
-            "One Column",
-            "Two Columns"});
-            this.ColumnDrop.Location = new System.Drawing.Point(742, 147);
-            this.ColumnDrop.Margin = new System.Windows.Forms.Padding(2);
-            this.ColumnDrop.Name = "ColumnDrop";
-            this.ColumnDrop.Size = new System.Drawing.Size(172, 33);
-            this.ColumnDrop.TabIndex = 27;
-            this.ColumnDrop.Text = "      -- Select --";
-            this.ColumnDrop.Visible = false;
-            this.ColumnDrop.SelectedIndexChanged += new System.EventHandler(this.ColumnDrop_SelectedIndexChanged);
-            // 
-            // SpacingValueStep
-            // 
-            this.SpacingValueStep.DecimalPlaces = 1;
-            this.SpacingValueStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpacingValueStep.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.SpacingValueStep.Location = new System.Drawing.Point(742, 58);
-            this.SpacingValueStep.Margin = new System.Windows.Forms.Padding(2);
-            this.SpacingValueStep.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.SpacingValueStep.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SpacingValueStep.Name = "SpacingValueStep";
-            this.SpacingValueStep.Size = new System.Drawing.Size(170, 30);
-            this.SpacingValueStep.TabIndex = 26;
-            this.SpacingValueStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpacingValueStep.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SpacingValueStep.Visible = false;
-            this.SpacingValueStep.ValueChanged += new System.EventHandler(this.SpacingValueStep_ValueChanged);
             // 
             // Btn_TextAlignRight
             // 
@@ -818,7 +726,7 @@ namespace Hackathon_Converter
             // 
             this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
             this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
-            this.Conversion_Page.SplitterDistance = 94;
+            this.Conversion_Page.SplitterDistance = 93;
             this.Conversion_Page.TabIndex = 5;
             this.Conversion_Page.Visible = false;
             // 
@@ -1021,10 +929,10 @@ namespace Hackathon_Converter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 609);
+            this.ClientSize = new System.Drawing.Size(1077, 608);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = " Matos";
             this.ConversionPanel.ResumeLayout(false);
@@ -1042,7 +950,6 @@ namespace Hackathon_Converter
             this.Format_Page.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpacingValueStep)).EndInit();
             this.Conversion_Page.Panel1.ResumeLayout(false);
             this.Conversion_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
@@ -1061,10 +968,7 @@ namespace Hackathon_Converter
 
         #endregion
 
-        private bool isTextJustified = false;
-        private bool isSingleSpaced=true;
-        private bool hasOneColumn=true;
-        private bool isL2RDirection=true;
+        
         
 
         private System.Windows.Forms.PictureBox HomeImg;
@@ -1122,32 +1026,10 @@ namespace Hackathon_Converter
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
 
-        private string filePathConversion;
-
-        private HTMLConfig configHTML = new HTMLConfig();
-        private NumericUpDown SpacingValueStep;
+        
         private Button Btn_DoubleSpaced;
         private Button Btn_SingleSpaced;
-        private ComboBox TextAlignDrop;
-        private ComboBox TextDirectDrop;
-        private ComboBox ColumnDrop;
 
-        private Dictionary<double, string> LineSpacingClasses = new Dictionary<double, string> {
-            [1] = "single-space",
-            [1.5]="one-half-space",
-            [2]="double-space",
-            [2.5] = "two-half-space",
-            [3] = "triple-space"
-        };
-        private string[] ColumnClasses = { "", "two-column" };
-        private string[] TextDirectionClasses = {"", "rtl-direct" };
-        private string[] TextAlignmentClasses = { "","right-align","center-align","justified" };
-        private bool willSeparateChap = true;
-
-
-        private System.Drawing.Color whiteColor = System.Drawing.Color.White;
-        private System.Drawing.Color darkBlue = System.Drawing.Color.FromArgb(0,68,214);
-        private System.Drawing.Color disableBack = System.Drawing.Color.FromArgb(215,218,224);
-        private System.Drawing.Color disableFore = System.Drawing.Color.FromArgb(118,118,118);
+        
     }
 }

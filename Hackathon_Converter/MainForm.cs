@@ -10,11 +10,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using USFMToolsSharp;
+using USFMToolsSharp.Models;
+using USFMToolsSharp.Models.Markers;
 
 namespace Hackathon_Converter
 {
     public partial class MainForm : Form
     {
+        private bool isTextJustified = false;
+        private bool isSingleSpaced = true;
+        private bool hasOneColumn = true;
+        private bool isL2RDirection = true;
+        private bool willSeparateChap = true;
+        private string filePathConversion;
+
+        private HTMLConfig configHTML = new HTMLConfig();
+
+        private Dictionary<double, string> LineSpacingClasses;
+        private string[] ColumnClasses;
+        private string[] TextDirectionClasses;
+        private string[] TextAlignmentClasses;
+
+        private Color whiteColor = Color.White;
+        private Color darkBlue = Color.FromArgb(0, 68, 214);
+        private Color disableBack = Color.FromArgb(215, 218, 224);
+        private Color disableFore = Color.FromArgb(118, 118, 118);
+
         public MainForm()
         {
             InitCustomLabelFont();
@@ -24,7 +45,19 @@ namespace Hackathon_Converter
             fileDataGrid.Columns[0].Name = "File";
             fileDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-        }
+            LineSpacingClasses = new Dictionary<double, string>
+            {
+                [1] = "single-space",
+                [1.5] = "one-half-space",
+                [2] = "double-space",
+                [2.5] = "two-half-space",
+                [3] = "triple-space"
+            };
+            ColumnClasses = new string[]{ "", "two-column" };
+            TextDirectionClasses = new string[] { "", "rtl-direct" };
+            TextAlignmentClasses = new string[] { "", "right-align", "center-align", "justified" };
+
+    }
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
@@ -69,8 +102,6 @@ namespace Hackathon_Converter
             Stream htmlStream;
 
             string saveFileName = (!string.IsNullOrWhiteSpace(FileNameInput.Text) ? FileNameInput.Text.Trim() : "out") + ".html";
-
-
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 FileName = saveFileName,
@@ -78,6 +109,9 @@ namespace Hackathon_Converter
                 FilterIndex = 1,
                 RestoreDirectory = false
             };
+            
+
+
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
@@ -94,9 +128,8 @@ namespace Hackathon_Converter
                 fileDataGrid.Enabled = false;
                 Show_Loading_Page();
 
-
                 // Does not parse through section headers yet
-                var parser = new USFMParser(new List<string> { "s5","s","s2","s3","s4" });
+                var parser = new USFMParser(new List<string> { "s5" });
 
                 formatConfig();
                 //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
@@ -107,7 +140,7 @@ namespace Hackathon_Converter
                 renderer.FrontMatterHTML = GetLicenseInfo();
                 renderer.InsertedFooter = GetFooterInfo();
 
-                var usfm = new USFMToolsSharp.Models.Markers.USFMDocument();
+                var usfm = new USFMDocument();
 
                 var progress = fileDataGrid.RowCount - 1;
                 var progressStep = 0;
@@ -120,29 +153,29 @@ namespace Hackathon_Converter
                         continue;
                     }
                     var filename = cell.Value.ToString();
-                    var text = File.ReadAllText(filename);
-                    usfm.Insert(parser.ParseFromString(text));
+                    using (StreamReader usfmFile = new StreamReader(filename))
+                    {
+                        var text = usfmFile.ReadToEnd();
+                        usfm.Insert(parser.ParseFromString(text));
+                    }
+                    
 
                     progressStep++;
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
-
+               
 
                 var html = renderer.Render(usfm);
-
-
-                //var bytes = Encoding.UTF8.GetBytes(html);
-                //htmlStream.Write(bytes, 0, bytes.Length);
-                //htmlStream.Close();
-
                 var htmlFilename = saveFileDialog.FileName;
 
-                File.WriteAllText(htmlFilename, html);
+                var bytes = Encoding.UTF8.GetBytes(html);
+                htmlStream.Write(bytes, 0, bytes.Length);
+                htmlStream.Close();
 
                 var dirname = Path.GetDirectoryName(htmlFilename);
                 filePathConversion = dirname;
                 var cssFilename = Path.Combine(dirname, "style.css");
-                if (File.Exists(cssFilename) == false)
+                if (!File.Exists(cssFilename))
                 {
                     File.Copy("style.css", cssFilename);
                 }
@@ -203,14 +236,12 @@ namespace Hackathon_Converter
                 Multiselect = true
             };
             
-
             //Show the FolderBrowserDialog.
             DialogResult result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK)
             {
                 return;
             }
-
 
             foreach (var filePath in openFileDialog.FileNames)
             {
@@ -220,8 +251,6 @@ namespace Hackathon_Converter
                     fileDataGrid.Rows.Add(new String[] { filePath });
                 }
             }
-            
-
         }
 
         private void onRemoveFileButtonClick(object sender, EventArgs e)
@@ -230,8 +259,6 @@ namespace Hackathon_Converter
             int numRemove = 1;
             if (fileDataGrid.Rows.Count > 1)
             {
-
-                
                 foreach(DataGridViewCell SelectFile in SelectedFiles)
                 {
                     if(SelectFile.OwningRow.Index != fileDataGrid.RowCount-1)
@@ -239,13 +266,11 @@ namespace Hackathon_Converter
                 }
             }
 
-            
             if (fileDataGrid.Rows.Count == 1)
+            {
                 numRemove = 0;
-
+            }
             btn_Remove.Text = $"Delete ({numRemove}) Files";
-
-
         }
 
         private void Btn_NewProj_Click(object sender, EventArgs e)
@@ -263,17 +288,12 @@ namespace Hackathon_Converter
         }
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
-            
             DataGridViewElementStates state = e.StateChanged;
             DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
-
-
             int numFilesRemove = SelectedFiles.Count;
             if (SelectedFiles.Contains(fileDataGrid[0, fileDataGrid.RowCount-1]))
                 numFilesRemove--;
 
-            //if (SelectedFiles.Contains(fileDataGrid.Rows[fileDataGrid.RowCount - 1].Cells[1]))
-            //    numFilesRemove--;
             btn_Remove.Text = $"Delete ({numFilesRemove}) Files";
         }
 
@@ -494,29 +514,7 @@ namespace Hackathon_Converter
         {
             FileNameInput.Text = "";
 
-        }
-
-        private void ColumnDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = ColumnDrop.SelectedIndex;
-            configHTML.divClasses[1] = ColumnClasses[index];
-        }
-
-        private void SpacingValueStep_ValueChanged(object sender, EventArgs e)
-        {
-            configHTML.divClasses[0] = LineSpacingClasses[(double)SpacingValueStep.Value];
-        }
-
-        private void TextDirectDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            configHTML.divClasses[2] = TextDirectionClasses[TextDirectDrop.SelectedIndex];
-        }
-
-        private void TextAlignDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            configHTML.divClasses[3] = TextAlignmentClasses[TextAlignDrop.SelectedIndex];
-        }
-        
+        }        
         private void formatConfig()
         {
             if (!isSingleSpaced)
