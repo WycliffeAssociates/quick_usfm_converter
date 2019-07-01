@@ -99,7 +99,6 @@ namespace Hackathon_Converter
         {
             //Implement for dropdown options setConfigObject();
 
-            Stream htmlStream;
 
             string saveFileName = (!string.IsNullOrWhiteSpace(FileNameInput.Text) ? FileNameInput.Text.Trim() : "out") + ".html";
             SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -117,10 +116,6 @@ namespace Hackathon_Converter
             {
                 return;
                 
-            }
-            if ((htmlStream = saveFileDialog.OpenFile()) == null)
-            {
-                Show_Error_Page();
             }
             else
             { 
@@ -153,11 +148,10 @@ namespace Hackathon_Converter
                         continue;
                     }
                     var filename = cell.Value.ToString();
-                    using (StreamReader usfmFile = new StreamReader(filename))
-                    {
-                        var text = usfmFile.ReadToEnd();
-                        usfm.Insert(parser.ParseFromString(text));
-                    }
+
+                    var text = File.ReadAllText(filename);
+                    usfm.Insert(parser.ParseFromString(text));
+
                     
 
                     progressStep++;
@@ -168,9 +162,7 @@ namespace Hackathon_Converter
                 var html = renderer.Render(usfm);
                 var htmlFilename = saveFileDialog.FileName;
 
-                var bytes = Encoding.UTF8.GetBytes(html);
-                htmlStream.Write(bytes, 0, bytes.Length);
-                htmlStream.Close();
+                File.WriteAllText(htmlFilename, html);
 
                 var dirname = Path.GetDirectoryName(htmlFilename);
                 filePathConversion = dirname;
