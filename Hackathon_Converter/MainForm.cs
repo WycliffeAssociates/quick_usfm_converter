@@ -196,22 +196,24 @@ namespace Hackathon_Converter
         {
             // Format --  June 13, 2019 11:42
             string dateFormat = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
-            string footerHTML = "";
-            footerHTML+="<div class=FooterSection>";
-            footerHTML+="<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>";
-            footerHTML+="<tr><td>";
-            footerHTML+="<div style='mso-element:footer' id=f1>";
-            footerHTML+="<p class=MsoFooter></p>";
-            footerHTML+=dateFormat;
-            footerHTML+="<span style=mso-tab-count:1></span>";
-            footerHTML+="<span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>";
-            footerHTML+="<span style=mso-tab-count:1></span>";
-            footerHTML+="<img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/4.0/88x31.png\" />";
-            footerHTML+="</p>";
-            footerHTML+="</div>";
-            footerHTML+="</td></tr>";
-            footerHTML+="</table>";
-            footerHTML+="</div>";
+            string footerHTML = $@"
+            <div class=FooterSection>
+            <table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>
+            <div class=FooterSection>
+            <table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'>
+            <tr><td>
+            <div style='mso-element:footer' id=f1>
+            <p class=MsoFooter></p>
+            {dateFormat}
+            <span style=mso-tab-count:1></span>
+            <span style='mso-field-code: PAGE '></span><span style='mso-no-proof:yes'></span></span>
+            <span style=mso-tab-count:1></span>
+            <img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by-sa/4.0/88x31.png' />
+            </p>
+            </div>
+            </td></tr>
+            </table>
+            </div> ";
             return footerHTML;
         }
 
