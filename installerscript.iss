@@ -5,7 +5,7 @@
 #define MyAppVersion "0.0.1"
 #define MyAppPublisher "Wycliffe Associates"
 #define MyAppURL "https://wycliffeassociates.org"
-#define MyAppExeName "Hackathon_Converter.exe"
+#define MyAppExeName "USFM_Converter.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
