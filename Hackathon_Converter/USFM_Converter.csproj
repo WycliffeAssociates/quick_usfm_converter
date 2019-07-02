@@ -6,13 +6,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1569F0C4-A266-40B4-9B2C-557FBB0883A9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Hackathon_Converter</RootNamespace>
-    <AssemblyName>Hackathon_Converter</AssemblyName>
+    <RootNamespace>USFM_Converter</RootNamespace>
+    <AssemblyName>USFM_Converter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>converter_logo_inverted_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -72,11 +75,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="USFMToolsSharp, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.0.3.1\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
+    <Reference Include="USFMToolsSharp, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\USFMToolsSharp.0.4.0\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorGradient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +117,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Lato-Regular.ttf" />
+    <None Include="Resources\Muli-ExtraBold.ttf" />
+    <None Include="Resources\Muli-Light.ttf" />
+    <None Include="Resources\Muli-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -117,6 +128,39 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="converter_logo_inverted_icon.ico" />
+    <Content Include="insert_ULB_License.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\undraw_upload_87y9%402x.png" />
+    <None Include="Resources\Hackathon Logo.png" />
+    <None Include="Resources\Hackathon Logo%402x.png" />
+    <None Include="Resources\Group 88.png" />
+    <None Include="Resources\Group 89.png" />
+    <None Include="Resources\Group 123.png" />
+    <None Include="Resources\Group 122%402x.png" />
+    <None Include="Resources\Group 122.png" />
+    <None Include="Resources\format-columns-1.png" />
+    <None Include="Resources\format-columns.png" />
+    <None Include="Resources\Group 119.png" />
+    <None Include="Resources\Group 118.png" />
+    <None Include="Resources\Group 115.png" />
+    <None Include="Resources\Group 116.png" />
+    <None Include="Resources\format-page-break.png" />
+    <None Include="Resources\left-arrowpng.png" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\arrow-left-c.png" />
+    <None Include="Resources\arrow-left-c1.png" />
+    <None Include="Resources\text_right_align_format.png" />
+    <None Include="Resources\Mask Group 1.png" />
+    <None Include="Resources\Hackathon Logo Inverted.png" />
+    <None Include="Resources\Mask Group 11.png" />
+    <None Include="Resources\Group 69.png" />
+    <None Include="Resources\Group 70.png" />
+    <None Include="Resources\Group 127.png" />
+    <None Include="Resources\Group 701.png" />
+    <None Include="Resources\Mask_Group_1_Logo.png" />
+    <None Include="Resources\Mask_Group_1_Logo1.png" />
     <Content Include="style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

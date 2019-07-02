@@ -1,3 +1,4 @@
+/* Marker Specific Styling */
 .header {
     margin-top: 1em;
     font-size: 32px;
@@ -11,6 +12,12 @@
 
 .chapter {
     margin-top: 1em;
+    /* page-break-before:always; */
+}
+
+.pagebreak {
+    page-break-after: auto;
+    page-break-after: always;
 }
 
 .chaptermarker {
@@ -21,7 +28,133 @@
     margin-right: 0.25em;
 }
 
+.poetry-1 {
+    line-break: normal;
+    display: block;
+    text-indent: 0px !important;
+}
+
+.poetry-2 {
+    line-break: normal;
+    display: block;
+    text-indent: 30px !important;
+}
+
+.poetry-3 {
+    line-break: normal;
+    display: block;
+    text-indent: 50px !important;
+}
+
+.verse {
+    font-size: 20px;
+    font-weight: normal;
+}
+
 .versemarker {
     font-size: 10px;
     vertical-align: top;
+    mso-text-raise: 60%;
+}
+/* Format Styles */
+.single-space {
+    line-height: 1;
+}
+.one-half-space{
+    line-height:150%;
+}
+.double-space {
+    line-height: 2;
+}
+.two-half-space {
+    line-height: 250%;
+}
+.triple-space {
+    line-height: 3;
+}
+
+.justified {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.right-align {
+    text-align: right;
+}
+.center-align{
+    text-align:center;
+}
+.rtl-direct {
+    direction: rtl;
+}
+
+.footnotecaller {
+    font-size: 12px;
+    vertical-align: top;
+    mso-text-raise: 40%;
+}
+
+.footnote-alternate-translation {
+    font-style: italic;
+}
+/* @page ColumnOne{
+    size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+    mso-footer-margin:.5in;
+    mso-columns:1;
+    mso-paper-source:0;
+}
+@page Column2{
+    size:8.5in 11.0in;
+    margin:1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin:.5in;
+    mso-footer-margin:.5in;
+    mso-columns:2 even .5in;
+    mso-paper-source:0;
+} */
+@page FooterSection {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-title-page: yes;
+    mso-header: h1;
+    mso-footer: f1;
+    mso-first-header: fh1;
+    mso-first-footer: ff1;
+    mso-paper-source: 0;
+    mso-page-numbers: 0;
+}
+
+div.one-column {
+    column-count: 1;
+    mso-columns: 1;
+    page:ColumnOne; 
+}
+
+div.two-column {
+    column-count: 2;
+    mso-columns: 2 even .5in;
+    page:Column2; 
+}
+
+p.MsoFooter, li.MsoFooter, div.MsoFooter {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    tab-stops: center 3.0in right 6.0in;
+    font-size: 12.0pt;
+}
+
+div.FooterSection {
+    page: FooterSection;
+}
+
+table#hrdftrtbl {
+    margin: 0in 0in 0in 900in;
+    width: 900px;
+    height: 1px;
+    tab-stops: center 3.0in right 6.0in;
+    overflow: hidden;
 }

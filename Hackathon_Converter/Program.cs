@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hackathon_Converter
+namespace USFM_Converter
 {
     static class Program
     {
