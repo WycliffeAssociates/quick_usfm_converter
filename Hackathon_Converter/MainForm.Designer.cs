@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using USFMToolsSharp.Models;
 
-namespace Hackathon_Converter
+namespace USFM_Converter
 {
     partial class MainForm
     {
@@ -102,6 +102,8 @@ namespace Hackathon_Converter
             this.HomeImg = new System.Windows.Forms.PictureBox();
             this.HomeInstruct = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Loading_Page = new System.Windows.Forms.Panel();
+            this.LoadingBar = new System.Windows.Forms.ProgressBar();
             this.Format_Page = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_FormatBack = new System.Windows.Forms.Button();
@@ -125,15 +127,13 @@ namespace Hackathon_Converter
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Conversion_Page = new System.Windows.Forms.SplitContainer();
-            this.Loading_Page = new System.Windows.Forms.Panel();
-            this.LoadingBar = new System.Windows.Forms.ProgressBar();
-            this.Success_Page = new Hackathon_Converter.ColorGradient();
+            this.Success_Page = new USFM_Converter.ColorGradient();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.Error_Page = new Hackathon_Converter.ColorGradient();
+            this.Error_Page = new USFM_Converter.ColorGradient();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_RestartProj = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -149,6 +149,7 @@ namespace Hackathon_Converter
             this.HomeCapture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
             this.panel1.SuspendLayout();
+            this.Loading_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Format_Page)).BeginInit();
             this.Format_Page.Panel1.SuspendLayout();
             this.Format_Page.Panel2.SuspendLayout();
@@ -159,7 +160,6 @@ namespace Hackathon_Converter
             this.Conversion_Page.Panel1.SuspendLayout();
             this.Conversion_Page.Panel2.SuspendLayout();
             this.Conversion_Page.SuspendLayout();
-            this.Loading_Page.SuspendLayout();
             this.Success_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.Error_Page.SuspendLayout();
@@ -182,12 +182,12 @@ namespace Hackathon_Converter
             this.ConversionPanel.Location = new System.Drawing.Point(0, 0);
             this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ConversionPanel.Name = "ConversionPanel";
-            this.ConversionPanel.Size = new System.Drawing.Size(1085, 530);
+            this.ConversionPanel.Size = new System.Drawing.Size(1085, 531);
             this.ConversionPanel.TabIndex = 4;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::Hackathon_Converter.Properties.Resources.Group_70;
+            this.pictureBox4.Image = global::USFM_Converter.Properties.Resources.Group_70;
             this.pictureBox4.Location = new System.Drawing.Point(54, 53);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(33, 34);
@@ -206,7 +206,7 @@ namespace Hackathon_Converter
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::Hackathon_Converter.Properties.Resources.Group_69;
+            this.pictureBox5.Image = global::USFM_Converter.Properties.Resources.Group_69;
             this.pictureBox5.Location = new System.Drawing.Point(54, 143);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(33, 34);
@@ -288,7 +288,7 @@ namespace Hackathon_Converter
             this.ConversionBanner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionBanner.Location = new System.Drawing.Point(0, 0);
             this.ConversionBanner.Name = "ConversionBanner";
-            this.ConversionBanner.Size = new System.Drawing.Size(1085, 93);
+            this.ConversionBanner.Size = new System.Drawing.Size(1085, 92);
             this.ConversionBanner.TabIndex = 6;
             // 
             // Btn_Format
@@ -363,9 +363,9 @@ namespace Hackathon_Converter
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Format_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
-            this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.HomeCapture);
@@ -373,6 +373,25 @@ namespace Hackathon_Converter
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 616);
             this.panel1.TabIndex = 5;
+            // 
+            // Loading_Page
+            // 
+            this.Loading_Page.BackgroundImage = global::USFM_Converter.Properties.Resources.Mask_Group_11;
+            this.Loading_Page.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Loading_Page.Controls.Add(this.LoadingBar);
+            this.Loading_Page.Location = new System.Drawing.Point(0, 0);
+            this.Loading_Page.Name = "Loading_Page";
+            this.Loading_Page.Size = new System.Drawing.Size(1085, 621);
+            this.Loading_Page.TabIndex = 6;
+            this.Loading_Page.Visible = false;
+            // 
+            // LoadingBar
+            // 
+            this.LoadingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.LoadingBar.Location = new System.Drawing.Point(335, 325);
+            this.LoadingBar.Name = "LoadingBar";
+            this.LoadingBar.Size = new System.Drawing.Size(377, 16);
+            this.LoadingBar.TabIndex = 3;
             // 
             // Format_Page
             // 
@@ -388,7 +407,7 @@ namespace Hackathon_Converter
             // 
             this.Format_Page.Panel2.Controls.Add(this.panel3);
             this.Format_Page.Size = new System.Drawing.Size(1085, 624);
-            this.Format_Page.SplitterDistance = 93;
+            this.Format_Page.SplitterDistance = 92;
             this.Format_Page.TabIndex = 6;
             this.Format_Page.Visible = false;
             // 
@@ -401,7 +420,7 @@ namespace Hackathon_Converter
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1085, 93);
+            this.panel2.Size = new System.Drawing.Size(1085, 92);
             this.panel2.TabIndex = 6;
             // 
             // Btn_FormatBack
@@ -468,7 +487,7 @@ namespace Hackathon_Converter
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1085, 527);
+            this.panel3.Size = new System.Drawing.Size(1085, 528);
             this.panel3.TabIndex = 4;
             // 
             // Btn_TextAlignRight
@@ -479,7 +498,7 @@ namespace Hackathon_Converter
             this.Btn_TextAlignRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_TextAlignRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_TextAlignRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
-            this.Btn_TextAlignRight.Image = global::Hackathon_Converter.Properties.Resources.Text_Align_R;
+            this.Btn_TextAlignRight.Image = global::USFM_Converter.Properties.Resources.Text_Align_R;
             this.Btn_TextAlignRight.Location = new System.Drawing.Point(299, 324);
             this.Btn_TextAlignRight.Name = "Btn_TextAlignRight";
             this.Btn_TextAlignRight.Size = new System.Drawing.Size(213, 39);
@@ -726,27 +745,9 @@ namespace Hackathon_Converter
             // 
             this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
             this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
-            this.Conversion_Page.SplitterDistance = 93;
+            this.Conversion_Page.SplitterDistance = 92;
             this.Conversion_Page.TabIndex = 5;
             this.Conversion_Page.Visible = false;
-            // 
-            // Loading_Page
-            // 
-            this.Loading_Page.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Loading_Page.BackgroundImage")));
-            this.Loading_Page.Controls.Add(this.LoadingBar);
-            this.Loading_Page.Location = new System.Drawing.Point(0, 0);
-            this.Loading_Page.Name = "Loading_Page";
-            this.Loading_Page.Size = new System.Drawing.Size(1085, 621);
-            this.Loading_Page.TabIndex = 6;
-            this.Loading_Page.Visible = false;
-            // 
-            // LoadingBar
-            // 
-            this.LoadingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.LoadingBar.Location = new System.Drawing.Point(360, 399);
-            this.LoadingBar.Name = "LoadingBar";
-            this.LoadingBar.Size = new System.Drawing.Size(333, 18);
-            this.LoadingBar.TabIndex = 3;
             // 
             // Success_Page
             // 
@@ -929,12 +930,12 @@ namespace Hackathon_Converter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 608);
+            this.ClientSize = new System.Drawing.Size(1077, 620);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
-            this.Text = " Matos";
+            this.Text = "USFM Converter";
             this.ConversionPanel.ResumeLayout(false);
             this.ConversionPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -944,6 +945,7 @@ namespace Hackathon_Converter
             this.HomeCapture.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.Loading_Page.ResumeLayout(false);
             this.Format_Page.Panel1.ResumeLayout(false);
             this.Format_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Format_Page)).EndInit();
@@ -954,7 +956,6 @@ namespace Hackathon_Converter
             this.Conversion_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
             this.Conversion_Page.ResumeLayout(false);
-            this.Loading_Page.ResumeLayout(false);
             this.Success_Page.ResumeLayout(false);
             this.Success_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

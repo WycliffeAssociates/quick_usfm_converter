@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1569F0C4-A266-40B4-9B2C-557FBB0883A9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Hackathon_Converter</RootNamespace>
-    <AssemblyName>Hackathon_Converter</AssemblyName>
+    <RootNamespace>USFM_Converter</RootNamespace>
+    <AssemblyName>USFM_Converter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>hackathon_logo_inverted_icon.ico</ApplicationIcon>
+    <ApplicationIcon>converter_logo_inverted_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -128,7 +128,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hackathon_logo_inverted_icon.ico" />
+    <Content Include="converter_logo_inverted_icon.ico" />
     <Content Include="insert_ULB_License.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
