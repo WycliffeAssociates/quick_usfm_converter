@@ -1,45 +1,58 @@
 /* Format Styles */
-.font-small{
-    font-size:16px;
+.small-text {
+    font-size: 16px;
 }
-.font-med {
+
+.med-text {
     font-size: 22px;
 }
-.font-large {
+
+.large-text {
     font-size: 29px;
 }
+
 .pagebreak {
     page-break-after: auto;
     page-break-after: always;
 }
+
 .single-space {
     line-height: 1;
 }
-.one-half-space{
-    line-height:150%;
+
+.one-half-space {
+    line-height: 150%;
 }
+
 .double-space {
     line-height: 2;
 }
+
 .two-half-space {
     line-height: 250%;
 }
+
 .triple-space {
     line-height: 3;
 }
+
 .justified {
     text-align: justify;
     text-justify: inter-word;
 }
+
 .right-align {
     text-align: right;
 }
-.center-align{
-    text-align:center;
+
+.center-align {
+    text-align: center;
 }
+
 .rtl-direct {
     direction: rtl;
 }
+
 @page FooterSection {
     size: 8.5in 11.0in;
     margin: 1.0in 1.0in 1.0in 1.0in;
@@ -57,13 +70,13 @@
 div.one-column {
     column-count: 1;
     mso-columns: 1;
-    page:ColumnOne; 
+    page: ColumnOne;
 }
 
 div.two-column {
     column-count: 2;
     mso-columns: 2 even .5in;
-    page:Column2; 
+    page: Column2;
 }
 
 p.MsoFooter, li.MsoFooter, div.MsoFooter {
@@ -89,33 +102,42 @@ table#hrdftrtbl {
 /* Marker Specific Styling */
 .header {
     margin-top: 1em;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     display: block;
 }
 
 .majortitle-1 {
     display: none;
+    font-size: inherit;
 }
 
 .majortitle-2 {
     display: none;
+    font-size: inherit;
 }
 
 .majortitle-3 {
     display: none;
+    font-size: inherit;
 }
+
 .footnotecaller {
     font-size: 0.5em;
     vertical-align: top;
     mso-text-raise: 40%;
 }
 
+.footnotes {
+    font-size: 0.75em;
+}
+
 .footnote-alternate-translation {
     font-style: italic;
 }
+
 .chaptermarker {
-    font-size: 32px;
+    font-size: 1.5em;
     font-weight: bold;
     display: block;
     float: left;
@@ -156,30 +178,35 @@ table#hrdftrtbl {
 
 .chapter {
     margin-top: 1em;
-    font-size: 1.2em;
+    font-size: inherit;
     /* page-break-before:always; */
 }
+
 .sectionhead-1 {
     margin-top: 1em;
     font-size: 2em;
     font-weight: bold;
     display: block;
 }
+
 .sectionhead-2 {
     margin-top: 1em;
     font-size: 1.75em;
     font-weight: bold;
     display: block;
 }
+
 .sectionhead-3 {
     margin-top: 1em;
     font-size: 1.5em;
     font-weight: bold;
     display: block;
 }
+
 .quoted-book {
     font-style: italic;
 }
+
 .list-1 {
     line-break: normal;
     display: block;
@@ -191,21 +218,26 @@ table#hrdftrtbl {
     display: block;
     text-indent: 30px !important;
 }
+
 .list-3 {
     line-break: normal;
     display: block;
     text-indent: 50px !important;
 }
+
 .additions {
     font-style: italic;
 }
+
 .transliterated {
     font-style: italic;
 }
-.small-caps{
-    text-transform:uppercase;
-    font-size:0.75em;
+
+.small-caps {
+    text-transform: uppercase;
+    font-size: 0.75em;
 }
-.word-entry{
-    font-size:1em;
+
+.word-entry {
+    font-size: 1em;
 }
