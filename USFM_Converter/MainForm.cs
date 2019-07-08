@@ -33,6 +33,11 @@ namespace USFM_Converter
         private Color disableBack = Color.FromArgb(215, 218, 224);
         private Color disableFore = Color.FromArgb(118, 118, 118);
 
+        // Drag Drop
+        private Rectangle dragBoxFromMouseDown;
+        private int rowIndexFromMouseDown;
+        private int rowIndexOfItemUnderMouseToDrop;
+
         public MainForm()
         {
             InitCustomLabelFont();
@@ -130,7 +135,7 @@ namespace USFM_Converter
 
                 var usfm = new USFMDocument();
 
-                var progress = fileDataGrid.RowCount - 1;
+                var progress = fileDataGrid.RowCount;
                 var progressStep = 0;
 
                 foreach (DataGridViewRow row in fileDataGrid.Rows)
@@ -155,7 +160,7 @@ namespace USFM_Converter
                 List<string> tracker = new List<string>();
                 foreach(string label in unknownLabels)
                 {
-                    if (!tracker.Contains(label))
+                    if (!tracker.Contains(label) && !label.Contains("f*"))
                         tracker.Add(label);
                 }
                 var html = renderer.Render(usfm);
@@ -249,19 +254,15 @@ namespace USFM_Converter
         private void onRemoveFileButtonClick(object sender, EventArgs e)
         {
             DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
-            int numRemove = 1;
-            if (fileDataGrid.Rows.Count > 1)
+            int numRemove = 0;
+            
+            foreach(DataGridViewCell SelectFile in SelectedFiles)
             {
-                foreach(DataGridViewCell SelectFile in SelectedFiles)
-                {
-                    if(SelectFile.OwningRow.Index != fileDataGrid.RowCount-1)
-                        fileDataGrid.Rows.Remove(SelectFile.OwningRow);
-                }
+                fileDataGrid.Rows.Remove(SelectFile.OwningRow);
             }
-
-            if (fileDataGrid.Rows.Count == 1)
+            if (fileDataGrid.Rows.GetRowCount(DataGridViewElementStates.None) >= 1)
             {
-                numRemove = 0;
+                numRemove = 1;
             }
             btn_Remove.Text = $"Delete ({numRemove}) Files";
         }
@@ -284,9 +285,10 @@ namespace USFM_Converter
             DataGridViewElementStates state = e.StateChanged;
             DataGridViewSelectedCellCollection SelectedFiles = fileDataGrid.SelectedCells;
             int numFilesRemove = SelectedFiles.Count;
-            if (SelectedFiles.Contains(fileDataGrid[0, fileDataGrid.RowCount-1]))
-                numFilesRemove--;
-
+            if(fileDataGrid.Rows.GetRowCount(DataGridViewElementStates.None) >= 1)
+            {
+                numFilesRemove = 1;
+            }
             btn_Remove.Text = $"Delete ({numFilesRemove}) Files";
         }
 
@@ -528,6 +530,66 @@ namespace USFM_Converter
             return config;
         }
 
+        
+        private void fileDataGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+
+                    // Proceed with the drag and drop, passing in the list item.                    
+                    DragDropEffects dropEffect = fileDataGrid.DoDragDrop( fileDataGrid.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void fileDataGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown = fileDataGrid.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown != -1)
+            {
+                // Remember the point where the mouse down occurred. 
+                // The DragSize indicates the size that the mouse can move 
+                // before a drag event should be started.                
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                                                               e.Y - (dragSize.Height / 2)),
+                                                                dragSize);
+            }
+            else
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void fileDataGrid_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void fileDataGrid_DragDrop(object sender, DragEventArgs e)
+        {
+            // Must be converted to client coordinates.
+            Point clientPoint = fileDataGrid.PointToClient(new Point(e.X, e.Y));
+
+            // Get the row index of the item the mouse is below. 
+            rowIndexOfItemUnderMouseToDrop = fileDataGrid.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            // Remove and insert the row.
+            if (e.Effect == DragDropEffects.Move)
+            {
+                DataGridViewRow rowToMove = e.Data.GetData(
+                    typeof(DataGridViewRow)) as DataGridViewRow;
+                fileDataGrid.Rows.RemoveAt(rowIndexFromMouseDown);
+                fileDataGrid.Rows.Insert(rowIndexOfItemUnderMouseToDrop, rowToMove);
+
+            }
+        }
 
     }
 
