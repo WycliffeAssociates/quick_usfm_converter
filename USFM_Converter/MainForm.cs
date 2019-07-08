@@ -465,9 +465,9 @@ namespace USFM_Converter
                 config.divClasses.Add(TextAlignmentClasses[3]);
             }
             config.divClasses.Add(fontClass);
-            
+
             // Will be added to HTML config class 
-            //config.separateVerses = willSeparateVerse;
+            config.separateVerses = willSeparateVerse;
 
             config.separateChapters = willSeparateChap;
 
