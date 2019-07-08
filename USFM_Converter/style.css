@@ -1,14 +1,4 @@
-/* Marker Specific Styling */
-.header {
-    margin-top: 1em;
-    font-size: 32px;
-    font-weight: bold;
-    display: block;
-}
-
-.majortitle {
-    display: none;
-}
+/* Format Styles */
 .font-small{
     font-size:16px;
 }
@@ -18,53 +8,10 @@
 .font-large {
     font-size: 29px;
 }
-.chapter {
-    margin-top: 1em;
-    /* page-break-before:always; */
-}
-
 .pagebreak {
     page-break-after: auto;
     page-break-after: always;
 }
-
-.chaptermarker {
-    font-size: 32px;
-    font-weight: bold;
-    display: block;
-    float: left;
-    margin-right: 0.25em;
-}
-
-.poetry-1 {
-    line-break: normal;
-    display: block;
-    text-indent: 0px !important;
-}
-
-.poetry-2 {
-    line-break: normal;
-    display: block;
-    text-indent: 30px !important;
-}
-
-.poetry-3 {
-    line-break: normal;
-    display: block;
-    text-indent: 50px !important;
-}
-
-.verse {
-    font-size: 1em;
-    font-weight: normal;
-}
-
-.versemarker {
-    font-size: 0.5em;
-    vertical-align: top;
-    mso-text-raise: 60%;
-}
-/* Format Styles */
 .single-space {
     line-height: 1;
 }
@@ -80,12 +27,10 @@
 .triple-space {
     line-height: 3;
 }
-
 .justified {
     text-align: justify;
     text-justify: inter-word;
 }
-
 .right-align {
     text-align: right;
 }
@@ -95,32 +40,6 @@
 .rtl-direct {
     direction: rtl;
 }
-
-.footnotecaller {
-    font-size: 0.5em;
-    vertical-align: top;
-    mso-text-raise: 40%;
-}
-
-.footnote-alternate-translation {
-    font-style: italic;
-}
-/* @page ColumnOne{
-    size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;
-	mso-header-margin:.5in;
-    mso-footer-margin:.5in;
-    mso-columns:1;
-    mso-paper-source:0;
-}
-@page Column2{
-    size:8.5in 11.0in;
-    margin:1.0in 1.0in 1.0in 1.0in;
-    mso-header-margin:.5in;
-    mso-footer-margin:.5in;
-    mso-columns:2 even .5in;
-    mso-paper-source:0;
-} */
 @page FooterSection {
     size: 8.5in 11.0in;
     margin: 1.0in 1.0in 1.0in 1.0in;
@@ -165,4 +84,115 @@ table#hrdftrtbl {
     height: 1px;
     tab-stops: center 3.0in right 6.0in;
     overflow: hidden;
+}
+
+/* Marker Specific Styling */
+.header {
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+
+.majortitle {
+    display: none;
+}
+.footnotecaller {
+    font-size: 0.5em;
+    vertical-align: top;
+    mso-text-raise: 40%;
+}
+
+.footnote-alternate-translation {
+    font-style: italic;
+}
+.chaptermarker {
+    font-size: 32px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    margin-right: 0.25em;
+}
+
+.poetry-1 {
+    line-break: normal;
+    display: block;
+    text-indent: 0px !important;
+}
+
+.poetry-2 {
+    line-break: normal;
+    display: block;
+    text-indent: 30px !important;
+}
+
+.poetry-3 {
+    line-break: normal;
+    display: block;
+    text-indent: 50px !important;
+}
+
+.verse {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.versemarker {
+    font-size: 0.5em;
+    vertical-align: top;
+    mso-text-raise: 60%;
+}
+.chapter {
+    margin-top: 1em;
+    /* page-break-before:always; */
+}
+.sectionhead-1 {
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+.sectionhead-2 {
+    margin-top: 1em;
+    font-size: 1.75em;
+    font-weight: bold;
+    display: block;
+}
+.sectionhead-3 {
+    margin-top: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+}
+.quoted-book {
+    font-style: italic;
+}
+.list-1 {
+    line-break: normal;
+    display: block;
+    text-indent: 0px !important;
+}
+
+.list-2 {
+    line-break: normal;
+    display: block;
+    text-indent: 30px !important;
+}
+.list-3 {
+    line-break: normal;
+    display: block;
+    text-indent: 50px !important;
+}
+.additions {
+    font-style: italic;
+}
+.transliterated {
+    font-style: italic;
+}
+.small-caps{
+    text-transform:uppercase;
+    font-size:0.75em;
+}
+.word-entry{
+    font-size:1em;
 }
