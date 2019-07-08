@@ -115,25 +115,28 @@ table#hrdftrtbl {
 }
 
 .poetry-1 {
+    font-size: inherit;
     line-break: normal;
     display: block;
     text-indent: 0px !important;
 }
 
 .poetry-2 {
+    font-size: inherit;
     line-break: normal;
     display: block;
     text-indent: 30px !important;
 }
 
 .poetry-3 {
+    font-size: inherit;
     line-break: normal;
     display: block;
     text-indent: 50px !important;
 }
 
 .verse {
-    font-size: 1em;
+    font-size: inherit;
     font-weight: normal;
 }
 
@@ -142,8 +145,10 @@ table#hrdftrtbl {
     vertical-align: top;
     mso-text-raise: 60%;
 }
+
 .chapter {
     margin-top: 1em;
+    font-size: 1.2em;
     /* page-break-before:always; */
 }
 .sectionhead-1 {
