@@ -324,7 +324,7 @@ namespace USFM_Converter
             isL2RDirection = !isL2RDirection;
             if (isL2RDirection)
             {
-                setColorFocus(this.Btn_LTR, true)
+                setColorFocus(this.Btn_LTR, true);
                 setColorFocus(this.Btn_RTL, false);
 
                 // Switch Alignment
@@ -467,7 +467,7 @@ namespace USFM_Converter
             config.divClasses.Add(fontClass);
             
             // Will be added to HTML config class 
-            config.separateVerses = willSeparateVerse;
+            //config.separateVerses = willSeparateVerse;
 
             config.separateChapters = willSeparateChap;
 
