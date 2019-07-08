@@ -473,20 +473,20 @@ namespace USFM_Converter
 
             return config;
         }
-        private void setColorFocus(object sender,bool focus)
+        private void setColorFocus(Button sender,bool focus)
         {
             if (focus)
             {
-                ((Button)sender).BackColor = whiteColor;
-                ((Button)sender).FlatAppearance.BorderColor = darkBlue;
-                ((Button)sender).ForeColor = darkBlue;
+                sender.BackColor = whiteColor;
+                sender.FlatAppearance.BorderColor = darkBlue;
+                sender.ForeColor = darkBlue;
             }
             else
             {
                 // Grayed Out Button
-                ((Button)sender).BackColor = disableBack;
-                ((Button)sender).FlatAppearance.BorderColor = disableFore;
-                ((Button)sender).ForeColor = disableFore;
+                sender.BackColor = disableBack;
+                sender.FlatAppearance.BorderColor = disableFore;
+                sender.ForeColor = disableFore;
             }
         }
 
