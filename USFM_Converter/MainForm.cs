@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
@@ -156,13 +155,6 @@ namespace USFM_Converter
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
 
-                List<string> unknownLabels = usfm.GetChildMarkers<UnknownMarker>().Select(m => m.ParsedIdentifier).ToList();
-                List<string> tracker = new List<string>();
-                foreach(string label in unknownLabels)
-                {
-                    if (!tracker.Contains(label) && !label.Contains("f*"))
-                        tracker.Add(label);
-                }
                 var html = renderer.Render(usfm);
                 var htmlFilename = saveFileDialog.FileName;
 
@@ -529,8 +521,6 @@ namespace USFM_Converter
             config.separateChapters = willSeparateChap;
             return config;
         }
-
-        
         private void fileDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
@@ -556,11 +546,12 @@ namespace USFM_Converter
                 // before a drag event should be started.                
                 Size dragSize = SystemInformation.DragSize;
 
-                // Create a rectangle using the DragSize, with the mouse position being
+                // Create rectangle using the DragSize, with the mouse position being
                 // at the center of the rectangle.
-                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
-                                                               e.Y - (dragSize.Height / 2)),
-                                                                dragSize);
+
+                // Figure way to show item dragged
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+                
             }
             else
                 // Reset the rectangle if the mouse is not over an item in the ListBox.
@@ -583,8 +574,7 @@ namespace USFM_Converter
             // Remove and insert the row.
             if (e.Effect == DragDropEffects.Move)
             {
-                DataGridViewRow rowToMove = e.Data.GetData(
-                    typeof(DataGridViewRow)) as DataGridViewRow;
+                DataGridViewRow rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow;
                 fileDataGrid.Rows.RemoveAt(rowIndexFromMouseDown);
                 fileDataGrid.Rows.Insert(rowIndexOfItemUnderMouseToDrop, rowToMove);
 
