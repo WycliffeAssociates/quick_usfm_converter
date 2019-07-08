@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
@@ -149,8 +150,14 @@ namespace USFM_Converter
                     progressStep++;
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
-               
 
+                List<string> unknownLabels = usfm.GetChildMarkers<UnknownMarker>().Select(m => m.ParsedIdentifier).ToList();
+                List<string> tracker = new List<string>();
+                foreach(string label in unknownLabels)
+                {
+                    if (!tracker.Contains(label))
+                        tracker.Add(label);
+                }
                 var html = renderer.Render(usfm);
                 var htmlFilename = saveFileDialog.FileName;
 
