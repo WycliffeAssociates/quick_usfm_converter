@@ -18,6 +18,7 @@ namespace USFM_Converter
         private bool hasOneColumn = true;
         private bool isL2RDirection = true;
         private bool willSeparateChap = true;
+        private bool willSeparateVerse = false;
         private string filePathConversion;
 
         private HTMLConfig configHTML;
@@ -26,6 +27,7 @@ namespace USFM_Converter
         private string[] ColumnClasses;
         private string[] TextDirectionClasses;
         private string[] TextAlignmentClasses;
+        private string fontClass;
 
         private Color whiteColor = Color.White;
         private Color darkBlue = Color.FromArgb(0, 68, 214);
@@ -149,7 +151,6 @@ namespace USFM_Converter
                     progressStep++;
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);
                 }
-               
 
                 var html = renderer.Render(usfm);
                 var htmlFilename = saveFileDialog.FileName;
@@ -171,8 +172,6 @@ namespace USFM_Converter
                 Show_Success_Page();
             }
         }
-
-
 
         private string GetLicenseInfo()
         {
@@ -294,26 +293,13 @@ namespace USFM_Converter
             isSingleSpaced = !isSingleSpaced;
             if (isSingleSpaced)
             {
-                this.Btn_SingleSpaced.BackColor = whiteColor;
-                this.Btn_SingleSpaced.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_SingleSpaced.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_DoubleSpaced.BackColor = disableBack;
-                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = disableFore;
-                this.Btn_DoubleSpaced.ForeColor = disableFore;
+                setColorFocus(this.Btn_DoubleSpaced, false);
+                setColorFocus(this.Btn_SingleSpaced, true);
             }
             else
             {
-                this.Btn_DoubleSpaced.BackColor = whiteColor;
-                this.Btn_DoubleSpaced.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_DoubleSpaced.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_SingleSpaced.BackColor = disableBack;
-                this.Btn_SingleSpaced.FlatAppearance.BorderColor = disableFore;
-                this.Btn_SingleSpaced.ForeColor = disableFore;
-
+                setColorFocus(this.Btn_DoubleSpaced, true);
+                setColorFocus(this.Btn_SingleSpaced, false);
             }
         }
 
@@ -322,27 +308,13 @@ namespace USFM_Converter
             hasOneColumn = !hasOneColumn;
             if (hasOneColumn)
             {
-                this.Btn_OneCol.BackColor = whiteColor;
-                this.Btn_OneCol.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_OneCol.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_TwoCol.BackColor = disableBack;
-                this.Btn_TwoCol.FlatAppearance.BorderColor = disableFore;
-                this.Btn_TwoCol.ForeColor = disableFore;
-
+                setColorFocus(this.Btn_TwoCol, false);
+                setColorFocus(this.Btn_OneCol, true);
             }
             else
             {
-                this.Btn_TwoCol.BackColor = whiteColor;
-                this.Btn_TwoCol.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_TwoCol.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_OneCol.BackColor = disableBack;
-                this.Btn_OneCol.FlatAppearance.BorderColor = disableFore;
-                this.Btn_OneCol.ForeColor = disableFore;
-
+                setColorFocus(this.Btn_TwoCol, true);
+                setColorFocus(this.Btn_OneCol, false);
             }
         }
 
@@ -352,14 +324,8 @@ namespace USFM_Converter
             isL2RDirection = !isL2RDirection;
             if (isL2RDirection)
             {
-                this.Btn_LTR.BackColor = whiteColor;
-                this.Btn_LTR.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_LTR.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_RTL.BackColor = disableBack;
-                this.Btn_RTL.FlatAppearance.BorderColor = disableFore;
-                this.Btn_RTL.ForeColor = disableFore;
+                setColorFocus(this.Btn_LTR, true);
+                setColorFocus(this.Btn_RTL, false);
 
                 // Switch Alignment
                 this.Btn_TextAlignDefault.Text = "   Left Aligned";
@@ -369,16 +335,9 @@ namespace USFM_Converter
             }
             else
             {
-                this.Btn_RTL.BackColor = whiteColor;
-                this.Btn_RTL.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_RTL.ForeColor = darkBlue;
+                setColorFocus(this.Btn_LTR, false);
+                setColorFocus(this.Btn_RTL, true);
 
-                // Grayed Out Button
-                this.Btn_LTR.BackColor = disableBack;
-                this.Btn_LTR.FlatAppearance.BorderColor = disableFore;
-                this.Btn_LTR.ForeColor = disableFore;
-
-                // Switch Alignment
                 this.Btn_TextAlignDefault.Text = "   Right Aligned";
                 this.Btn_TextAlignDefault.Image = Properties.Resources.Text_Align_R;
                 this.Btn_TextAlignDefault.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -390,56 +349,44 @@ namespace USFM_Converter
             isTextJustified = !isTextJustified;
             if (isTextJustified)
             {
-                this.Btn_TextJustify.BackColor = whiteColor;
-                this.Btn_TextJustify.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_TextJustify.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_TextAlignDefault.BackColor = disableBack;
-                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = disableFore;
-                this.Btn_TextAlignDefault.ForeColor = disableFore;
-
+                setColorFocus(this.Btn_TextAlignDefault, false);
+                setColorFocus(this.Btn_TextJustify, true);
             }
             else
             {
-                this.Btn_TextAlignDefault.BackColor = whiteColor;
-                this.Btn_TextAlignDefault.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_TextAlignDefault.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_TextJustify.BackColor = disableBack;
-                this.Btn_TextJustify.FlatAppearance.BorderColor = disableFore;
-                this.Btn_TextJustify.ForeColor = disableFore;
-
+                setColorFocus(this.Btn_TextAlignDefault, true);
+                setColorFocus(this.Btn_TextJustify, false);
             }
+
         }
         private void Btn_Chap_Click(object sender, EventArgs e)
         {
             willSeparateChap = !willSeparateChap;
             if (willSeparateChap)
             {
-                this.Btn_ChapBreak.BackColor = whiteColor;
-                this.Btn_ChapBreak.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_ChapBreak.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_ChapComb.BackColor = disableBack;
-                this.Btn_ChapComb.FlatAppearance.BorderColor = disableFore;
-                this.Btn_ChapComb.ForeColor = disableFore;
+                setColorFocus(this.Btn_ChapComb, false);
+                setColorFocus(this.Btn_ChapBreak, true);
             }
             else
             {
-                this.Btn_ChapComb.BackColor = whiteColor;
-                this.Btn_ChapComb.FlatAppearance.BorderColor = darkBlue;
-                this.Btn_ChapComb.ForeColor = darkBlue;
-
-                // Grayed Out Button
-                this.Btn_ChapBreak.BackColor = disableBack;
-                this.Btn_ChapBreak.FlatAppearance.BorderColor = disableFore;
-                this.Btn_ChapBreak.ForeColor = disableFore;
+                setColorFocus(this.Btn_ChapComb, true);
+                setColorFocus(this.Btn_ChapBreak, false);
             }
         }
-
+        private void Btn_VerseDefault_Click(object sender, EventArgs e)
+        {
+            willSeparateVerse = !willSeparateVerse;
+            if (willSeparateVerse)
+            {
+                setColorFocus(this.Btn_VerseDefault, false);
+                setColorFocus(this.Btn_SeparateVerse, true);
+            }
+            else
+            {
+                setColorFocus(this.Btn_VerseDefault, true);
+                setColorFocus(this.Btn_SeparateVerse, false);
+            }
+        }
         private void Btn_FormatBack_Click(object sender, EventArgs e)
         {
             Show_Conversion_Page();
@@ -517,11 +464,55 @@ namespace USFM_Converter
             {
                 config.divClasses.Add(TextAlignmentClasses[3]);
             }
+            config.divClasses.Add(fontClass);
+
+            // Will be added to HTML config class 
+            config.separateVerses = willSeparateVerse;
+
             config.separateChapters = willSeparateChap;
+
             return config;
         }
+        private void setColorFocus(Button sender,bool focus)
+        {
+            if (focus)
+            {
+                sender.BackColor = whiteColor;
+                sender.FlatAppearance.BorderColor = darkBlue;
+                sender.ForeColor = darkBlue;
+            }
+            else
+            {
+                // Grayed Out Button
+                sender.BackColor = disableBack;
+                sender.FlatAppearance.BorderColor = disableFore;
+                sender.ForeColor = disableFore;
+            }
+        }
 
+        private void Btn_FontSmall_Click(object sender, EventArgs e)
+        {
+            setColorFocus(this.Btn_FontSmall, true);
+            setColorFocus(this.Btn_FontMed, false);
+            setColorFocus(this.Btn_FontLarge, false);
+            fontClass = "small-text";
+        }
 
+        private void Btn_FontMed_Click(object sender, EventArgs e)
+        {
+            setColorFocus(this.Btn_FontSmall, false);
+            setColorFocus(this.Btn_FontMed, true);
+            setColorFocus(this.Btn_FontLarge, false);
+            fontClass = "large-text";
+        }
+
+        private void Btn_FontLarge_Click(object sender, EventArgs e)
+        {
+            setColorFocus(this.Btn_FontSmall, false);
+            setColorFocus(this.Btn_FontMed, false);
+            setColorFocus(this.Btn_FontLarge, true);
+            fontClass = "med-text";
+        }
     }
 
 }
