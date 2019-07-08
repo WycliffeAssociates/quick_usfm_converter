@@ -94,7 +94,15 @@ table#hrdftrtbl {
     display: block;
 }
 
-.majortitle {
+.majortitle-1 {
+    display: none;
+}
+
+.majortitle-2 {
+    display: none;
+}
+
+.majortitle-3 {
     display: none;
 }
 .footnotecaller {
