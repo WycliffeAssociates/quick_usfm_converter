@@ -503,7 +503,7 @@ namespace USFM_Converter
             setColorFocus(this.Btn_FontSmall, false);
             setColorFocus(this.Btn_FontMed, true);
             setColorFocus(this.Btn_FontLarge, false);
-            fontClass = "large-text";
+            fontClass = "med-text";
         }
 
         private void Btn_FontLarge_Click(object sender, EventArgs e)
@@ -511,7 +511,7 @@ namespace USFM_Converter
             setColorFocus(this.Btn_FontSmall, false);
             setColorFocus(this.Btn_FontMed, false);
             setColorFocus(this.Btn_FontLarge, true);
-            fontClass = "med-text";
+            fontClass = "large-text";
         }
     }
 
