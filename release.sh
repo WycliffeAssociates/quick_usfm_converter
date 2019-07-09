@@ -10,6 +10,10 @@ set -x
 if [ -z $1 ]; then exit
 fi
 
+#make script exit if the steup file isn't present for some reason
+if [ ! -f ./usfmsetup.exe ]; then exit;
+fi
+
 export GOPATH=$(pwd)
 export GITHUB_USER=WycliffeAssociates
 export GITHUB_TOKEN=$1
