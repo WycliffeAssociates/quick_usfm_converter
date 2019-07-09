@@ -19,7 +19,10 @@
     page-break-after: auto;
     page-break-after: always;
 }
-
+.bookbreak {
+    clear: both;
+    mso-break-type: section-break;
+}
 .chaptermarker {
     font-size: 32px;
     font-weight: bold;
@@ -55,6 +58,9 @@
     font-size: 10px;
     vertical-align: top;
     mso-text-raise: 60%;
+}
+.book-title-header{
+    font-size:26px;
 }
 /* Format Styles */
 .single-space {
@@ -97,22 +103,7 @@
 .footnote-alternate-translation {
     font-style: italic;
 }
-/* @page ColumnOne{
-    size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;
-	mso-header-margin:.5in;
-    mso-footer-margin:.5in;
-    mso-columns:1;
-    mso-paper-source:0;
-}
-@page Column2{
-    size:8.5in 11.0in;
-    margin:1.0in 1.0in 1.0in 1.0in;
-    mso-header-margin:.5in;
-    mso-footer-margin:.5in;
-    mso-columns:2 even .5in;
-    mso-paper-source:0;
-} */
+
 @page FooterSection {
     size: 8.5in 11.0in;
     margin: 1.0in 1.0in 1.0in 1.0in;
@@ -126,7 +117,19 @@
     mso-paper-source: 0;
     mso-page-numbers: 0;
 }
-
+@page HeaderSection {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-title-page: yes;
+    mso-header: h1;
+    mso-footer: f1;
+    mso-first-header: fh1;
+    mso-first-footer: ff1;
+    mso-paper-source: 0;
+    mso-page-numbers: 0;
+}
 div.one-column {
     column-count: 1;
     mso-columns: 1;
@@ -150,7 +153,17 @@ p.MsoFooter, li.MsoFooter, div.MsoFooter {
 div.FooterSection {
     page: FooterSection;
 }
+p.MsoHeader, li.MsoHeader, div.MsoHeader {
+    margin: 0in;
+    margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    tab-stops: center 3.0in right 6.0in;
+    font-size: 12.0pt;
+}
 
+div.HeaderSection {
+    page: HeaderSection;
+}
 table#hrdftrtbl {
     margin: 0in 0in 0in 900in;
     width: 900px;
