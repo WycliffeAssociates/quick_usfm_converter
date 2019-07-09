@@ -14,7 +14,11 @@
     margin-top: 1em;
     /* page-break-before:always; */
 }
-
+.sectionbreak {
+    page-break-before:always;
+    clear:both;
+    mso-break-type:section-break
+}
 .pagebreak {
     page-break-after: auto;
     page-break-after: always;
