@@ -75,9 +75,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="USFMToolsSharp, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.0.5.2\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorGradient.cs">
@@ -171,6 +168,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\temp\USFMToolsSharp\USFMToolsSharp\USFMToolsSharp.csproj">
+      <Project>{e281ba34-e99c-459f-921b-c41afaaf7a49}</Project>
+      <Name>USFMToolsSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
