@@ -64,10 +64,10 @@
     mso-footer-margin: .5in;
     mso-header: h1;
     mso-footer: f1;
-    mso-first-header: fh1;
+    mso-first-header: h1;
     mso-first-footer: f1;
     mso-paper-source: 0;
-    mso-page-numbers: 0;
+    mso-page-numbers: 1;
 }
 
 div.one-column {
