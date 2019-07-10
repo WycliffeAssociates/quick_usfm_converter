@@ -11,7 +11,7 @@ if [ -z $1 ]; then exit
 fi
 
 #make script exit if the steup file isn't present for some reason
-if [ ! -f ./usfmsetup.exe ]; then exit;
+if [ ! -f ./Output/usfmsetup.exe ]; then exit;
 fi
 
 export GOPATH=$(pwd)
@@ -42,4 +42,4 @@ fi
 gothub release --tag $TAG -p
 
 #Upload asset
-gothub upload --tag $TAG --name "usfmsetup.exe" --file ./usfmsetup.exe
+gothub upload --tag $TAG --name "usfmsetup.exe" --file ./Output/usfmsetup.exe
