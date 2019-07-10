@@ -62,11 +62,10 @@
     margin: 1.0in 1.0in 1.0in 1.0in;
     mso-header-margin: .5in;
     mso-footer-margin: .5in;
-    mso-title-page: yes;
     mso-header: h1;
     mso-footer: f1;
     mso-first-header: fh1;
-    mso-first-footer: ff1;
+    mso-first-footer: f1;
     mso-paper-source: 0;
     mso-page-numbers: 0;
 }
