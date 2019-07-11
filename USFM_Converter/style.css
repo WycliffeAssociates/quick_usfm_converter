@@ -13,7 +13,11 @@
 .sectionbreak {
     page-break-before:always;
     clear:both;
-    mso-break-type:section-break
+    mso-break-type:section-break;
+}
+.bookbreak {
+    clear: both;
+    mso-break-type: section-break;
 }
 .pagebreak {
     page-break-after: auto;
@@ -244,3 +248,4 @@ table#hrdftrtbl {
 .word-entry {
     font-size: 1em;
 }
+/* Additional Styling */

@@ -54,8 +54,14 @@ namespace USFM_Converter
             ColumnClasses = new string[]{ "", "two-column" };
             TextDirectionClasses = new string[] { "", "rtl-direct" };
             TextAlignmentClasses = new string[] { "", "right-align", "center-align", "justified" };
+            
+            // Default Medium Font Size
+            setColorFocus(this.Btn_FontSmall, false);
+            setColorFocus(this.Btn_FontMed, true);
+            setColorFocus(this.Btn_FontLarge, false);
+            fontClass = "med-text";
 
-    }
+        }
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
@@ -153,6 +159,8 @@ namespace USFM_Converter
                 }
 
                 var html = renderer.Render(usfm);
+                
+
                 var htmlFilename = saveFileDialog.FileName;
 
                 File.WriteAllText(htmlFilename, html);
@@ -160,10 +168,13 @@ namespace USFM_Converter
                 var dirname = Path.GetDirectoryName(htmlFilename);
                 filePathConversion = dirname;
                 var cssFilename = Path.Combine(dirname, "style.css");
+                
+
                 if (!File.Exists(cssFilename))
                 {
                     File.Copy("style.css", cssFilename);
                 }
+                AddBookHeaders(cssFilename, renderer.HeaderLinks);
 
                 btn_AddFiles.Enabled = true;
                 fileDataGrid.Enabled = true;
@@ -172,12 +183,22 @@ namespace USFM_Converter
                 Show_Success_Page();
             }
         }
+        private void AddBookHeaders(string path,List<string> HeaderLinks)
+        {
+            string baseStyleSheet = File.ReadAllText("style.css");
+            foreach(string bookTitleHeader in HeaderLinks)
+            {
+                if (File.Exists(path))
+                {
 
+                    File.AppendAllText(path,bookTitleHeader);
+                }
+            }
+        }
         private string GetLicenseInfo()
         {
             // Identifies License within Directory 
             string ULB_License_Doc = "insert_ULB_License.html";
-            FileInfo f = new FileInfo(ULB_License_Doc);
             string licenseHTML = "";
 
             if (File.Exists(ULB_License_Doc))
@@ -208,7 +229,9 @@ namespace USFM_Converter
             </div>
             </td></tr>
             </table>
-            </div> ";
+            </div> 
+            </table>
+            </div>";
             return footerHTML;
         }
 
