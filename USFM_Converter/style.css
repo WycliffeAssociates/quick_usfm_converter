@@ -10,14 +10,27 @@
 .large-text {
     font-size: 29px;
 }
+
 .sectionbreak {
-    page-break-before:always;
-    clear:both;
-    mso-break-type:section-break
+    page-break-before: always;
+    clear: both;
+    mso-break-type: section-break
 }
+
 .pagebreak {
     page-break-after: auto;
     page-break-after: always;
+}
+
+@media print {
+    .pagebreak {
+        page-break-after: always;
+    }
+    /* page-break-after works, as well */
+    .sectionbreak {
+        page-break-before: always;
+        clear: both;
+    }
 }
 
 .single-space {
@@ -103,6 +116,8 @@ table#hrdftrtbl {
 }
 
 /* Marker Specific Styling */
+
+/* Header */
 .header {
     margin-top: 1em;
     font-size: 1.5em;
@@ -110,6 +125,7 @@ table#hrdftrtbl {
     display: block;
 }
 
+/* Major Title */
 .majortitle-1 {
     display: none;
     font-size: inherit;
@@ -125,6 +141,7 @@ table#hrdftrtbl {
     font-size: inherit;
 }
 
+/* Footnotes */
 .footnotecaller {
     font-size: 0.5em;
     vertical-align: top;
@@ -135,8 +152,18 @@ table#hrdftrtbl {
     font-size: 0.75em;
 }
 
+.footnote-header {
+    font-size: 1.2em;
+}
+
 .footnote-alternate-translation {
     font-style: italic;
+}
+
+/* Chapter */
+.chapter {
+    margin-top: 1em;
+    font-size: inherit;
 }
 
 .chaptermarker {
@@ -147,6 +174,7 @@ table#hrdftrtbl {
     margin-right: 0.25em;
 }
 
+/* Poetry */
 .poetry-1 {
     font-size: inherit;
     line-break: normal;
@@ -168,6 +196,12 @@ table#hrdftrtbl {
     text-indent: 50px !important;
 }
 
+.selah-text {
+    font-style: italic;
+    text-align: right;
+}
+
+/* Verse */
 .verse {
     font-size: inherit;
     font-weight: normal;
@@ -179,37 +213,40 @@ table#hrdftrtbl {
     mso-text-raise: 60%;
 }
 
-.chapter {
-    margin-top: 1em;
-    font-size: inherit;
-    /* page-break-before:always; */
+.closing {
+    text-align: right;
 }
 
+.reference {
+    font-style: italic;
+}
+
+/* Section */
 .sectionhead-1 {
     margin-top: 1em;
-    font-size: 2em;
+    font-size: 1.2em;
     font-weight: bold;
     display: block;
 }
 
 .sectionhead-2 {
     margin-top: 1em;
-    font-size: 1.75em;
+    font-size: 1.1em;
     font-weight: bold;
     display: block;
 }
 
 .sectionhead-3 {
     margin-top: 1em;
-    font-size: 1.5em;
+    font-size: 1.05em;
     font-weight: bold;
     display: block;
 }
 
-.quoted-book {
-    font-style: italic;
+.section-reference {
 }
 
+/* List */
 .list-1 {
     line-break: normal;
     display: block;
@@ -228,6 +265,11 @@ table#hrdftrtbl {
     text-indent: 50px !important;
 }
 
+/* Special Strings */
+.quoted-book {
+    font-style: italic;
+}
+
 .additions {
     font-style: italic;
 }
@@ -241,6 +283,54 @@ table#hrdftrtbl {
     font-size: 0.75em;
 }
 
+.center-paragraph {
+    text-align: center;
+}
+
+.desctiptive-title {
+    font-style: italic;
+}
+
 .word-entry {
     font-size: 1em;
+}
+
+/* Cross Reference */
+.caller {
+    font-size: 0.5em;
+    vertical-align: top;
+    mso-text-raise: 40%;
+}
+
+.cross-ref-quote {
+    font-style: italic;
+}
+
+.cross-ref {
+    font-weight: bold;
+}
+
+.cross-header {
+    font-size: 1.2em;
+}
+
+/* Table Markers */
+.table-block{
+    width:50%;
+}
+
+.table-head {
+    font-style: italic;
+}
+
+.table-head-right {
+    font-style: italic;
+    text-align: right;
+}
+
+.table-cell {
+}
+
+.table-cell-right {
+    text-align: right;
 }
