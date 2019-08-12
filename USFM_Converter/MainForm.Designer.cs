@@ -432,13 +432,13 @@ namespace USFM_Converter
             // Btn_Convert
             // 
             this.Btn_Convert.BackColor = System.Drawing.Color.White;
-            this.Btn_Convert.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Convert.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Convert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.Btn_Convert.Location = new System.Drawing.Point(796, 29);
             this.Btn_Convert.Name = "Btn_Convert";
             this.Btn_Convert.Size = new System.Drawing.Size(235, 42);
             this.Btn_Convert.TabIndex = 1;
-            this.Btn_Convert.Text = "Convert";
+            this.Btn_Convert.Text = "Convert All Files";
             this.Btn_Convert.UseVisualStyleBackColor = false;
             this.Btn_Convert.Click += new System.EventHandler(this.OnConvertButtonClick);
             // 
