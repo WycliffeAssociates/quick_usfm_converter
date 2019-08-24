@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
 using USFMToolsSharp.Models.Markers;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace USFM_Converter
 {
@@ -59,24 +60,19 @@ namespace USFM_Converter
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
-            
+            CommonOpenFileDialog folderBrowserDialog = new CommonOpenFileDialog {
+                InitialDirectory = Environment.SpecialFolder.MyComputer.ToString(),
+                IsFolderPicker = true
 
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
-            {
-                Description = "Select the directory containing the files you want to convert.",
-                // Default to the My Documents folder.
-                RootFolder = Environment.SpecialFolder.MyComputer,
-                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
             };
-
-            //Show the FolderBrowserDialog.
-            DialogResult result = folderBrowserDialog.ShowDialog();
-            if (result != DialogResult.OK)
+            
+            if (folderBrowserDialog.ShowDialog() != CommonFileDialogResult.Ok)
             {
                 return;
             }
 
-            var folderName = folderBrowserDialog.SelectedPath;
+
+            var folderName = folderBrowserDialog.FileName;
             var dirinfo = new DirectoryInfo(folderName);
             var allFiles = dirinfo.GetFiles("*", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in allFiles)
