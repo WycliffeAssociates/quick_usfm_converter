@@ -475,7 +475,7 @@ namespace USFM_Converter
         }
         private void setColorFocus(Button sender,bool focus)
         {
-            if (focus)
+            if (!focus)
             {
                 sender.BackColor = whiteColor;
                 sender.FlatAppearance.BorderColor = darkBlue;

@@ -187,7 +187,7 @@ namespace USFM_Converter
             this.ConversionPanel.Controls.Add(this.fileDataGrid);
             this.ConversionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionPanel.Location = new System.Drawing.Point(0, 0);
-            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ConversionPanel.Name = "ConversionPanel";
             this.ConversionPanel.Size = new System.Drawing.Size(1085, 532);
             this.ConversionPanel.TabIndex = 4;
@@ -238,7 +238,7 @@ namespace USFM_Converter
             this.btn_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Remove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_Remove.Location = new System.Drawing.Point(748, 90);
-            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(196, 34);
             this.btn_Remove.TabIndex = 4;
@@ -255,7 +255,7 @@ namespace USFM_Converter
             this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AddFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_AddFiles.Location = new System.Drawing.Point(488, 88);
-            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddFiles.Name = "btn_AddFiles";
             this.btn_AddFiles.Size = new System.Drawing.Size(181, 38);
             this.btn_AddFiles.TabIndex = 3;
@@ -268,7 +268,7 @@ namespace USFM_Converter
             this.FileNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileNameInput.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FileNameInput.Location = new System.Drawing.Point(54, 91);
-            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.FileNameInput.Name = "FileNameInput";
             this.FileNameInput.Size = new System.Drawing.Size(408, 29);
             this.FileNameInput.TabIndex = 1;
@@ -280,7 +280,7 @@ namespace USFM_Converter
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileDataGrid.Location = new System.Drawing.Point(54, 182);
-            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
             this.fileDataGrid.Size = new System.Drawing.Size(904, 314);
@@ -327,7 +327,7 @@ namespace USFM_Converter
             this.HomeCapture.Controls.Add(this.HomeImg);
             this.HomeCapture.Controls.Add(this.HomeInstruct);
             this.HomeCapture.Location = new System.Drawing.Point(104, 11);
-            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2);
             this.HomeCapture.Name = "HomeCapture";
             this.HomeCapture.Size = new System.Drawing.Size(912, 577);
             this.HomeCapture.TabIndex = 3;
@@ -338,7 +338,7 @@ namespace USFM_Converter
             this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
             this.Btn_BrowseFiles.Location = new System.Drawing.Point(277, 495);
-            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
             this.Btn_BrowseFiles.Size = new System.Drawing.Size(296, 57);
             this.Btn_BrowseFiles.TabIndex = 2;
@@ -350,7 +350,7 @@ namespace USFM_Converter
             // 
             this.HomeImg.Image = ((System.Drawing.Image)(resources.GetObject("HomeImg.Image")));
             this.HomeImg.Location = new System.Drawing.Point(159, 18);
-            this.HomeImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
             this.HomeImg.Name = "HomeImg";
             this.HomeImg.Size = new System.Drawing.Size(520, 389);
             this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -480,19 +480,19 @@ namespace USFM_Converter
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1085, 529);
             this.panel3.TabIndex = 4;
             // 
             // Btn_FontLarge
             // 
-            this.Btn_FontLarge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_FontLarge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_FontLarge.BackColor = System.Drawing.Color.White;
+            this.Btn_FontLarge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_FontLarge.FlatAppearance.BorderSize = 2;
             this.Btn_FontLarge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_FontLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_FontLarge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_FontLarge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_FontLarge.Location = new System.Drawing.Point(629, 366);
             this.Btn_FontLarge.Name = "Btn_FontLarge";
             this.Btn_FontLarge.Size = new System.Drawing.Size(151, 51);
@@ -503,12 +503,12 @@ namespace USFM_Converter
             // 
             // Btn_FontMed
             // 
-            this.Btn_FontMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_FontMed.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_FontMed.BackColor = System.Drawing.Color.White;
+            this.Btn_FontMed.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_FontMed.FlatAppearance.BorderSize = 2;
             this.Btn_FontMed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_FontMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_FontMed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_FontMed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_FontMed.Location = new System.Drawing.Point(480, 366);
             this.Btn_FontMed.Name = "Btn_FontMed";
             this.Btn_FontMed.Size = new System.Drawing.Size(154, 51);
@@ -519,12 +519,12 @@ namespace USFM_Converter
             // 
             // Btn_FontSmall
             // 
-            this.Btn_FontSmall.BackColor = System.Drawing.Color.White;
-            this.Btn_FontSmall.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_FontSmall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_FontSmall.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_FontSmall.FlatAppearance.BorderSize = 2;
             this.Btn_FontSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_FontSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_FontSmall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_FontSmall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_FontSmall.Location = new System.Drawing.Point(327, 366);
             this.Btn_FontSmall.Name = "Btn_FontSmall";
             this.Btn_FontSmall.Size = new System.Drawing.Size(153, 51);
@@ -546,12 +546,12 @@ namespace USFM_Converter
             // 
             // Btn_SeparateVerse
             // 
-            this.Btn_SeparateVerse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_SeparateVerse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_SeparateVerse.BackColor = System.Drawing.Color.White;
+            this.Btn_SeparateVerse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_SeparateVerse.FlatAppearance.BorderSize = 2;
             this.Btn_SeparateVerse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_SeparateVerse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_SeparateVerse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_SeparateVerse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_SeparateVerse.Location = new System.Drawing.Point(807, 237);
             this.Btn_SeparateVerse.Name = "Btn_SeparateVerse";
             this.Btn_SeparateVerse.Size = new System.Drawing.Size(213, 39);
@@ -562,12 +562,12 @@ namespace USFM_Converter
             // 
             // Btn_VerseDefault
             // 
-            this.Btn_VerseDefault.BackColor = System.Drawing.Color.White;
-            this.Btn_VerseDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_VerseDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_VerseDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_VerseDefault.FlatAppearance.BorderSize = 2;
             this.Btn_VerseDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_VerseDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_VerseDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_VerseDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_VerseDefault.Location = new System.Drawing.Point(598, 237);
             this.Btn_VerseDefault.Name = "Btn_VerseDefault";
             this.Btn_VerseDefault.Size = new System.Drawing.Size(213, 39);
@@ -587,12 +587,12 @@ namespace USFM_Converter
             // 
             // Btn_TextAlignRight
             // 
-            this.Btn_TextAlignRight.BackColor = System.Drawing.Color.White;
-            this.Btn_TextAlignRight.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_TextAlignRight.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_TextAlignRight.FlatAppearance.BorderSize = 2;
             this.Btn_TextAlignRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_TextAlignRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TextAlignRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_TextAlignRight.Image = global::USFM_Converter.Properties.Resources.Text_Align_R;
             this.Btn_TextAlignRight.Location = new System.Drawing.Point(598, 53);
             this.Btn_TextAlignRight.Name = "Btn_TextAlignRight";
@@ -605,12 +605,12 @@ namespace USFM_Converter
             // 
             // Btn_ChapComb
             // 
-            this.Btn_ChapComb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_ChapComb.BackColor = System.Drawing.Color.White;
+            this.Btn_ChapComb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_ChapComb.FlatAppearance.BorderSize = 2;
             this.Btn_ChapComb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ChapComb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_ChapComb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_ChapComb.Location = new System.Drawing.Point(807, 144);
             this.Btn_ChapComb.Name = "Btn_ChapComb";
             this.Btn_ChapComb.Size = new System.Drawing.Size(213, 39);
@@ -621,12 +621,12 @@ namespace USFM_Converter
             // 
             // Btn_ChapBreak
             // 
-            this.Btn_ChapBreak.BackColor = System.Drawing.Color.White;
-            this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_ChapBreak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_ChapBreak.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_ChapBreak.FlatAppearance.BorderSize = 2;
             this.Btn_ChapBreak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ChapBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_ChapBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_ChapBreak.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ChapBreak.Image")));
             this.Btn_ChapBreak.Location = new System.Drawing.Point(598, 144);
             this.Btn_ChapBreak.Name = "Btn_ChapBreak";
@@ -639,12 +639,12 @@ namespace USFM_Converter
             // 
             // Btn_TextJustify
             // 
-            this.Btn_TextJustify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TextJustify.BackColor = System.Drawing.Color.White;
+            this.Btn_TextJustify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_TextJustify.FlatAppearance.BorderSize = 2;
             this.Btn_TextJustify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_TextJustify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TextJustify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_TextJustify.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextJustify.Image")));
             this.Btn_TextJustify.Location = new System.Drawing.Point(805, 53);
             this.Btn_TextJustify.Name = "Btn_TextJustify";
@@ -657,12 +657,12 @@ namespace USFM_Converter
             // 
             // Btn_TextAlignDefault
             // 
-            this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.White;
-            this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_TextAlignDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_TextAlignDefault.FlatAppearance.BorderSize = 2;
             this.Btn_TextAlignDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_TextAlignDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_TextAlignDefault.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_TextAlignDefault.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TextAlignDefault.Image")));
             this.Btn_TextAlignDefault.Location = new System.Drawing.Point(598, 53);
             this.Btn_TextAlignDefault.Name = "Btn_TextAlignDefault";
@@ -675,12 +675,12 @@ namespace USFM_Converter
             // 
             // Btn_RTL
             // 
-            this.Btn_RTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_RTL.BackColor = System.Drawing.Color.White;
+            this.Btn_RTL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_RTL.FlatAppearance.BorderSize = 2;
             this.Btn_RTL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_RTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_RTL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_RTL.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RTL.Image")));
             this.Btn_RTL.Location = new System.Drawing.Point(310, 235);
             this.Btn_RTL.Name = "Btn_RTL";
@@ -693,12 +693,12 @@ namespace USFM_Converter
             // 
             // Btn_LTR
             // 
-            this.Btn_LTR.BackColor = System.Drawing.Color.White;
-            this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_LTR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_LTR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_LTR.FlatAppearance.BorderSize = 2;
             this.Btn_LTR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_LTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_LTR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_LTR.Image = ((System.Drawing.Image)(resources.GetObject("Btn_LTR.Image")));
             this.Btn_LTR.Location = new System.Drawing.Point(103, 235);
             this.Btn_LTR.Name = "Btn_LTR";
@@ -711,12 +711,12 @@ namespace USFM_Converter
             // 
             // Btn_TwoCol
             // 
-            this.Btn_TwoCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TwoCol.BackColor = System.Drawing.Color.White;
+            this.Btn_TwoCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_TwoCol.FlatAppearance.BorderSize = 2;
             this.Btn_TwoCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_TwoCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_TwoCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_TwoCol.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TwoCol.Image")));
             this.Btn_TwoCol.Location = new System.Drawing.Point(310, 144);
             this.Btn_TwoCol.Name = "Btn_TwoCol";
@@ -729,12 +729,12 @@ namespace USFM_Converter
             // 
             // Btn_OneCol
             // 
-            this.Btn_OneCol.BackColor = System.Drawing.Color.White;
-            this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_OneCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_OneCol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_OneCol.FlatAppearance.BorderSize = 2;
             this.Btn_OneCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_OneCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_OneCol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_OneCol.Image = ((System.Drawing.Image)(resources.GetObject("Btn_OneCol.Image")));
             this.Btn_OneCol.Location = new System.Drawing.Point(103, 144);
             this.Btn_OneCol.Name = "Btn_OneCol";
@@ -747,12 +747,12 @@ namespace USFM_Converter
             // 
             // Btn_DoubleSpaced
             // 
-            this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
-            this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_DoubleSpaced.BackColor = System.Drawing.Color.White;
+            this.Btn_DoubleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_DoubleSpaced.FlatAppearance.BorderSize = 2;
             this.Btn_DoubleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_DoubleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
+            this.Btn_DoubleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
             this.Btn_DoubleSpaced.Image = ((System.Drawing.Image)(resources.GetObject("Btn_DoubleSpaced.Image")));
             this.Btn_DoubleSpaced.Location = new System.Drawing.Point(310, 53);
             this.Btn_DoubleSpaced.Name = "Btn_DoubleSpaced";
@@ -765,12 +765,12 @@ namespace USFM_Converter
             // 
             // Btn_SingleSpaced
             // 
-            this.Btn_SingleSpaced.BackColor = System.Drawing.Color.White;
-            this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_SingleSpaced.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(218)))), ((int)(((byte)(224)))));
+            this.Btn_SingleSpaced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_SingleSpaced.FlatAppearance.BorderSize = 2;
             this.Btn_SingleSpaced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_SingleSpaced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(214)))));
+            this.Btn_SingleSpaced.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
             this.Btn_SingleSpaced.Image = ((System.Drawing.Image)(resources.GetObject("Btn_SingleSpaced.Image")));
             this.Btn_SingleSpaced.Location = new System.Drawing.Point(103, 53);
             this.Btn_SingleSpaced.Name = "Btn_SingleSpaced";
@@ -1047,7 +1047,7 @@ namespace USFM_Converter
             this.ClientSize = new System.Drawing.Size(1077, 626);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "USFM Converter";
             this.ConversionPanel.ResumeLayout(false);
