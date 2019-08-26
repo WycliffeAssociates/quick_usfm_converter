@@ -485,8 +485,8 @@ namespace USFM_Converter
             {
                 // Grayed Out Button
                 sender.BackColor = disableBack;
-                sender.FlatAppearance.BorderColor = disableFore;
-                sender.ForeColor = disableFore;
+                sender.FlatAppearance.BorderColor = darkBlue;
+                sender.ForeColor = darkBlue;
             }
         }
 
