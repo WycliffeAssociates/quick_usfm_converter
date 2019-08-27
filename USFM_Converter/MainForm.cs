@@ -61,7 +61,7 @@ namespace USFM_Converter
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
             CommonOpenFileDialog folderBrowserDialog = new CommonOpenFileDialog {
-                InitialDirectory = Environment.SpecialFolder.MyComputer.ToString(),
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal).ToString(),
                 IsFolderPicker = true
 
             };
