@@ -478,15 +478,11 @@ namespace USFM_Converter
             if (!focus)
             {
                 sender.BackColor = whiteColor;
-                sender.FlatAppearance.BorderColor = darkBlue;
-                sender.ForeColor = darkBlue;
             }
             else
             {
                 // Grayed Out Button
                 sender.BackColor = disableBack;
-                sender.FlatAppearance.BorderColor = darkBlue;
-                sender.ForeColor = darkBlue;
             }
         }
 
