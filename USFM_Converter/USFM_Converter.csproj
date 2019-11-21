@@ -53,7 +53,13 @@
   <PropertyGroup>
     <ApplicationIcon>converter_logo_inverted_icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=2.6.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.6.0\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -83,6 +89,7 @@
     <Compile Include="ColorGradient.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MainCommandLine.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

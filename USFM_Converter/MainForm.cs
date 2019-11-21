@@ -97,7 +97,6 @@ namespace USFM_Converter
         {
             //Implement for dropdown options setConfigObject();
 
-
             string saveFileName = (!string.IsNullOrWhiteSpace(FileNameInput.Text) ? FileNameInput.Text.Trim() : "out") + ".html";
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -110,7 +109,6 @@ namespace USFM_Converter
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
-                
             }
             else
             { 
@@ -145,8 +143,6 @@ namespace USFM_Converter
 
                     var text = File.ReadAllText(filename);
                     usfm.Insert(parser.ParseFromString(text));
-
-                    
 
                     progressStep++;
                     LoadingBar.Value = (int)(progressStep / (float)progress * 100);

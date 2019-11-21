@@ -14,9 +14,16 @@ namespace USFM_Converter
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            String[] arguments = Environment.GetCommandLineArgs();
+            
+            if(arguments.Length > 1)
+            {
+                new MainConsole(arguments).Run();
+            } else {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
         }
     }
 }
