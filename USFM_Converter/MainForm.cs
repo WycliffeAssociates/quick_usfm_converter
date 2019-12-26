@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using USFMToolsSharp;
-using USFMToolsSharp.Models;
+using USFMToolsSharp.Renderers.HTML;
 using USFMToolsSharp.Models.Markers;
 
 namespace USFM_Converter
@@ -19,6 +19,7 @@ namespace USFM_Converter
         private bool isL2RDirection = true;
         private bool willSeparateChap = true;
         private bool willSeparateVerse = false;
+        private bool hasBlankColumn = false;
         private string filePathConversion;
 
         private HTMLConfig configHTML;
@@ -54,13 +55,10 @@ namespace USFM_Converter
             ColumnClasses = new string[]{ "", "two-column" };
             TextDirectionClasses = new string[] { "", "rtl-direct" };
             TextAlignmentClasses = new string[] { "", "right-align", "center-align", "justified" };
-
     }
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
-            
-
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
             {
                 Description = "Select the directory containing the files you want to convert.",
@@ -303,19 +301,34 @@ namespace USFM_Converter
             }
         }
 
-        private void Btn_Col_Click(object sender, EventArgs e)
+        private void Btn_OneCol_Click(object sender, EventArgs e)
         {
-            hasOneColumn = !hasOneColumn;
-            if (hasOneColumn)
-            {
-                setColorFocus(this.Btn_TwoCol, false);
-                setColorFocus(this.Btn_OneCol, true);
-            }
-            else
-            {
-                setColorFocus(this.Btn_TwoCol, true);
-                setColorFocus(this.Btn_OneCol, false);
-            }
+            hasOneColumn = true;
+            hasBlankColumn = false;
+
+            setColorFocus(this.Btn_OneCol, true);
+            setColorFocus(this.Btn_TwoCol, false);
+            setColorFocus(this.Btn_BlankCol, false);
+        }
+
+        private void Btn_TwoCol_Click(object sender, EventArgs e)
+        {
+            hasOneColumn = false;
+            hasBlankColumn = false;
+
+            setColorFocus(this.Btn_OneCol, false);
+            setColorFocus(this.Btn_TwoCol, true);
+            setColorFocus(this.Btn_BlankCol, false);
+        }
+
+        private void Btn_BlankCol_Click(object sender, EventArgs e)
+        {
+            hasBlankColumn = true;
+            hasOneColumn = true;
+
+            setColorFocus(this.Btn_OneCol, false);
+            setColorFocus(this.Btn_TwoCol, false);
+            setColorFocus(this.Btn_BlankCol, true);
         }
 
         private void Btn_Direction_Click(object sender, EventArgs e)
@@ -470,6 +483,8 @@ namespace USFM_Converter
             config.separateVerses = willSeparateVerse;
 
             config.separateChapters = willSeparateChap;
+
+            config.blankColumn = hasBlankColumn;
 
             return config;
         }
