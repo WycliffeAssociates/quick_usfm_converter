@@ -39,7 +39,7 @@ go get github.com/itchio/gothub; else exit;
 fi
 
 #create the release
-gothub release --tag $TAG -p
+gothub release --tag $TAG
 
 #Upload asset
 gothub upload --tag $TAG --name "usfmsetup.exe" --file ./Output/usfmsetup.exe
