@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
 using USFMToolsSharp.Models.Markers;
+using USFMToolsSharp.Renderers.HTML;
 
 namespace USFM_Converter
 {
