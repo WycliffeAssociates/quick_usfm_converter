@@ -134,20 +134,20 @@ namespace USFM_Converter
             this.Loading_Page = new System.Windows.Forms.Panel();
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
             this.Conversion_Page = new System.Windows.Forms.SplitContainer();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Error_Page = new USFM_Converter.ColorGradient();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Btn_RestartProj = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.Success_Page = new USFM_Converter.ColorGradient();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.Error_Page = new USFM_Converter.ColorGradient();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Btn_RestartProj = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ConversionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -167,11 +167,11 @@ namespace USFM_Converter
             this.Conversion_Page.Panel1.SuspendLayout();
             this.Conversion_Page.Panel2.SuspendLayout();
             this.Conversion_Page.SuspendLayout();
-            this.Success_Page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Error_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.Success_Page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // ConversionPanel
@@ -187,7 +187,7 @@ namespace USFM_Converter
             this.ConversionPanel.Controls.Add(this.fileDataGrid);
             this.ConversionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionPanel.Location = new System.Drawing.Point(0, 0);
-            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ConversionPanel.Name = "ConversionPanel";
             this.ConversionPanel.Size = new System.Drawing.Size(1085, 532);
             this.ConversionPanel.TabIndex = 4;
@@ -238,7 +238,7 @@ namespace USFM_Converter
             this.btn_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Remove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_Remove.Location = new System.Drawing.Point(748, 90);
-            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(196, 34);
             this.btn_Remove.TabIndex = 4;
@@ -255,7 +255,7 @@ namespace USFM_Converter
             this.btn_AddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AddFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.btn_AddFiles.Location = new System.Drawing.Point(488, 88);
-            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_AddFiles.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddFiles.Name = "btn_AddFiles";
             this.btn_AddFiles.Size = new System.Drawing.Size(181, 38);
             this.btn_AddFiles.TabIndex = 3;
@@ -268,7 +268,7 @@ namespace USFM_Converter
             this.FileNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileNameInput.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FileNameInput.Location = new System.Drawing.Point(54, 91);
-            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.FileNameInput.Name = "FileNameInput";
             this.FileNameInput.Size = new System.Drawing.Size(408, 29);
             this.FileNameInput.TabIndex = 1;
@@ -280,7 +280,7 @@ namespace USFM_Converter
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileDataGrid.Location = new System.Drawing.Point(54, 182);
-            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
             this.fileDataGrid.Size = new System.Drawing.Size(904, 314);
@@ -323,14 +323,17 @@ namespace USFM_Converter
             // 
             // HomeCapture
             // 
+            this.HomeCapture.AllowDrop = true;
             this.HomeCapture.Controls.Add(this.Btn_BrowseFiles);
             this.HomeCapture.Controls.Add(this.HomeImg);
             this.HomeCapture.Controls.Add(this.HomeInstruct);
             this.HomeCapture.Location = new System.Drawing.Point(104, 11);
-            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HomeCapture.Margin = new System.Windows.Forms.Padding(2);
             this.HomeCapture.Name = "HomeCapture";
             this.HomeCapture.Size = new System.Drawing.Size(912, 577);
             this.HomeCapture.TabIndex = 3;
+            this.HomeCapture.DragDrop += new System.Windows.Forms.DragEventHandler(this.HomeCapture_DragDrop);
+            this.HomeCapture.DragEnter += new System.Windows.Forms.DragEventHandler(this.HomeCapture_DragEnter);
             // 
             // Btn_BrowseFiles
             // 
@@ -338,7 +341,7 @@ namespace USFM_Converter
             this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
             this.Btn_BrowseFiles.Location = new System.Drawing.Point(277, 495);
-            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
             this.Btn_BrowseFiles.Size = new System.Drawing.Size(296, 57);
             this.Btn_BrowseFiles.TabIndex = 2;
@@ -350,7 +353,7 @@ namespace USFM_Converter
             // 
             this.HomeImg.Image = ((System.Drawing.Image)(resources.GetObject("HomeImg.Image")));
             this.HomeImg.Location = new System.Drawing.Point(159, 18);
-            this.HomeImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
             this.HomeImg.Name = "HomeImg";
             this.HomeImg.Size = new System.Drawing.Size(520, 389);
             this.HomeImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -371,11 +374,11 @@ namespace USFM_Converter
             // panel1
             // 
             this.panel1.Controls.Add(this.Format_Page);
+            this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
-            this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Controls.Add(this.Error_Page);
-            this.panel1.Controls.Add(this.HomeCapture);
+            this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 616);
@@ -480,7 +483,7 @@ namespace USFM_Converter
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1085, 529);
             this.panel3.TabIndex = 4;
@@ -863,6 +866,103 @@ namespace USFM_Converter
             this.Conversion_Page.TabIndex = 5;
             this.Conversion_Page.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label6.Location = new System.Drawing.Point(440, 364);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(260, 29);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "USFM File Converter";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(488, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 46);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Matos";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(510, 212);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(98, 103);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Error_Page
+            // 
+            this.Error_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.Error_Page.ColorTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.Error_Page.Controls.Add(this.pictureBox1);
+            this.Error_Page.Controls.Add(this.Btn_RestartProj);
+            this.Error_Page.Controls.Add(this.label9);
+            this.Error_Page.Controls.Add(this.label10);
+            this.Error_Page.Location = new System.Drawing.Point(-6, 0);
+            this.Error_Page.Name = "Error_Page";
+            this.Error_Page.Size = new System.Drawing.Size(1093, 624);
+            this.Error_Page.TabIndex = 6;
+            this.Error_Page.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(500, 174);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 108);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Btn_RestartProj
+            // 
+            this.Btn_RestartProj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.Btn_RestartProj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
+            this.Btn_RestartProj.FlatAppearance.BorderSize = 3;
+            this.Btn_RestartProj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_RestartProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_RestartProj.ForeColor = System.Drawing.Color.White;
+            this.Btn_RestartProj.Location = new System.Drawing.Point(410, 423);
+            this.Btn_RestartProj.Name = "Btn_RestartProj";
+            this.Btn_RestartProj.Size = new System.Drawing.Size(302, 53);
+            this.Btn_RestartProj.TabIndex = 4;
+            this.Btn_RestartProj.Text = "New Project";
+            this.Btn_RestartProj.UseVisualStyleBackColor = false;
+            this.Btn_RestartProj.Click += new System.EventHandler(this.Btn_NewProj_Click);
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label9.Location = new System.Drawing.Point(288, 349);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(538, 56);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Project conversion failed. Please try again or contact IT Support for help.";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label10.Location = new System.Drawing.Point(486, 294);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(162, 46);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Uh-oh...";
+            // 
             // Success_Page
             // 
             this.Success_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
@@ -943,103 +1043,6 @@ namespace USFM_Converter
             this.label13.TabIndex = 1;
             this.label13.Text = "Success!";
             // 
-            // Error_Page
-            // 
-            this.Error_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.Error_Page.ColorTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.Error_Page.Controls.Add(this.pictureBox1);
-            this.Error_Page.Controls.Add(this.Btn_RestartProj);
-            this.Error_Page.Controls.Add(this.label9);
-            this.Error_Page.Controls.Add(this.label10);
-            this.Error_Page.Location = new System.Drawing.Point(-6, 0);
-            this.Error_Page.Name = "Error_Page";
-            this.Error_Page.Size = new System.Drawing.Size(1093, 624);
-            this.Error_Page.TabIndex = 6;
-            this.Error_Page.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(500, 174);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(114, 108);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Btn_RestartProj
-            // 
-            this.Btn_RestartProj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.Btn_RestartProj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.Btn_RestartProj.FlatAppearance.BorderSize = 3;
-            this.Btn_RestartProj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_RestartProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RestartProj.ForeColor = System.Drawing.Color.White;
-            this.Btn_RestartProj.Location = new System.Drawing.Point(410, 423);
-            this.Btn_RestartProj.Name = "Btn_RestartProj";
-            this.Btn_RestartProj.Size = new System.Drawing.Size(302, 53);
-            this.Btn_RestartProj.TabIndex = 4;
-            this.Btn_RestartProj.Text = "New Project";
-            this.Btn_RestartProj.UseVisualStyleBackColor = false;
-            this.Btn_RestartProj.Click += new System.EventHandler(this.Btn_NewProj_Click);
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label9.Location = new System.Drawing.Point(288, 349);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(538, 56);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Project conversion failed. Please try again or contact IT Support for help.";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label10.Location = new System.Drawing.Point(486, 294);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(162, 46);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Uh-oh...";
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label6.Location = new System.Drawing.Point(440, 364);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(260, 29);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "USFM File Converter";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(488, 318);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 46);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Matos";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(510, 212);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(98, 103);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1047,7 +1050,7 @@ namespace USFM_Converter
             this.ClientSize = new System.Drawing.Size(1077, 626);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "USFM Converter";
             this.ConversionPanel.ResumeLayout(false);
@@ -1070,13 +1073,13 @@ namespace USFM_Converter
             this.Conversion_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
             this.Conversion_Page.ResumeLayout(false);
-            this.Success_Page.ResumeLayout(false);
-            this.Success_Page.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Error_Page.ResumeLayout(false);
             this.Error_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Success_Page.ResumeLayout(false);
+            this.Success_Page.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
