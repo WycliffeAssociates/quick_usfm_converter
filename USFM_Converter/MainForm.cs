@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
 using USFMToolsSharp.Models.Markers;
+using USFMToolsSharp.Renderers.Docx;
 using USFMToolsSharp.Renderers.HTML;
 
 namespace USFM_Converter
@@ -22,7 +23,6 @@ namespace USFM_Converter
         private bool willSeparateVerse = false;
         private string filePathConversion;
 
-        private HTMLConfig configHTML;
 
         private Dictionary<double, string> LineSpacingClasses;
         private string[] ColumnClasses;
@@ -119,56 +119,19 @@ namespace USFM_Converter
                 
             }
             else
-            { 
+            {
+                string fileName = saveFileDialog.FileName;
                 btn_AddFiles.Enabled = false;
                 fileDataGrid.Enabled = false;
                 Show_Loading_Page();
 
-                // Does not parse through section headers yet
-                var parser = new USFMParser(new List<string> { "s5" });
-
-                configHTML = BuildConfig();
-                //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
-                var renderer = new HtmlRenderer(configHTML);
-
-                // Added ULB License and Page Number
-                renderer.FrontMatterHTML = GetLicenseInfo();
-                renderer.InsertedFooter = GetFooterInfo();
-
-                var usfm = new USFMDocument();
-
-                var progress = fileDataGrid.RowCount - 1;
-                var progressStep = 0;
-
-                foreach (DataGridViewRow row in fileDataGrid.Rows)
+                if (Path.GetExtension(fileName) == ".html")
                 {
-                    var cell = row.Cells[0];
-                    if (cell.Value == null)
-                    {
-                        continue;
-                    }
-                    var filename = cell.Value.ToString();
-
-                    var text = File.ReadAllText(filename);
-                    usfm.Insert(parser.ParseFromString(text));
-
-                    
-
-                    progressStep++;
-                    LoadingBar.Value = (int)(progressStep / (float)progress * 100);
+                    RenderHtml(fileName);
                 }
-
-                var html = renderer.Render(usfm);
-                var htmlFilename = saveFileDialog.FileName;
-
-                File.WriteAllText(htmlFilename, html);
-
-                var dirname = Path.GetDirectoryName(htmlFilename);
-                filePathConversion = dirname;
-                var cssFilename = Path.Combine(dirname, "style.css");
-                if (!File.Exists(cssFilename))
+                else if (Path.GetExtension(fileName) == ".docx")
                 {
-                    File.Copy("style.css", cssFilename);
+                    RenderDocx(fileName);
                 }
 
                 btn_AddFiles.Enabled = true;
@@ -176,6 +139,93 @@ namespace USFM_Converter
                 LoadingBar.Value = 0;
                 ResetValues();
                 Show_Success_Page();
+            }
+        }
+
+        private void RenderHtml(string fileName)
+        {
+            // Does not parse through section headers yet
+            var parser = new USFMParser(new List<string> { "s5" });
+
+            HTMLConfig configHTML = BuildHTMLConfig();
+            //Configure Settings -- Spacing ? 1, Column# ? 1, TextDirection ? L2R 
+            var renderer = new HtmlRenderer(configHTML);
+
+            // Added ULB License and Page Number
+            renderer.FrontMatterHTML = GetLicenseInfo();
+            renderer.InsertedFooter = GetFooterInfo();
+
+            var usfm = new USFMDocument();
+
+            var progress = fileDataGrid.RowCount - 1;
+            var progressStep = 0;
+
+            foreach (DataGridViewRow row in fileDataGrid.Rows)
+            {
+                var cell = row.Cells[0];
+                if (cell.Value == null)
+                {
+                    continue;
+                }
+                var filename = cell.Value.ToString();
+
+                var text = File.ReadAllText(filename);
+                usfm.Insert(parser.ParseFromString(text));
+
+
+
+                progressStep++;
+                LoadingBar.Value = (int)(progressStep / (float)progress * 100);
+            }
+
+            var html = renderer.Render(usfm);
+
+            File.WriteAllText(fileName, html);
+
+            var dirname = Path.GetDirectoryName(fileName);
+            filePathConversion = dirname;
+            var cssFilename = Path.Combine(dirname, "style.css");
+            if (!File.Exists(cssFilename))
+            {
+                File.Copy("style.css", cssFilename);
+            }
+        }
+
+        private void RenderDocx(string fileName)
+        {
+            // Does not parse through section headers yet
+            var parser = new USFMParser(new List<string> { "s5" });
+
+            var renderer = new DocxRenderer(BuildDocxConfig());
+
+            var usfm = new USFMDocument();
+
+            var progress = fileDataGrid.RowCount - 1;
+            var progressStep = 0;
+
+            foreach (DataGridViewRow row in fileDataGrid.Rows)
+            {
+                var cell = row.Cells[0];
+                if (cell.Value == null)
+                {
+                    continue;
+                }
+                var filename = cell.Value.ToString();
+
+                var text = File.ReadAllText(filename);
+                usfm.Insert(parser.ParseFromString(text));
+
+
+
+                progressStep++;
+                LoadingBar.Value = (int)(progressStep / (float)progress * 100);
+            }
+
+            var output = renderer.Render(usfm);
+
+            using(Stream outputStream = File.Create(fileName))
+            {
+                output.Write(outputStream);
             }
         }
 
@@ -455,7 +505,7 @@ namespace USFM_Converter
             FileNameInput.Text = "";
 
         }        
-        private HTMLConfig BuildConfig()
+        private HTMLConfig BuildHTMLConfig()
         {
             HTMLConfig config = new HTMLConfig();
             if (!isSingleSpaced)
@@ -479,6 +529,22 @@ namespace USFM_Converter
             // Will be added to HTML config class 
             config.separateVerses = willSeparateVerse;
 
+            config.separateChapters = willSeparateChap;
+
+            return config;
+        }
+        private DocxConfig BuildDocxConfig()
+        {
+            DocxConfig config = new DocxConfig();
+            config.lineSpacing = isSingleSpaced ? 1: 2;
+            config.columnCount = hasOneColumn ? 1 : 2;
+
+            if (!isL2RDirection)
+            {
+                config.textDirection = NPOI.OpenXmlFormats.Wordprocessing.ST_TextDirection.tbRl;
+            }
+
+            config.separateVerses = willSeparateVerse;
             config.separateChapters = willSeparateChap;
 
             return config;

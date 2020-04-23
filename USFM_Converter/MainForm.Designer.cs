@@ -373,8 +373,8 @@ namespace USFM_Converter
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Format_Page);
+            this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.Error_Page);
