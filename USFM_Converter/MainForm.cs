@@ -60,7 +60,7 @@ namespace USFM_Converter
 
         private void OnAddFilesButtonClick(object sender, EventArgs e)
         {
-            
+
 
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
             {
@@ -78,6 +78,12 @@ namespace USFM_Converter
             }
 
             var folderName = folderBrowserDialog.SelectedPath;
+            LoadFolder(folderName);
+
+        }
+
+        private void LoadFolder(string folderName)
+        {
             var dirinfo = new DirectoryInfo(folderName);
             var allFiles = dirinfo.GetFiles("*", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in allFiles)
@@ -91,7 +97,6 @@ namespace USFM_Converter
 
             Show_Conversion_Page();
             this.Btn_Convert.Enabled = true;
-            
         }
 
         private void OnConvertButtonClick(object sender, EventArgs e)
@@ -103,7 +108,7 @@ namespace USFM_Converter
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 FileName = saveFileName,
-                Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*",
+                Filter = "HTML files (*.html)|*.html|Word Document (*.docx)|*.docx|All files (*.*)|*.*",
                 FilterIndex = 1,
                 RestoreDirectory = false
             };
@@ -400,6 +405,7 @@ namespace USFM_Converter
             Loading_Page.Visible = false;
             Format_Page.Visible = false;
             Error_Page.Visible = false;
+            HomeCapture.Visible = true;
         }
         private void Show_Conversion_Page()
         {
@@ -408,6 +414,7 @@ namespace USFM_Converter
             Loading_Page.Visible = false;
             Format_Page.Visible = false;
             Error_Page.Visible = false;
+            HomeCapture.Visible = false;
         }
         private void Show_Success_Page()
         {
@@ -416,6 +423,7 @@ namespace USFM_Converter
             Loading_Page.Visible = false;
             Format_Page.Visible = false;
             Error_Page.Visible = false;
+            HomeCapture.Visible = false;
         }
         private void Show_Format_Page()
         {
@@ -424,6 +432,7 @@ namespace USFM_Converter
             Loading_Page.Visible = false;
             Format_Page.Visible = true;
             Error_Page.Visible = false;
+            HomeCapture.Visible = false;
         }
         private void Show_Error_Page()
         {
@@ -513,6 +522,38 @@ namespace USFM_Converter
             setColorFocus(this.Btn_FontMed, false);
             setColorFocus(this.Btn_FontLarge, true);
             fontClass = "large-text";
+        }
+
+        private void HomeCapture_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length == 1)
+                {
+                    var fileAttributes = File.GetAttributes(files[0]);
+                    if (fileAttributes.HasFlag(FileAttributes.Directory))
+                    {
+                        e.Effect = DragDropEffects.Copy;
+                    }
+                }
+            }
+        }
+
+        private void HomeCapture_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length == 1)
+                {
+                    var fileAttributes = File.GetAttributes(files[0]);
+                    if (fileAttributes.HasFlag(FileAttributes.Directory))
+                    {
+                        LoadFolder(files[0]);
+                    }
+                }
+            }
         }
     }
 
