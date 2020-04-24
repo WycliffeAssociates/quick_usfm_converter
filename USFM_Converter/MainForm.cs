@@ -134,17 +134,21 @@ namespace USFM_Converter
                     {
                         RenderDocx(fileName);
                     }
+                    btn_AddFiles.Enabled = true;
+                    fileDataGrid.Enabled = true;
+                    LoadingBar.Value = 0;
+                    ResetValues();
+                    Show_Success_Page();
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show($"Error converting please submit a bug with a link to the USFM you're using and the following error message {ex.Message}", "Error converting", MessageBoxButtons.OK);
+                    btn_AddFiles.Enabled = true;
+                    fileDataGrid.Enabled = true;
+                    LoadingBar.Value = 0;
+                    ResetValues();
+                    Show_Error_Page();
                 }
-
-                btn_AddFiles.Enabled = true;
-                fileDataGrid.Enabled = true;
-                LoadingBar.Value = 0;
-                ResetValues();
-                Show_Success_Page();
             }
         }
 
