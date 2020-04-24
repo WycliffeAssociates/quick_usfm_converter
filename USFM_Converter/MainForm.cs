@@ -84,12 +84,12 @@ namespace USFM_Converter
 
         private void LoadFolder(string folderName)
         {
+            List<string> supportedExtensions = new List<string> { ".usfm", ".txt", ".sfm" };
             var dirinfo = new DirectoryInfo(folderName);
             var allFiles = dirinfo.GetFiles("*", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in allFiles)
             {
-                if (fileInfo.FullName.ToLower().EndsWith(".usfm") ||
-                    fileInfo.FullName.ToLower().EndsWith(".txt"))
+                if (supportedExtensions.Contains(Path.GetExtension(fileInfo.FullName.ToLower())))
                 {
                     fileDataGrid.Rows.Add(new String[] { fileInfo.FullName });
                 }
