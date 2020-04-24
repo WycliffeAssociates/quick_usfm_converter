@@ -124,14 +124,20 @@ namespace USFM_Converter
                 btn_AddFiles.Enabled = false;
                 fileDataGrid.Enabled = false;
                 Show_Loading_Page();
-
-                if (Path.GetExtension(fileName) == ".html")
+                try
                 {
-                    RenderHtml(fileName);
+                    if (Path.GetExtension(fileName) == ".html")
+                    {
+                        RenderHtml(fileName);
+                    }
+                    else if (Path.GetExtension(fileName) == ".docx")
+                    {
+                        RenderDocx(fileName);
+                    }
                 }
-                else if (Path.GetExtension(fileName) == ".docx")
+                catch(Exception ex)
                 {
-                    RenderDocx(fileName);
+                    MessageBox.Show($"Error converting please submit a bug with a link to the USFM you're using and the following error message {ex.Message}", "Error converting", MessageBoxButtons.OK);
                 }
 
                 btn_AddFiles.Enabled = true;
