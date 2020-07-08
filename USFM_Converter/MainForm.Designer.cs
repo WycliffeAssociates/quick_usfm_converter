@@ -134,9 +134,6 @@ namespace USFM_Converter
             this.Loading_Page = new System.Windows.Forms.Panel();
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
             this.Conversion_Page = new System.Windows.Forms.SplitContainer();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Error_Page = new USFM_Converter.ColorGradient();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_RestartProj = new System.Windows.Forms.Button();
@@ -148,6 +145,9 @@ namespace USFM_Converter
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ConversionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -167,11 +167,11 @@ namespace USFM_Converter
             this.Conversion_Page.Panel1.SuspendLayout();
             this.Conversion_Page.Panel2.SuspendLayout();
             this.Conversion_Page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Error_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Success_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ConversionPanel
@@ -373,11 +373,11 @@ namespace USFM_Converter
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.Format_Page);
             this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
-            this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
             this.panel1.Name = "panel1";
@@ -866,38 +866,6 @@ namespace USFM_Converter
             this.Conversion_Page.TabIndex = 5;
             this.Conversion_Page.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label6.Location = new System.Drawing.Point(440, 364);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(260, 29);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "USFM File Converter";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(488, 318);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 46);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Matos";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(510, 212);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(98, 103);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // Error_Page
             // 
             this.Error_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
@@ -1043,6 +1011,38 @@ namespace USFM_Converter
             this.label13.TabIndex = 1;
             this.label13.Text = "Success!";
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label6.Location = new System.Drawing.Point(440, 364);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(260, 29);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "USFM File Converter";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(488, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 46);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Matos";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(510, 212);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(98, 103);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1073,13 +1073,13 @@ namespace USFM_Converter
             this.Conversion_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
             this.Conversion_Page.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Error_Page.ResumeLayout(false);
             this.Error_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Success_Page.ResumeLayout(false);
             this.Success_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

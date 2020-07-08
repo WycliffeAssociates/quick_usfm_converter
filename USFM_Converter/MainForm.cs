@@ -84,12 +84,12 @@ namespace USFM_Converter
 
         private void LoadFolder(string folderName)
         {
+            List<string> supportedExtensions = new List<string> { ".usfm", ".txt", ".sfm" };
             var dirinfo = new DirectoryInfo(folderName);
             var allFiles = dirinfo.GetFiles("*", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in allFiles)
             {
-                if (fileInfo.FullName.ToLower().EndsWith(".usfm") ||
-                    fileInfo.FullName.ToLower().EndsWith(".txt"))
+                if (supportedExtensions.Contains(Path.GetExtension(fileInfo.FullName.ToLower())))
                 {
                     fileDataGrid.Rows.Add(new String[] { fileInfo.FullName });
                 }
@@ -124,21 +124,31 @@ namespace USFM_Converter
                 btn_AddFiles.Enabled = false;
                 fileDataGrid.Enabled = false;
                 Show_Loading_Page();
-
-                if (Path.GetExtension(fileName) == ".html")
+                try
                 {
-                    RenderHtml(fileName);
+                    if (Path.GetExtension(fileName) == ".html")
+                    {
+                        RenderHtml(fileName);
+                    }
+                    else if (Path.GetExtension(fileName) == ".docx")
+                    {
+                        RenderDocx(fileName);
+                    }
+                    btn_AddFiles.Enabled = true;
+                    fileDataGrid.Enabled = true;
+                    LoadingBar.Value = 0;
+                    ResetValues();
+                    Show_Success_Page();
                 }
-                else if (Path.GetExtension(fileName) == ".docx")
+                catch(Exception ex)
                 {
-                    RenderDocx(fileName);
+                    MessageBox.Show($"Error converting please submit a bug with a link to the USFM you're using and the following error message {ex.Message}", "Error converting", MessageBoxButtons.OK);
+                    btn_AddFiles.Enabled = true;
+                    fileDataGrid.Enabled = true;
+                    LoadingBar.Value = 0;
+                    ResetValues();
+                    Show_Error_Page();
                 }
-
-                btn_AddFiles.Enabled = true;
-                fileDataGrid.Enabled = true;
-                LoadingBar.Value = 0;
-                ResetValues();
-                Show_Success_Page();
             }
         }
 
