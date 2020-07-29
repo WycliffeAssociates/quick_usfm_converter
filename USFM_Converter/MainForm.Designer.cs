@@ -368,7 +368,7 @@ namespace USFM_Converter
             this.HomeInstruct.Name = "HomeInstruct";
             this.HomeInstruct.Size = new System.Drawing.Size(573, 93);
             this.HomeInstruct.TabIndex = 1;
-            this.HomeInstruct.Text = "Drag and drop some USFM files or folders to get started.";
+            this.HomeInstruct.Text = "Drag and drop a USFM folder to get started.";
             this.HomeInstruct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel1

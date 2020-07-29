@@ -120,26 +120,26 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="USFMToolsSharp, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.1.4.0\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
+    <Reference Include="USFMToolsSharp, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\USFMToolsSharp.1.5.0\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
     </Reference>
     <Reference Include="USFMToolsSharp.Renderers.Docx, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.Renderers.Docx.0.5.2\lib\netstandard2.0\USFMToolsSharp.Renderers.Docx.dll</HintPath>
+      <HintPath>..\packages\USFMToolsSharp.Renderers.Docx.0.7.0\lib\netstandard2.0\USFMToolsSharp.Renderers.Docx.dll</HintPath>
     </Reference>
     <Reference Include="USFMToolsSharp.Renderers.HTML, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\USFMToolsSharp.Renderers.HTML.0.2.1\lib\netstandard1.0\USFMToolsSharp.Renderers.HTML.dll</HintPath>
     </Reference>
     <Reference Include="WycliffeAssociates.NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\WycliffeAssociates.NPOI.2.4.5\lib\netstandard2.0\WycliffeAssociates.NPOI.dll</HintPath>
+      <HintPath>..\packages\WycliffeAssociates.NPOI.2.4.7\lib\netstandard2.0\WycliffeAssociates.NPOI.dll</HintPath>
     </Reference>
     <Reference Include="WycliffeAssociates.NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\WycliffeAssociates.NPOI.OOXML.2.4.5\lib\netstandard2.0\WycliffeAssociates.NPOI.OOXML.dll</HintPath>
+      <HintPath>..\packages\WycliffeAssociates.NPOI.OOXML.2.4.7\lib\netstandard2.0\WycliffeAssociates.NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="WycliffeAssociates.NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\WycliffeAssociates.NPOI.OpenXml4Net.2.4.5\lib\netstandard2.0\WycliffeAssociates.NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\packages\WycliffeAssociates.NPOI.OpenXml4Net.2.4.7\lib\netstandard2.0\WycliffeAssociates.NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="WycliffeAssociates.NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\WycliffeAssociates.NPOI.OpenXmlFormats.2.4.5\lib\netstandard2.0\WycliffeAssociates.NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\packages\WycliffeAssociates.NPOI.OpenXmlFormats.2.4.7\lib\netstandard2.0\WycliffeAssociates.NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
