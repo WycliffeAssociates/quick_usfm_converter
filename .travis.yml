@@ -1,0 +1,4 @@
+os: windows
+language: csharp
+solution: USFM_Converter.sln
+mono: none
