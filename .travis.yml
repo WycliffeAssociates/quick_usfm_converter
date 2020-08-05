@@ -2,3 +2,9 @@ os: windows
 language: csharp
 solution: USFM_Converter.sln
 mono: none
+
+install:
+- nuget restore USFM_Converter.sln
+
+script:
+- msbuild /p:Configuration=Release USFM_Converter.sln
