@@ -548,12 +548,7 @@ namespace USFM_Converter
             DocxConfig config = new DocxConfig();
             config.lineSpacing = isSingleSpaced ? 1: 2;
             config.columnCount = hasOneColumn ? 1 : 2;
-
-            if (!isL2RDirection)
-            {
-                config.textDirection = NPOI.OpenXmlFormats.Wordprocessing.ST_TextDirection.tbRl;
-            }
-
+            config.rightToLeft = !isL2RDirection;
             config.separateVerses = willSeparateVerse;
             config.separateChapters = willSeparateChap;
 
