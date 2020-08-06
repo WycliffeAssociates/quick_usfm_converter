@@ -8,4 +8,4 @@ install:
 - nuget restore USFM_Converter.sln
 
 script:
-- msbuild /p:Configuration=Release USFM_Converter.sln
+- msbuild.exe /p:Configuration=Release USFM_Converter.sln
