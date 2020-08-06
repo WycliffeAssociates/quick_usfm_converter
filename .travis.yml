@@ -8,4 +8,4 @@ install:
 - nuget restore USFM_Converter.sln
 
 script:
-- 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\bin\MSBuild.exe' /p:Configuration=Release USFM_Converter.sln
+- "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\bin\MSBuild.exe" /p:Configuration=Release USFM_Converter.sln
