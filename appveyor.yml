@@ -1,0 +1,26 @@
+version: 1.0.{build}
+configuration: Release
+before_build:
+- cmd: nuget restore USFM_Converter.sln
+build:
+  verbosity: minimal
+deploy:
+- provider: S3
+  access_key_id:
+    secure: fTolX5IVtC+EMnchVGHM55HR8bmUw0MEkNfDJvcUirE=
+  secret_access_key:
+    secure: BokZbJlUOWKugyqrxUa+4LGkdNUA2Ydp/59kcxInrdbuiiTEfmvuhw3zOdc5RKAQ
+  region: us-east-1
+  bucket: nightlybuilds
+  folder: $(APPVEYOR_REPO_NAME)/$(APPVEYOR_REPO_BRANCH)/$(APPVEYOR_BUILD_NUMBER)
+  artifact: /.*\.exe/
+  set_public: true
+- provider: GitHub
+  auth_token:
+    secure: yVVt0QpBtamXBkqn3N4kBxatFqrzmRiG0FG+H3p2dthbrqDnEZ8TlsNY/cAlqErq
+  artifact: /.*\.exe/
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    APPVEYOR_REPO_TAG: true        # deploy on tag push only
