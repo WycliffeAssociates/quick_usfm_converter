@@ -4,6 +4,8 @@ before_build:
 - cmd: nuget restore USFM_Converter.sln
 build:
   verbosity: minimal
+artifacts:
+  path: '**\*.exe'
 deploy:
 - provider: S3
   access_key_id:
@@ -13,7 +15,7 @@ deploy:
   region: us-east-1
   bucket: nightlybuilds
   folder: $(APPVEYOR_REPO_NAME)/$(APPVEYOR_REPO_BRANCH)/$(APPVEYOR_BUILD_NUMBER)
-  artifact: $(APPVEYOR_BUILD_FOLDER)\USFM_Converter\bin\Release\USFM_Converter.exe
+  artifact: USFM_Converter.exe
   set_public: true
 #- provider: GitHub
 #  auth_token:
