@@ -5,9 +5,10 @@ before_build:
 build:
   verbosity: minimal
 after_build:
-- sh: mv $(APPVEYOR_BUILD_FOLDER)\USFM_Converter\bin\Release\USFM_Converter.exe .
+- cmd: mv $(APPVEYOR_BUILD_FOLDER)\USFM_Converter\bin\Release\USFM_Converter.exe .
 artifacts:
   path: USFM_Converter.exe
+  
 deploy:
 - provider: S3
   access_key_id:
