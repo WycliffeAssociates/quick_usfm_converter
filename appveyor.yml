@@ -6,6 +6,7 @@ build:
   verbosity: minimal
 artifacts:
   path: '**\*.exe'
+  name: USFM_Converter.exe
 deploy:
 - provider: S3
   access_key_id:
