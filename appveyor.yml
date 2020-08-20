@@ -11,7 +11,9 @@ after_build:
 - cmd: mv %APPVEYOR_BUILD_FOLDER%/Output/usfmsetup.exe ./USFM_Converter_Installer.exe
 artifacts:
   - path: USFM_Converter_Portable.exe
+    name: portable
   - path: USFM_Converter_Installer.exe
+    name: installer
   
 deploy:
 - provider: S3
@@ -22,12 +24,12 @@ deploy:
   region: us-east-1
   bucket: nightlybuilds
   folder: $(APPVEYOR_REPO_NAME)/$(APPVEYOR_REPO_BRANCH)/$(APPVEYOR_BUILD_NUMBER)
-  artifact: USFM_Converter.exe
+  artifact: portable, installer
   set_public: true
 - provider: GitHub
   auth_token:
     secure: yVVt0QpBtamXBkqn3N4kBxatFqrzmRiG0FG+H3p2dthbrqDnEZ8TlsNY/cAlqErq
-  artifact: USFM_Converter.exe
+  artifact: portable, installer
   draft: false
   prerelease: false
   on:
