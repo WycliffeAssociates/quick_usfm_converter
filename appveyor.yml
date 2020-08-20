@@ -10,8 +10,8 @@ after_build:
 - cmd: mv %APPVEYOR_BUILD_FOLDER%/USFM_Converter/bin/Release/USFM_Converter.exe ./USFM_Converter_Portable.exe
 - cmd: mv %APPVEYOR_BUILD_FOLDER%/Output/usfmsetup.exe ./USFM_Converter_Installer.exe
 artifacts:
-  path: USFM_Converter_Portable.exe
-  path: USFM_Converter_Installer.exe
+  - path: USFM_Converter_Portable.exe
+  - path: USFM_Converter_Installer.exe
   
 deploy:
 - provider: S3
@@ -32,3 +32,4 @@ deploy:
   prerelease: false
   on:
     APPVEYOR_REPO_TAG: true
+
