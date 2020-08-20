@@ -2,12 +2,16 @@ version: 1.0.{build}
 configuration: Release
 before_build:
 - cmd: nuget restore USFM_Converter.sln
+configuration: Release
 build:
   verbosity: minimal
 after_build:
-- cmd: mv %APPVEYOR_BUILD_FOLDER%/USFM_Converter/bin/Release/USFM_Converter.exe .
+- cmd: "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installerscript.iss
+- cmd: mv %APPVEYOR_BUILD_FOLDER%/USFM_Converter/bin/Release/USFM_Converter.exe ./USFM_Converter_Portable.exe
+- cmd: mv %APPVEYOR_BUILD_FOLDER%/Output/usfmsetup.exe ./USFM_Converter_Installer.exe
 artifacts:
-  path: USFM_Converter.exe
+  path: USFM_Converter_Portable.exe
+  path: USFM_Converter_Installer.exe
   
 deploy:
 - provider: S3
