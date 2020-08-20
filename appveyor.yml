@@ -2,9 +2,9 @@ version: 1.0.{build}
 configuration: Release
 before_build:
 - cmd: nuget restore USFM_Converter.sln
-configuration: Release
 build:
-  verbosity: minimal
+  project: USFM_Converter.sln
+  verbosity: normal
 after_build:
 - cmd: "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installerscript.iss
 - cmd: mv %APPVEYOR_BUILD_FOLDER%/USFM_Converter/bin/Release/USFM_Converter.exe ./USFM_Converter_Portable.exe
