@@ -1,7 +1,7 @@
 version: 1.0.{build}
-configuration: Release
 before_build:
 - cmd: nuget restore USFM_Converter.sln
+configuration: Release
 build:
   verbosity: minimal
 after_build:
