@@ -6,11 +6,8 @@ build_script:
 - cmd: 'msbuild USFM_Converter.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release'
 after_build:
 - cmd: '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" installerscript.iss'
-- cmd: mv %APPVEYOR_BUILD_FOLDER%/USFM_Converter/bin/Release/USFM_Converter.exe ./USFM_Converter_Portable.exe
 - cmd: mv %APPVEYOR_BUILD_FOLDER%/Output/usfmsetup.exe ./USFM_Converter_Installer.exe
 artifacts:
-  - path: USFM_Converter_Portable.exe
-    name: portable
   - path: USFM_Converter_Installer.exe
     name: installer
   
@@ -23,12 +20,12 @@ deploy:
   region: us-east-1
   bucket: nightlybuilds
   folder: $(APPVEYOR_REPO_NAME)/$(APPVEYOR_REPO_BRANCH)/$(APPVEYOR_BUILD_NUMBER)
-  artifact: portable, installer
+  artifact: installer
   set_public: true
 - provider: GitHub
   auth_token:
     secure: yVVt0QpBtamXBkqn3N4kBxatFqrzmRiG0FG+H3p2dthbrqDnEZ8TlsNY/cAlqErq
-  artifact: portable, installer
+  artifact: installer
   draft: false
   prerelease: false
   on:
