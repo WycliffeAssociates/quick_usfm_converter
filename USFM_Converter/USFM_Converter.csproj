@@ -120,11 +120,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="USFMToolsSharp, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.1.5.0\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
+    <Reference Include="USFMToolsSharp, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\USFMToolsSharp.1.5.3\lib\netstandard1.0\USFMToolsSharp.dll</HintPath>
     </Reference>
     <Reference Include="USFMToolsSharp.Renderers.Docx, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\USFMToolsSharp.Renderers.Docx.0.7.0\lib\netstandard2.0\USFMToolsSharp.Renderers.Docx.dll</HintPath>
+      <HintPath>..\packages\USFMToolsSharp.Renderers.Docx.0.8.0\lib\netstandard2.0\USFMToolsSharp.Renderers.Docx.dll</HintPath>
     </Reference>
     <Reference Include="USFMToolsSharp.Renderers.HTML, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\USFMToolsSharp.Renderers.HTML.0.2.1\lib\netstandard1.0\USFMToolsSharp.Renderers.HTML.dll</HintPath>
