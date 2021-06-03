@@ -105,6 +105,7 @@ namespace USFM_Converter
             this.Format_Page = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_FormatBack = new System.Windows.Forms.Button();
+            this.Btn_SuccessBack = new System.Windows.Forms.Button();
             this.Btn_Convert = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -431,6 +432,21 @@ namespace USFM_Converter
             this.Btn_FormatBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_FormatBack.UseVisualStyleBackColor = false;
             this.Btn_FormatBack.Click += new System.EventHandler(this.Btn_FormatBack_Click);
+            //
+            // Btn_SuccessBack
+            //
+            this.Btn_SuccessBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
+            this.Btn_SuccessBack.FlatAppearance.BorderSize = 0;
+            this.Btn_SuccessBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_SuccessBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_SuccessBack.ForeColor = System.Drawing.Color.White;
+            this.Btn_SuccessBack.Image = ((System.Drawing.Image)(resources.GetObject("Btn_FormatBack.Image")));
+            this.Btn_SuccessBack.Location = new System.Drawing.Point(42, 42);
+            this.Btn_SuccessBack.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_SuccessBack.Name = "Btn_SuccessBack";
+            this.Btn_SuccessBack.Size = new System.Drawing.Size(45, 45);
+            this.Btn_SuccessBack.UseVisualStyleBackColor = false;
+            this.Btn_SuccessBack.Click += new System.EventHandler(this.Btn_SuccessBack_Click);
             // 
             // Btn_Convert
             // 
@@ -940,6 +956,7 @@ namespace USFM_Converter
             this.Success_Page.Controls.Add(this.label11);
             this.Success_Page.Controls.Add(this.button2);
             this.Success_Page.Controls.Add(this.label13);
+            this.Success_Page.Controls.Add(this.Btn_SuccessBack);
             this.Success_Page.Location = new System.Drawing.Point(0, 0);
             this.Success_Page.Name = "Success_Page";
             this.Success_Page.Size = new System.Drawing.Size(1087, 624);
@@ -1129,6 +1146,7 @@ namespace USFM_Converter
         private Label label10;
         private PictureBox pictureBox1;
         private Button Btn_FormatBack;
+        private Button Btn_SuccessBack;
         private ColorGradient Success_Page;
         private PictureBox pictureBox3;
         private Button button1;
