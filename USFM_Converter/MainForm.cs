@@ -21,7 +21,7 @@ namespace USFM_Converter
         private bool isL2RDirection = true;
         private bool willSeparateChap = true;
         private bool willSeparateVerse = false;
-        private string filePathConversion;
+        private string outputFile;
 
 
         private Dictionary<double, string> LineSpacingClasses;
@@ -192,12 +192,13 @@ namespace USFM_Converter
             File.WriteAllText(fileName, html);
 
             var dirname = Path.GetDirectoryName(fileName);
-            filePathConversion = dirname;
             var cssFilename = Path.Combine(dirname, "style.css");
             if (!File.Exists(cssFilename))
             {
                 File.Copy("style.css", cssFilename);
             }
+
+            outputFile = fileName;
         }
 
         private void RenderDocx(string fileName)
@@ -236,6 +237,8 @@ namespace USFM_Converter
             {
                 output.Write(outputStream);
             }
+
+            outputFile = fileName;
         }
 
         private string GetLicenseInfo()
@@ -332,10 +335,10 @@ namespace USFM_Converter
 
         private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
         {
-            if (filePathConversion == null)
+            if (outputFile == null)
                 Process.Start("explorer.exe");
             else
-                Process.Start(filePathConversion);
+                Process.Start("explorer.exe", @"/select," + outputFile);
         }
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
