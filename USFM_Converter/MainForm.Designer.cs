@@ -347,7 +347,7 @@ namespace USFM_Converter
             this.Btn_BrowseFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
             this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
-            this.Btn_BrowseFiles.Location = new System.Drawing.Point(398, 511);
+            this.Btn_BrowseFiles.Location = new System.Drawing.Point(392, 481);
             this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
             this.Btn_BrowseFiles.Size = new System.Drawing.Size(296, 57);
@@ -372,7 +372,7 @@ namespace USFM_Converter
             // 
             this.HomeInstruct.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HomeInstruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HomeInstruct.Location = new System.Drawing.Point(262, 449);
+            this.HomeInstruct.Location = new System.Drawing.Point(253, 428);
             this.HomeInstruct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HomeInstruct.Name = "HomeInstruct";
             this.HomeInstruct.Size = new System.Drawing.Size(573, 59);
