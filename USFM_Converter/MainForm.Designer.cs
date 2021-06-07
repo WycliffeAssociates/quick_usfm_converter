@@ -1030,7 +1030,7 @@ namespace USFM_Converter
             this.Btn_SuccessBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_SuccessBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_SuccessBack.ForeColor = System.Drawing.Color.White;
-            this.Btn_SuccessBack.Image = ((System.Drawing.Image)(resources.GetObject("Btn_SuccessBack.Image")));
+            this.Btn_SuccessBack.Image = global::USFM_Converter.Properties.Resources.BackArrow;
             this.Btn_SuccessBack.Location = new System.Drawing.Point(42, 42);
             this.Btn_SuccessBack.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_SuccessBack.Name = "Btn_SuccessBack";
