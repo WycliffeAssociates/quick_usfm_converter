@@ -102,7 +102,6 @@ namespace USFM_Converter
             this.HomeImg = new System.Windows.Forms.PictureBox();
             this.HomeInstruct = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Conversion_Page = new System.Windows.Forms.SplitContainer();
             this.Format_Page = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_FormatBack = new System.Windows.Forms.Button();
@@ -132,6 +131,7 @@ namespace USFM_Converter
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Conversion_Page = new System.Windows.Forms.SplitContainer();
             this.Error_Page = new USFM_Converter.ColorGradient();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_RestartProj = new System.Windows.Forms.Button();
@@ -157,16 +157,16 @@ namespace USFM_Converter
             this.HomeCapture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).BeginInit();
-            this.Conversion_Page.Panel1.SuspendLayout();
-            this.Conversion_Page.Panel2.SuspendLayout();
-            this.Conversion_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Format_Page)).BeginInit();
             this.Format_Page.Panel1.SuspendLayout();
             this.Format_Page.Panel2.SuspendLayout();
             this.Format_Page.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).BeginInit();
+            this.Conversion_Page.Panel1.SuspendLayout();
+            this.Conversion_Page.Panel2.SuspendLayout();
+            this.Conversion_Page.SuspendLayout();
             this.Error_Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Loading_Page.SuspendLayout();
@@ -379,8 +379,8 @@ namespace USFM_Converter
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.Format_Page);
+            this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
@@ -390,30 +390,12 @@ namespace USFM_Converter
             this.panel1.Size = new System.Drawing.Size(1085, 616);
             this.panel1.TabIndex = 5;
             // 
-            // Conversion_Page
-            // 
-            this.Conversion_Page.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Conversion_Page.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.Conversion_Page.Location = new System.Drawing.Point(0, 0);
-            this.Conversion_Page.Name = "Conversion_Page";
-            this.Conversion_Page.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // Conversion_Page.Panel1
-            // 
-            this.Conversion_Page.Panel1.Controls.Add(this.ConversionBanner);
-            // 
-            // Conversion_Page.Panel2
-            // 
-            this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
-            this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
-            this.Conversion_Page.SplitterDistance = 91;
-            this.Conversion_Page.TabIndex = 5;
-            this.Conversion_Page.Visible = false;
-            // 
             // Format_Page
             // 
+            this.Format_Page.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Format_Page.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.Format_Page.Location = new System.Drawing.Point(0, 0);
             this.Format_Page.Name = "Format_Page";
             this.Format_Page.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -436,15 +418,16 @@ namespace USFM_Converter
             this.panel2.Controls.Add(this.Btn_FormatBack);
             this.panel2.Controls.Add(this.Btn_Convert);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.MinimumSize = new System.Drawing.Size(0, 91);
+            this.panel2.MinimumSize = new System.Drawing.Size(850, 91);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1085, 91);
             this.panel2.TabIndex = 6;
             // 
             // Btn_FormatBack
             // 
+            this.Btn_FormatBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_FormatBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
             this.Btn_FormatBack.FlatAppearance.BorderSize = 0;
             this.Btn_FormatBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -463,6 +446,7 @@ namespace USFM_Converter
             // 
             // Btn_Convert
             // 
+            this.Btn_Convert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Convert.BackColor = System.Drawing.Color.White;
             this.Btn_Convert.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Convert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(137)))));
@@ -486,6 +470,7 @@ namespace USFM_Converter
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
             this.panel3.Controls.Add(this.Btn_FontLarge);
             this.panel3.Controls.Add(this.Btn_FontMed);
@@ -510,7 +495,6 @@ namespace USFM_Converter
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
@@ -858,6 +842,28 @@ namespace USFM_Converter
             this.label3.TabIndex = 9;
             this.label3.Text = "Line Spacing";
             // 
+            // Conversion_Page
+            // 
+            this.Conversion_Page.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Conversion_Page.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.Conversion_Page.Location = new System.Drawing.Point(0, 0);
+            this.Conversion_Page.Name = "Conversion_Page";
+            this.Conversion_Page.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // Conversion_Page.Panel1
+            // 
+            this.Conversion_Page.Panel1.Controls.Add(this.ConversionBanner);
+            // 
+            // Conversion_Page.Panel2
+            // 
+            this.Conversion_Page.Panel2.Controls.Add(this.ConversionPanel);
+            this.Conversion_Page.Size = new System.Drawing.Size(1085, 627);
+            this.Conversion_Page.SplitterDistance = 91;
+            this.Conversion_Page.TabIndex = 5;
+            this.Conversion_Page.Visible = false;
+            // 
             // Error_Page
             // 
             this.Error_Page.ColorBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
@@ -1090,16 +1096,16 @@ namespace USFM_Converter
             this.HomeCapture.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HomeImg)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.Conversion_Page.Panel1.ResumeLayout(false);
-            this.Conversion_Page.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
-            this.Conversion_Page.ResumeLayout(false);
             this.Format_Page.Panel1.ResumeLayout(false);
             this.Format_Page.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Format_Page)).EndInit();
             this.Format_Page.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.Conversion_Page.Panel1.ResumeLayout(false);
+            this.Conversion_Page.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Conversion_Page)).EndInit();
+            this.Conversion_Page.ResumeLayout(false);
             this.Error_Page.ResumeLayout(false);
             this.Error_Page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
