@@ -177,7 +177,6 @@ namespace USFM_Converter
             // 
             // ConversionPanel
             // 
-            this.ConversionPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ConversionPanel.BackColor = System.Drawing.SystemColors.Window;
             this.ConversionPanel.Controls.Add(this.pictureBox4);
             this.ConversionPanel.Controls.Add(this.ProjNameLabel);
@@ -187,6 +186,7 @@ namespace USFM_Converter
             this.ConversionPanel.Controls.Add(this.btn_AddFiles);
             this.ConversionPanel.Controls.Add(this.FileNameInput);
             this.ConversionPanel.Controls.Add(this.fileDataGrid);
+            this.ConversionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConversionPanel.Location = new System.Drawing.Point(0, 0);
             this.ConversionPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ConversionPanel.Name = "ConversionPanel";
@@ -271,12 +271,14 @@ namespace USFM_Converter
             this.FileNameInput.Location = new System.Drawing.Point(54, 91);
             this.FileNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.FileNameInput.Name = "FileNameInput";
-            this.FileNameInput.Size = new System.Drawing.Size(408, 29);
+            this.FileNameInput.Size = new System.Drawing.Size(350, 29);
             this.FileNameInput.TabIndex = 1;
             this.FileNameInput.WordWrap = false;
             // 
             // fileDataGrid
             // 
+            this.fileDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.fileDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.fileDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -284,7 +286,7 @@ namespace USFM_Converter
             this.fileDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.fileDataGrid.Name = "fileDataGrid";
             this.fileDataGrid.RowTemplate.Height = 33;
-            this.fileDataGrid.Size = new System.Drawing.Size(904, 314);
+            this.fileDataGrid.Size = new System.Drawing.Size(977, 314);
             this.fileDataGrid.TabIndex = 0;
             this.fileDataGrid.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.fileDataGrid_CellStateChanged);
             // 
@@ -379,12 +381,12 @@ namespace USFM_Converter
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.Format_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
             this.panel1.Controls.Add(this.Success_Page);
+            this.panel1.Controls.Add(this.Format_Page);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 616);
