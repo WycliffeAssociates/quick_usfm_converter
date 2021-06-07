@@ -381,11 +381,11 @@ namespace USFM_Converter
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.HomeCapture);
             this.panel1.Controls.Add(this.Loading_Page);
-            this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Controls.Add(this.Format_Page);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
             this.panel1.Name = "panel1";
@@ -960,14 +960,16 @@ namespace USFM_Converter
             this.Success_Page.Controls.Add(this.button2);
             this.Success_Page.Controls.Add(this.label13);
             this.Success_Page.Controls.Add(this.Btn_SuccessBack);
+            this.Success_Page.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Success_Page.Location = new System.Drawing.Point(0, 0);
             this.Success_Page.Name = "Success_Page";
-            this.Success_Page.Size = new System.Drawing.Size(1087, 624);
+            this.Success_Page.Size = new System.Drawing.Size(1085, 616);
             this.Success_Page.TabIndex = 6;
             this.Success_Page.Visible = false;
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(500, 174);
@@ -979,13 +981,14 @@ namespace USFM_Converter
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(246)))));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
             this.button1.FlatAppearance.BorderSize = 3;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
-            this.button1.Location = new System.Drawing.Point(238, 396);
+            this.button1.Location = new System.Drawing.Point(237, 388);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(302, 53);
             this.button1.TabIndex = 4;
@@ -995,6 +998,7 @@ namespace USFM_Converter
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
@@ -1007,11 +1011,12 @@ namespace USFM_Converter
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(569, 396);
+            this.button2.Location = new System.Drawing.Point(568, 388);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(302, 53);
             this.button2.TabIndex = 3;
@@ -1021,6 +1026,7 @@ namespace USFM_Converter
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
