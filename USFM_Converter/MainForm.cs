@@ -463,7 +463,7 @@ namespace USFM_Converter
 
         private void Btn_SuccessBack_Click(object sender, EventArgs e)
         {
-            Show_Conversion_Page();
+            Show_Format_Page();
         }
 
         private void Show_Home_Page()
