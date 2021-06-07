@@ -137,7 +137,6 @@ namespace USFM_Converter
                     btn_AddFiles.Enabled = true;
                     fileDataGrid.Enabled = true;
                     LoadingBar.Value = 0;
-                    ResetValues();
                     Show_Success_Page();
                 }
                 catch(Exception ex)
@@ -326,6 +325,7 @@ namespace USFM_Converter
 
         private void Btn_NewProj_Click(object sender, EventArgs e)
         {
+            ResetValues();
             Show_Home_Page();
             fileDataGrid.Rows.Clear();
         }
@@ -456,6 +456,11 @@ namespace USFM_Converter
         private void Btn_FormatBack_Click(object sender, EventArgs e)
         {
             Show_Conversion_Page();
+        }
+
+        private void Btn_SuccessBack_Click(object sender, EventArgs e)
+        {
+            Show_Format_Page();
         }
 
         private void Show_Home_Page()
