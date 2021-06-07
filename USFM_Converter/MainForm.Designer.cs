@@ -332,20 +332,22 @@ namespace USFM_Converter
             this.HomeCapture.Controls.Add(this.Btn_BrowseFiles);
             this.HomeCapture.Controls.Add(this.HomeImg);
             this.HomeCapture.Controls.Add(this.HomeInstruct);
-            this.HomeCapture.Location = new System.Drawing.Point(104, 11);
+            this.HomeCapture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HomeCapture.Location = new System.Drawing.Point(0, 0);
             this.HomeCapture.Margin = new System.Windows.Forms.Padding(2);
             this.HomeCapture.Name = "HomeCapture";
-            this.HomeCapture.Size = new System.Drawing.Size(912, 577);
+            this.HomeCapture.Size = new System.Drawing.Size(1085, 616);
             this.HomeCapture.TabIndex = 3;
             this.HomeCapture.DragDrop += new System.Windows.Forms.DragEventHandler(this.HomeCapture_DragDrop);
             this.HomeCapture.DragEnter += new System.Windows.Forms.DragEventHandler(this.HomeCapture_DragEnter);
             // 
             // Btn_BrowseFiles
             // 
+            this.Btn_BrowseFiles.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Btn_BrowseFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(211)))));
             this.Btn_BrowseFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_BrowseFiles.ForeColor = System.Drawing.Color.White;
-            this.Btn_BrowseFiles.Location = new System.Drawing.Point(277, 495);
+            this.Btn_BrowseFiles.Location = new System.Drawing.Point(398, 511);
             this.Btn_BrowseFiles.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_BrowseFiles.Name = "Btn_BrowseFiles";
             this.Btn_BrowseFiles.Size = new System.Drawing.Size(296, 57);
@@ -356,8 +358,9 @@ namespace USFM_Converter
             // 
             // HomeImg
             // 
+            this.HomeImg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HomeImg.Image = ((System.Drawing.Image)(resources.GetObject("HomeImg.Image")));
-            this.HomeImg.Location = new System.Drawing.Point(159, 18);
+            this.HomeImg.Location = new System.Drawing.Point(280, 34);
             this.HomeImg.Margin = new System.Windows.Forms.Padding(2);
             this.HomeImg.Name = "HomeImg";
             this.HomeImg.Size = new System.Drawing.Size(520, 389);
@@ -367,11 +370,12 @@ namespace USFM_Converter
             // 
             // HomeInstruct
             // 
+            this.HomeInstruct.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HomeInstruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HomeInstruct.Location = new System.Drawing.Point(135, 409);
+            this.HomeInstruct.Location = new System.Drawing.Point(262, 449);
             this.HomeInstruct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HomeInstruct.Name = "HomeInstruct";
-            this.HomeInstruct.Size = new System.Drawing.Size(573, 93);
+            this.HomeInstruct.Size = new System.Drawing.Size(573, 59);
             this.HomeInstruct.TabIndex = 1;
             this.HomeInstruct.Text = "Drag and drop a USFM folder to get started.";
             this.HomeInstruct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -381,12 +385,12 @@ namespace USFM_Converter
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.Success_Page);
-            this.panel1.Controls.Add(this.Conversion_Page);
-            this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.HomeCapture);
+            this.panel1.Controls.Add(this.Error_Page);
             this.panel1.Controls.Add(this.Loading_Page);
+            this.panel1.Controls.Add(this.Success_Page);
             this.panel1.Controls.Add(this.Format_Page);
+            this.panel1.Controls.Add(this.Conversion_Page);
             this.panel1.Location = new System.Drawing.Point(-7, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 616);
