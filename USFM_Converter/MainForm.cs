@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using USFMToolsSharp;
 using USFMToolsSharp.Models;
@@ -21,7 +22,7 @@ namespace USFM_Converter
         private bool isL2RDirection = true;
         private bool willSeparateChap = true;
         private bool willSeparateVerse = false;
-        private string filePathConversion;
+        private string outputFile;
 
 
         private Dictionary<double, string> LineSpacingClasses;
@@ -29,6 +30,7 @@ namespace USFM_Converter
         private string[] TextDirectionClasses;
         private string[] TextAlignmentClasses;
         private string fontClass;
+        private ICollection<string> supportedExtensions = new List<string> { ".usfm", ".txt", ".sfm" };
 
         private Color whiteColor = Color.White;
         private Color darkBlue = Color.FromArgb(0, 68, 214);
@@ -84,19 +86,38 @@ namespace USFM_Converter
 
         private void LoadFolder(string folderName)
         {
-            List<string> supportedExtensions = new List<string> { ".usfm", ".txt", ".sfm" };
             var dirinfo = new DirectoryInfo(folderName);
             var allFiles = dirinfo.GetFiles("*", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in allFiles)
             {
-                if (supportedExtensions.Contains(Path.GetExtension(fileInfo.FullName.ToLower())))
+                if (supportedExtensions.Contains(fileInfo.Extension))
                 {
                     fileDataGrid.Rows.Add(new String[] { fileInfo.FullName });
                 }
             }
 
-            Show_Conversion_Page();
-            this.Btn_Convert.Enabled = true;
+            if (fileDataGrid.Rows.Count > 1)
+            {
+                Show_Conversion_Page();
+                this.Btn_Convert.Enabled = true;
+            }
+        }
+
+        private void LoadFiles(IEnumerable<FileInfo> files)
+        {
+            foreach (var file in files)
+            {
+                if (supportedExtensions.Contains(file.Extension))
+                {
+                    fileDataGrid.Rows.Add(new String[] { file.FullName });
+                }
+            }
+
+            if (fileDataGrid.Rows.Count > 1)
+            {
+                Show_Conversion_Page();
+                this.Btn_Convert.Enabled = true;
+            }
         }
 
         private void OnConvertButtonClick(object sender, EventArgs e)
@@ -192,12 +213,13 @@ namespace USFM_Converter
             File.WriteAllText(fileName, html);
 
             var dirname = Path.GetDirectoryName(fileName);
-            filePathConversion = dirname;
             var cssFilename = Path.Combine(dirname, "style.css");
             if (!File.Exists(cssFilename))
             {
                 File.Copy("style.css", cssFilename);
             }
+
+            outputFile = fileName;
         }
 
         private void RenderDocx(string fileName)
@@ -236,6 +258,8 @@ namespace USFM_Converter
             {
                 output.Write(outputStream);
             }
+
+            outputFile = fileName;
         }
 
         private string GetLicenseInfo()
@@ -332,10 +356,10 @@ namespace USFM_Converter
 
         private void Btn_OpenFileLocation_Click(object sender, EventArgs e)
         {
-            if (filePathConversion == null)
+            if (outputFile == null)
                 Process.Start("explorer.exe");
             else
-                Process.Start(filePathConversion);
+                Process.Start("explorer.exe", @"/select," + outputFile);
         }
         private void fileDataGrid_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
@@ -605,13 +629,9 @@ namespace USFM_Converter
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (files.Length == 1)
+                if (files.Length > 0)
                 {
-                    var fileAttributes = File.GetAttributes(files[0]);
-                    if (fileAttributes.HasFlag(FileAttributes.Directory))
-                    {
-                        e.Effect = DragDropEffects.Copy;
-                    }
+                    e.Effect = DragDropEffects.Copy;
                 }
             }
         }
@@ -620,15 +640,26 @@ namespace USFM_Converter
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (files.Length == 1)
+                var filesToAdd = new List<FileInfo>();
+                var filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+                
+                foreach (string file in filePaths)
                 {
-                    var fileAttributes = File.GetAttributes(files[0]);
-                    if (fileAttributes.HasFlag(FileAttributes.Directory))
+                    if (File.GetAttributes(file).HasFlag(FileAttributes.Directory))
                     {
-                        LoadFolder(files[0]);
+                        // walk directory
+                        var directory = new DirectoryInfo(file);
+                        var filesInDir = directory.GetFiles("*", SearchOption.AllDirectories);
+                        
+                        filesToAdd.AddRange(filesInDir);
+                    }
+                    else
+                    {
+                        filesToAdd.Add(new FileInfo(file));
                     }
                 }
+
+                LoadFiles(filesToAdd.OrderBy(f => f.Name));
             }
         }
     }
