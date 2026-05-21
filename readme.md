@@ -1,4 +1,5 @@
 # USFM Converter Application
+Deprecated in favor of https://github.com/Bible-Translation-Tools/USFM-Converter
 Converts USFM formated files into HTML files. 
 > Can be editted in the Microsoft Word or Libre Office text editors
 
